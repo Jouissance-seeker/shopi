@@ -342,5 +342,6 @@ export default [
         },
       ],
     },
+    ignores: ['.next'],
   },
 ];
