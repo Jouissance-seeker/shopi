@@ -10,7 +10,6 @@ import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import tailwindcss from 'eslint-plugin-tailwindcss';
-import unusedImports from 'eslint-plugin-unused-imports';
 import globals from 'globals';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -35,7 +34,6 @@ export default [
     plugins: {
       import: fixupPluginRules(_import),
       'simple-import-sort': simpleImportSort,
-      'unused-imports': unusedImports,
       tailwindcss,
       prettier,
       '@typescript-eslint': typescriptEslint,
