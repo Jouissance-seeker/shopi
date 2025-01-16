@@ -10,7 +10,7 @@ interface ILayoutProps {
 
 export default function Layout(props: ILayoutProps) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html suppressHydrationWarning dir="rtl" lang="fa">
       <body className={cn('flex flex-col h-dvh', props.font)}>
         <Header />
         <main className="flex-center flex-1">{props.children}</main>
