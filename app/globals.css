@@ -3,16 +3,19 @@
 @tailwind utilities;
 
 :root {
-  --red: #ED1944;
-  --green: #00A651;
-  --gray: #F8F9FB;
+  --red: #ed1944;
+  --green: #00a651;
+  --gray: #f8f9fb;
 }
 
 body {
   @apply text-[--foreground] bg-[--background];
-  p {
-    @apply text-white;
-  }
+}
+p {
+  @apply text-white;
+}
+input {
+  @apply outline-none;
 }
 
 .flex-center {

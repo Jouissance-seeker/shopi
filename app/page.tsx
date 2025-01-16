@@ -1,8 +1,8 @@
 export default function Home() {
   return (
-    <main className="flex-center h-screen">
+    <div className="flex-center">
       <p className="text-red">یک متن تستی</p>
       <p className="text-green">یک متن تستی</p>
-    </main>
+    </div>
   );
 }

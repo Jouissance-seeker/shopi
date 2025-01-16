@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { ReactNode } from 'react';
+import Layout from '@/containers/layout';
 
 // metadata
 export const metadata: Metadata = {
@@ -28,9 +29,5 @@ export default function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body className={fontYekanBakh.className}>{children}</body>
-    </html>
-  );
+  return <Layout font={fontYekanBakh.className}>{children}</Layout>;
 }
