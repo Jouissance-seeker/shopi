@@ -23,6 +23,10 @@ export default {
           DEFAULT: 'var(--green)',
         },
       },
+      fontSize: {
+        smp: '15px',
+        xsp: '13px',
+      },
     },
   },
   plugins: [],
