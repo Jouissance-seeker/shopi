@@ -12,16 +12,25 @@ import {
 import { useToggleUrlState } from '@/hooks/toggle-url-state';
 import { cn } from '@/utils/cn';
 
-export function Mobile() {
+export function Header() {
   return (
-    <div className="container border-b py-3 md:hidden">
-      <Top />
-      <Bottom />
-    </div>
+    <header>
+      <Mobile />
+      <Desktop />
+    </header>
   );
 }
 
-const Top = () => {
+const Mobile = () => {
+  return (
+    <div className="container border-b py-3 md:hidden">
+      <MobileTop />
+      <MobileBottom />
+    </div>
+  );
+};
+
+const MobileTop = () => {
   const humbergerMenu = useToggleUrlState('humberger-menu-section');
 
   return (
@@ -79,7 +88,7 @@ const Top = () => {
   );
 };
 
-const Bottom = () => {
+const MobileBottom = () => {
   const searchResult = useToggleUrlState('search-result-section');
   const cart = useToggleUrlState('cart-section');
 
@@ -173,4 +182,8 @@ const Bottom = () => {
       </div>
     </div>
   );
+};
+
+const Desktop = () => {
+  return <div className="container hidden border-b py-3 md:flex">تستی</div>;
 };
