@@ -23,10 +23,11 @@ export function ToggleSection(props: IToggleSectionProps) {
     <div>
       {/* backdrop */}
       <div
-        className={cn('fixed inset-0', {
+        className={cn('fixed inset-0 transition-all', {
           show: props.isShow,
           hide: !props.isShow,
           'backdrop-blur-sm bg-black/10': props.isBackDrop,
+          hidden: !props.isBackDrop,
         })}
       />
       {/* section */}
