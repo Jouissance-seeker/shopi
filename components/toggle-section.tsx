@@ -51,7 +51,7 @@ export function ToggleSection(props: IToggleSectionProps) {
               </button>
             </div>
             {/* body */}
-            <div className="p-2 text-smp">{props.children}</div>
+            <div>{props.children}</div>
           </div>
         </div>
       </div>

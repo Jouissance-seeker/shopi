@@ -18,6 +18,10 @@ const fontYekanBakh = localFont({
       weight: '400',
     },
     {
+      path: '../public/fonts/yekanbakh/medium-fanum.woff',
+      weight: '500',
+    },
+    {
       path: '../public/fonts/yekanbakh/bold-fanum.woff',
       weight: '700',
     },
