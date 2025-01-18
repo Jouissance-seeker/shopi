@@ -11,13 +11,9 @@ export function useToggleUrlState(key: string) {
     setState(searchParams.has(key));
   }, [searchParams, key]);
 
-  const updateUrl = async (newState: boolean, deleteKeys?: string[]) => {
+  const updateUrl = async (newState: boolean) => {
+    if (newState === state) return;
     const updatedSearchParams = new URLSearchParams(searchParams.toString());
-    if (deleteKeys) {
-      deleteKeys.forEach((key) => {
-        updatedSearchParams.delete(key);
-      });
-    }
     if (newState) {
       updatedSearchParams.set(key, '');
     } else {
@@ -31,11 +27,8 @@ export function useToggleUrlState(key: string) {
 
   return {
     isShow: state,
-    toggle: (options?: { deleteKeys?: string[] }) =>
-      updateUrl(!state, options?.deleteKeys),
-    hide: (options?: { deleteKeys?: string[] }) =>
-      updateUrl(false, options?.deleteKeys),
-    show: (options?: { deleteKeys?: string[] }) =>
-      updateUrl(true, options?.deleteKeys),
+    toggle: () => updateUrl(!state),
+    hide: () => updateUrl(false),
+    show: () => updateUrl(true),
   };
 }
