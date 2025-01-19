@@ -188,8 +188,8 @@ const MobileBottomSearch = () => {
         className={cn(
           'absolute left-0 h-4 w-screen transition-all top-[110px]',
           {
-            show: searchResult.isShow,
-            hide: !searchResult.isShow,
+            show: searchResultToggleUrlState.isShow,
+            hide: !searchResultToggleUrlState.isShow,
           },
         )}
       >
@@ -468,7 +468,7 @@ const DesktopBottomCart = () => {
 };
 
 const DesktopBottomSearch = () => {
-  const searchResult = useToggleUrlState('search-result-section');
+  const searchResultToggleUrlState = useToggleUrlState('search-result-section');
   const [searchValue, setSearchValue] = useState('');
 
   return (
@@ -479,8 +479,8 @@ const DesktopBottomSearch = () => {
           className="bg-transparent text-xsp font-bold"
           type="text"
           placeholder="جستجوی محصول ..."
-          onFocus={() => searchResult.show()}
-          onBlur={() => searchResult.hide()}
+          onFocus={() => searchResultToggleUrlState.show()}
+          onBlur={() => searchResultToggleUrlState.hide()}
           onChange={(e) => setSearchValue(e.target.value)}
         />
         <Link href="/shop" className="z-10 flex">
@@ -490,8 +490,8 @@ const DesktopBottomSearch = () => {
       {/* section */}
       <div
         className={cn('absolute left-0 top-[70px] h-4 w-full transition-all', {
-          show: searchResult.isShow,
-          hide: !searchResult.isShow,
+          show: searchResultToggleUrlState.isShow,
+          hide: !searchResultToggleUrlState.isShow,
         })}
       >
         <div className="rounded-xl border border-gray-200 bg-white">
