@@ -374,7 +374,7 @@ const DesktopBottomCategory = () => {
           },
         )}
       >
-        <div className="flex h-[220px] overflow-hidden rounded-2xl border border-gray-100 bg-white">
+        <div className="flex h-[220px] overflow-hidden rounded-2xl border border-gray-200 bg-white">
           <ul className="bg-gray-100 py-2">
             {CATEGORIES.map((item) => (
               <li key={item.text}>
@@ -449,7 +449,7 @@ const DesktopBottomCart = () => {
           hide: !cart.isShow,
         })}
       >
-        <div className="rounded-2xl border border-gray-100 bg-white">
+        <div className="rounded-2xl border border-gray-200 bg-white">
           <div className="flex flex-col items-center gap-3 py-5">
             <Image
               src="/images/templates/base/empty-cart.svg"
