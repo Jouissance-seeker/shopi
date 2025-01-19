@@ -55,19 +55,21 @@ const MobileTop = () => {
 };
 
 const MobileTopHumbergerMenu = () => {
-  const humbergerMenu = useToggleUrlState('humberger-menu-section');
+  const humbergerMenuToggleUrlState = useToggleUrlState(
+    'humberger-menu-section',
+  );
 
   return (
     <div>
       {/* btn */}
-      <button onClick={() => humbergerMenu.show()}>
+      <button onClick={() => humbergerMenuToggleUrlState.show()}>
         <HiMiniBars3 size={25} />
       </button>
       {/* section */}
       <ToggleSection
         title="فهرست"
-        isShow={humbergerMenu.isShow}
-        onClose={() => humbergerMenu.hide()}
+        isShow={humbergerMenuToggleUrlState.isShow}
+        onClose={() => humbergerMenuToggleUrlState.hide()}
         className="container absolute left-0 top-[110px] h-4 w-screen"
       >
         <nav className="text-sm">
@@ -162,7 +164,7 @@ const MobileBottom = () => {
 };
 
 const MobileBottomSearch = () => {
-  const searchResult = useToggleUrlState('search-result-section');
+  const searchResultToggleUrlState = useToggleUrlState('search-result-section');
   const [searchValue, setSearchValue] = useState('');
 
   return (
@@ -176,8 +178,8 @@ const MobileBottomSearch = () => {
           type="text"
           placeholder="جستجوی محصول"
           className="px-2.5 text-sm font-bold placeholder:text-xsp"
-          onFocus={() => searchResult.show()}
-          onBlur={() => searchResult.hide()}
+          onFocus={() => searchResultToggleUrlState.show()}
+          onBlur={() => searchResultToggleUrlState.hide()}
           onChange={(e) => setSearchValue(e.target.value)}
         />
       </div>
@@ -225,13 +227,13 @@ const MobileBottomSearch = () => {
 };
 
 const MobileBottomCart = () => {
-  const cart = useToggleUrlState('cart-section');
+  const cartToggleUrlState = useToggleUrlState('cart-section');
 
   return (
     <div className="flex items-center">
       {/* btn */}
       <button
-        onClick={() => cart.show()}
+        onClick={() => cartToggleUrlState.show()}
         className="relative mx-0.5 border-x px-2"
       >
         <HiOutlineShoppingCart size={20} />
@@ -242,13 +244,13 @@ const MobileBottomCart = () => {
       {/* section */}
       <ToggleSection
         title="سبد خرید"
-        isShow={cart.isShow}
-        onClose={() => cart.hide()}
+        isShow={cartToggleUrlState.isShow}
+        onClose={() => cartToggleUrlState.hide()}
         className="container absolute left-0 top-[110px] h-4 w-screen"
       >
         <div className="flex flex-col items-center gap-3 py-5">
           <Image
-            src="/images/templates/base/empty-cart.svg"
+            src="/images/templates/base/empty-cartToggleUrlState.svg"
             height={125}
             width={125}
             alt="سبد خرید خالی"
@@ -350,13 +352,13 @@ const DesktopBottom = () => {
 };
 
 const DesktopBottomCategory = () => {
-  const categories = useToggleUrlState('categories-section');
+  const categoriesToggleUrlState = useToggleUrlState('categories-section');
   const [activedCategoryData, setActivedCategoryData] = useState(CATEGORIES[0]);
 
   return (
     <div
-      onMouseEnter={() => categories.show()}
-      onMouseLeave={() => categories.hide()}
+      onMouseEnter={() => categoriesToggleUrlState.show()}
+      onMouseLeave={() => categoriesToggleUrlState.hide()}
       className="relative"
     >
       {/* btn */}
@@ -369,8 +371,8 @@ const DesktopBottomCategory = () => {
         className={cn(
           'absolute right-0 container p-0 top-[70px] w-screen transition-all',
           {
-            show: categories.isShow,
-            hide: !categories.isShow,
+            show: categoriesToggleUrlState.isShow,
+            hide: !categoriesToggleUrlState.isShow,
           },
         )}
       >
@@ -424,13 +426,13 @@ const DesktopBottomCategory = () => {
 };
 
 const DesktopBottomCart = () => {
-  const cart = useToggleUrlState('cart-section');
+  const cartToggleUrlState = useToggleUrlState('cart-section');
 
   return (
     <div
       className="relative"
-      onMouseEnter={() => cart.show()}
-      onMouseLeave={() => cart.hide()}
+      onMouseEnter={() => cartToggleUrlState.show()}
+      onMouseLeave={() => cartToggleUrlState.hide()}
     >
       {/* btn */}
       <button className="flex items-center justify-between gap-3 rounded-2xl border p-3.5">
@@ -445,14 +447,14 @@ const DesktopBottomCart = () => {
       {/* section */}
       <div
         className={cn('absolute right-0 top-[70px] w-[400px] transition-all', {
-          show: cart.isShow,
-          hide: !cart.isShow,
+          show: cartToggleUrlState.isShow,
+          hide: !cartToggleUrlState.isShow,
         })}
       >
         <div className="rounded-2xl border border-gray-200 bg-white">
           <div className="flex flex-col items-center gap-3 py-5">
             <Image
-              src="/images/templates/base/empty-cart.svg"
+              src="/images/templates/base/empty-cartToggleUrlState.svg"
               height={125}
               width={125}
               alt="سبد خرید خالی"
