@@ -12,7 +12,7 @@ body {
   @apply text-[--foreground] bg-[--background] text-gray-600;
 }
 p {
-  @apply text-white;
+  @apply text-gray-700;
 }
 input {
   @apply outline-none;

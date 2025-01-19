@@ -42,7 +42,7 @@ export function ToggleSection(props: IToggleSectionProps) {
           <div className="rounded-md border border-gray-200 bg-white">
             {/* head */}
             <div className="flex items-center justify-between border-b p-2">
-              <p className="text-smp font-bold text-gray-700">{props.title}</p>
+              <p className="text-smp font-bold">{props.title}</p>
               <button
                 onClick={props.onClose}
                 className="flex-center size-6 overflow-hidden rounded-md bg-red"

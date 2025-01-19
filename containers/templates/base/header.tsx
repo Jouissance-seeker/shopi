@@ -158,7 +158,7 @@ const MobileBottom = () => {
         <MobileBottomCart />
         {/* user */}
         <Link href="/auth">
-          <HiOutlineUser size={20} className="text-gray-700" />
+          <HiOutlineUser size={20} />
         </Link>
       </div>
     </div>
@@ -174,12 +174,12 @@ const MobileBottomSearch = () => {
       {/* field */}
       <div className="flex items-center">
         <Link href="/shop">
-          <HiOutlineMagnifyingGlass size={20} className="text-gray-700" />
+          <HiOutlineMagnifyingGlass size={20} />
         </Link>
         <input
           type="text"
           placeholder="جستجوی محصول"
-          className="px-2.5 text-sm font-bold text-gray-700 placeholder:text-xsp"
+          className="px-2.5 text-sm font-bold placeholder:text-xsp"
           onFocus={() => searchResult.show()}
           onBlur={() => searchResult.hide()}
           onChange={(e) => setSearchValue(e.target.value)}
@@ -204,9 +204,7 @@ const MobileBottomSearch = () => {
                 </div>
               ) : (
                 <div className="flex flex-col gap-2">
-                  <p className="text-sm font-medium text-gray-700">
-                    بیشترین جستجوها
-                  </p>
+                  <p className="text-sm font-medium">بیشترین جستجوها</p>
                   <ul className="flex gap-2">
                     {['گوشی', 'لپ تاپ', 'ساعت'].map((item) => (
                       <li key={item}>
@@ -214,8 +212,8 @@ const MobileBottomSearch = () => {
                           href={`/shop?q=${item}`}
                           className="flex items-center gap-0.5 rounded-md border bg-gray-50 px-1.5 py-1 text-xs font-medium"
                         >
-                          <p className="text-gray-700">{item}</p>
-                          <HiChevronLeft className="size-3.5 text-gray-700" />
+                          <p>{item}</p>
+                          <HiChevronLeft className="size-3.5" />
                         </Link>
                       </li>
                     ))}
@@ -240,8 +238,8 @@ const MobileBottomCart = () => {
         onClick={() => cart.show()}
         className="relative mx-0.5 border-x px-2"
       >
-        <HiOutlineShoppingCart size={20} className="text-gray-700" />
-        <p className="flex-center absolute -top-1.5 right-1 h-3.5 rounded-[3px] bg-red px-[3px] text-[11px] font-bold">
+        <HiOutlineShoppingCart size={20} />
+        <p className="flex-center absolute -top-1.5 right-1 h-3.5 rounded-[3px] bg-red px-[3px] text-[11px] font-bold text-white">
           0
         </p>
       </button>
@@ -259,9 +257,7 @@ const MobileBottomCart = () => {
             width={125}
             alt="سبد خرید خالی"
           />
-          <p className="text-smp font-medium text-gray-700">
-            سبد خرید خالی است!
-          </p>
+          <p className="text-smp font-medium">سبد خرید خالی است!</p>
         </div>
       </ToggleSection>
     </div>
@@ -269,5 +265,18 @@ const MobileBottomCart = () => {
 };
 
 const Desktop = () => {
-  return <div className="container hidden border-b py-3 md:flex">تستی</div>;
+  return (
+    <div className="container hidden flex-col border-b py-3 md:flex">
+      <DesktopTop />
+      <DesktopBottom />
+    </div>
+  );
+};
+
+const DesktopTop = () => {
+  return <p>desktop top</p>;
+};
+
+const DesktopBottom = () => {
+  return <p>desktop bottom</p>;
 };
