@@ -250,7 +250,7 @@ const MobileBottomCart = () => {
       >
         <div className="flex flex-col items-center gap-3 py-5">
           <Image
-            src="/images/templates/base/empty-cartToggleUrlState.svg"
+            src="/images/templates/base/empty-cart.svg"
             height={125}
             width={125}
             alt="سبد خرید خالی"
@@ -293,22 +293,24 @@ const DesktopTop = () => {
         ))}
       </ul>
       {/* logo */}
-      <Link href="/">
+      <div>
+        <Link href="/">
+          <Image
+            src="/images/templates/base/header-logo-desktop.svg"
+            alt="لوگو"
+            width={130}
+            height={80}
+            className="absolute left-3 z-10"
+          />
+        </Link>
         <Image
-          src="/images/templates/base/header-logo-desktop.svg"
+          src="/images/templates/base/bg-logo-wave.png"
           alt="لوگو"
-          width={130}
-          height={80}
-          className="absolute left-3 z-10"
+          width={350}
+          height={130}
+          className="absolute left-3"
         />
-      </Link>
-      <Image
-        src="/images/templates/base/bg-logo-wave.png"
-        alt="لوگو"
-        width={350}
-        height={130}
-        className="absolute left-3"
-      />
+      </div>
       {/* call */}
       <Link
         href="tel:021-12345678"
@@ -454,7 +456,7 @@ const DesktopBottomCart = () => {
         <div className="rounded-2xl border border-gray-200 bg-white">
           <div className="flex flex-col items-center gap-3 py-5">
             <Image
-              src="/images/templates/base/empty-cartToggleUrlState.svg"
+              src="/images/templates/base/empty-cart.svg"
               height={125}
               width={125}
               alt="سبد خرید خالی"
@@ -474,7 +476,7 @@ const DesktopBottomSearch = () => {
   return (
     <div className="relative w-72">
       {/* field */}
-      <div className="flex w-full items-center justify-between rounded-2xl border border-gray-100 bg-slate-50 p-4 transition-all focus-within:border-gray-200 focus-within:bg-white">
+      <div className="flex w-full items-center justify-between rounded-2xl border border-gray-100 bg-gray-100 p-4 transition-all focus-within:border-gray-200 focus-within:bg-white">
         <input
           className="bg-transparent text-xsp font-bold"
           type="text"
