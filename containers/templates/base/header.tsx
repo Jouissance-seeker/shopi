@@ -70,7 +70,7 @@ const MobileTopHumbergerMenu = () => {
         title="فهرست"
         isShow={humbergerMenuToggleUrlState.isShow}
         onClose={() => humbergerMenuToggleUrlState.hide()}
-        className="container absolute left-0 top-[110px] h-4 w-screen"
+        className="container absolute left-0 top-[110px] z-50 h-4 w-screen"
       >
         <nav className="text-sm">
           <ul className="w-full">
@@ -186,7 +186,7 @@ const MobileBottomSearch = () => {
       {/* section */}
       <div
         className={cn(
-          'absolute left-0 h-4 w-screen transition-all top-[110px]',
+          'absolute z-50 left-0 h-4 w-screen transition-all top-[110px]',
           {
             show: searchResultToggleUrlState.isShow,
             hide: !searchResultToggleUrlState.isShow,
@@ -246,7 +246,7 @@ const MobileBottomCart = () => {
         title="سبد خرید"
         isShow={cartToggleUrlState.isShow}
         onClose={() => cartToggleUrlState.hide()}
-        className="container absolute left-0 top-[110px] h-4 w-screen"
+        className="container absolute left-0 top-[110px] z-50 h-4 w-screen"
       >
         <div className="flex flex-col items-center gap-3 py-5">
           <Image
@@ -371,7 +371,7 @@ const DesktopBottomCategory = () => {
       {/* section */}
       <div
         className={cn(
-          'absolute right-0 container p-0 top-[70px] w-screen transition-all',
+          'absolute right-0 container z-50 p-0 top-[70px] w-screen transition-all',
           {
             show: categoriesToggleUrlState.isShow,
             hide: !categoriesToggleUrlState.isShow,
@@ -448,10 +448,13 @@ const DesktopBottomCart = () => {
       </button>
       {/* section */}
       <div
-        className={cn('absolute right-0 top-[70px] w-[400px] transition-all', {
-          show: cartToggleUrlState.isShow,
-          hide: !cartToggleUrlState.isShow,
-        })}
+        className={cn(
+          'absolute z-50 right-0 top-[70px] w-[400px] transition-all',
+          {
+            show: cartToggleUrlState.isShow,
+            hide: !cartToggleUrlState.isShow,
+          },
+        )}
       >
         <div className="rounded-2xl border border-gray-200 bg-white">
           <div className="flex flex-col items-center gap-3 py-5">
@@ -491,10 +494,13 @@ const DesktopBottomSearch = () => {
       </div>
       {/* section */}
       <div
-        className={cn('absolute left-0 top-[70px] h-4 w-full transition-all', {
-          show: searchResultToggleUrlState.isShow,
-          hide: !searchResultToggleUrlState.isShow,
-        })}
+        className={cn(
+          'absolute z-50 left-0 top-[70px] h-4 w-full transition-all',
+          {
+            show: searchResultToggleUrlState.isShow,
+            hide: !searchResultToggleUrlState.isShow,
+          },
+        )}
       >
         <div className="rounded-xl border border-gray-200 bg-white">
           <div className="p-2 text-smp">
