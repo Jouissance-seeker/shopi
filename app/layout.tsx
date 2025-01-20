@@ -34,7 +34,12 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html suppressHydrationWarning dir="rtl" lang="fa">
+    <html
+      suppressHydrationWarning
+      dir="rtl"
+      className="scrollbar-hide"
+      lang="fa"
+    >
       <body className={cn('flex flex-col h-dvh', fontYekanBakh.className)}>
         <Providers>
           <TemplateBase>{children}</TemplateBase>

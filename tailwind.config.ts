@@ -1,3 +1,5 @@
+import aspectRatio from '@tailwindcss/aspect-ratio';
+import scrollbarHide from 'tailwind-scrollbar-hide';
 import type { Config } from 'tailwindcss';
 
 export default {
@@ -22,6 +24,9 @@ export default {
         green: {
           DEFAULT: 'var(--green)',
         },
+        gray: {
+          DEFAULT: 'var(--gray)',
+        },
       },
       fontSize: {
         smp: '15px',
@@ -29,5 +34,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [scrollbarHide, aspectRatio],
 } satisfies Config;

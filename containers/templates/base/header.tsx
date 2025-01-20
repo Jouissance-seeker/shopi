@@ -13,8 +13,8 @@ import {
 import { RiUser3Line } from 'react-icons/ri';
 import { ThreeDots } from 'react-loader-spinner';
 import { ToggleSection } from '@/components/toggle-section';
-import { CATEGORIES } from '@/constants/categories';
-import { NAV } from '@/constants/nav';
+import { CATEGORIES } from '@/constants/templates/base/categories';
+import { NAV } from '@/constants/templates/base/nav';
 import { useToggleUrlState } from '@/hooks/toggle-url-state';
 import { cn } from '@/utils/cn';
 
@@ -92,7 +92,7 @@ const MobileTopHumbergerMenu = () => {
                 {'دسته بندی'}
               </Link>
               <div className="mb-2.5 mr-2.5 overflow-hidden rounded-b-lg border-b border-r">
-                <ul className="max-h-[calc(100dvh_-_320px)] overflow-y-auto">
+                <ul className="max-h-[calc(100dvh_-_320px)] overflow-y-auto scrollbar-hide">
                   {CATEGORIES.map((categoryItem) => (
                     <li
                       key={categoryItem.text}
@@ -379,13 +379,13 @@ const DesktopBottomCategory = () => {
         )}
       >
         <div className="flex h-[220px] overflow-hidden rounded-2xl border border-gray-200 bg-white">
-          <ul className="bg-gray-100 py-2">
+          <ul className="bg-gray py-2">
             {CATEGORIES.map((item) => (
               <li key={item.text}>
                 <Link
                   href={item.path}
                   className={cn(
-                    'w-32 bg-gray-100 p-2.5 text-center flex transition-all hover:bg-white',
+                    'w-32 bg-gray border-y border-transparent p-2.5 text-center flex transition-all hover:bg-white',
                     {
                       'bg-white': activedCategoryData.text === item.text,
                     },
@@ -479,7 +479,7 @@ const DesktopBottomSearch = () => {
   return (
     <div className="relative w-72">
       {/* field */}
-      <div className="flex w-full items-center justify-between rounded-2xl border border-gray-100 bg-gray-100 p-4 transition-all focus-within:border-gray-200 focus-within:bg-white">
+      <div className="flex w-full items-center justify-between rounded-2xl border border-gray-100 bg-gray p-4 transition-all focus-within:border-gray-200 focus-within:bg-white">
         <input
           className="bg-transparent text-xsp font-bold"
           type="text"

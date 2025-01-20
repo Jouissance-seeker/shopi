@@ -10,23 +10,7 @@ export default function TemplateBase(props: ILayoutProps) {
   return (
     <>
       <Header />
-      <main className="flex-center my-8 flex-1">
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        {props.children}
-      </main>
+      <main className="flex-center my-6 flex-1">{props.children}</main>
       <Footer />
     </>
   );
