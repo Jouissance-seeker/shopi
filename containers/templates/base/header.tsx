@@ -300,7 +300,7 @@ const DesktopTop = () => {
             alt="لوگو"
             width={130}
             height={80}
-            className="absolute left-3 z-10"
+            className="absolute left-0 z-10"
           />
         </Link>
         <Image
@@ -308,7 +308,7 @@ const DesktopTop = () => {
           alt="لوگو"
           width={350}
           height={130}
-          className="absolute left-3"
+          className="absolute left-0"
         />
       </div>
       {/* call */}

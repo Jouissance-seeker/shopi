@@ -18,7 +18,7 @@ export function Footer() {
 const Info = () => {
   return (
     <div className="relative border-t py-5">
-      <div className="ml-40 flex flex-col gap-4 md:flex-row">
+      <div className="flex flex-col gap-4 sm:ml-20 md:flex-row">
         {/* logo 1 */}
         <Link href="/">
           <Image
@@ -29,7 +29,7 @@ const Info = () => {
           />
         </Link>
         {/* info */}
-        <p className="max-w-xl text-sm font-medium text-gray-400">
+        <p className="max-w-sm text-sm font-medium text-gray-400 lg:max-w-md">
           یک خرید اینترنتی مطمئن، نیازمند فروشگاهی است که بتواند کالاهایی متنوع،
           باکیفیت و دارای قیمت مناسب را در مدت زمان ی کوتاه به دست مشتریان خود
           برساند و ضمانت بازگشت کالا هم داشته باشد.
@@ -230,7 +230,7 @@ const Content = () => {
         <div className="justify-end lg:flex">
           <ul className="flex max-w-md flex-col gap-1">
             <li className="flex w-full justify-between">
-              <p className="ml-20 w-full text-sm font-bold text-gray-500">
+              <p className="w-full text-sm font-bold text-gray-500 sm:ml-20">
                 شماره تماس
               </p>
               <div>
@@ -255,7 +255,7 @@ const Content = () => {
               </div>
             </li>
             <li className="flex w-full justify-between">
-              <p className="ml-20 w-full text-sm font-bold text-gray-500">
+              <p className="w-full text-sm font-bold text-gray-500 sm:ml-20">
                 آدرس دفتر مرکزی
               </p>
               <div>
@@ -263,7 +263,7 @@ const Content = () => {
                   href="https://maps.app.goo.gl/tx37xYbEzzUBiKRF"
                   className="flex w-48 items-center gap-1 text-sm font-bold text-gray-400"
                 >
-                  تهران . شهرک‌غرب . تقاطع‌ بلوار‌پاکنژاد
+                  تهران , شهرک‌غرب , تقاطع‌ بلوار‌پاکنژاد
                 </Link>
               </div>
             </li>
@@ -284,8 +284,8 @@ const CopyRight = () => {
         className="flex gap-1"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
-        <p className="text-xs font-bold text-gray-500">بزن بریم بالا</p>
-        <HiArrowUp size={12} />
+        <p className="text-xsp font-bold text-gray-500">بزن بریم بالا</p>
+        <HiArrowUp size={14} />
       </button>
     </div>
   );

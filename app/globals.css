@@ -9,7 +9,7 @@
 }
 
 body {
-  @apply text-[--foreground] bg-[--background] text-gray-600;
+  @apply text-[--foreground] overflow-x-hidden bg-[--background] text-gray-600;
 }
 p {
   @apply text-gray-700;
