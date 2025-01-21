@@ -17,7 +17,7 @@ export function Footer() {
 
 const Info = () => {
   return (
-    <div className="relative border-t py-5">
+    <div className="relative border-t pb-3 pt-5">
       <div className="flex flex-col gap-4 sm:ml-20 md:flex-row">
         {/* logo 1 */}
         <Link href="/">

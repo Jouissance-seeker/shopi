@@ -1,4 +1,4 @@
-export const HERO_SLIDER = [
+export const heroSliderData = [
   {
     path: '/product/1',
     image: '/images/routes/home/hero-slider-1.png',

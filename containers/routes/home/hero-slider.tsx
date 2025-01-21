@@ -9,7 +9,7 @@ import { useRef } from 'react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2';
 import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { HERO_SLIDER } from '@/constants/routes/home/hero-slider';
+import { heroSliderData } from '@/resources/routes/home/hero-slider';
 
 export default function HeroSlider() {
   const swiperRef = useRef<any>(null);
@@ -18,7 +18,7 @@ export default function HeroSlider() {
     <section
       id="hero_slider"
       dir="ltr"
-      className="group/hero-slider relative col-span-full lg:col-span-3"
+      className="group/hero-slider relative col-span-full xl:col-span-3"
     >
       <Swiper
         ref={swiperRef}
@@ -33,13 +33,13 @@ export default function HeroSlider() {
           el: '.pagination',
         }}
         modules={[Autoplay, Pagination]}
-        className="overflow-hidden rounded-3xl"
+        className="overflow-hidden rounded-2xl"
       >
-        {HERO_SLIDER.map((item) => {
+        {heroSliderData.map((item) => {
           return (
             <SwiperSlide key={item.image}>
               <Link href={item.path}>
-                <div className="aspect-h-1 aspect-w-2 bg-gray-100">
+                <div className="aspect-h-1 aspect-w-[2.5] bg-gray-100 ">
                   <Image
                     fill
                     src={item.image}
@@ -56,17 +56,17 @@ export default function HeroSlider() {
       <div className="absolute inset-x-0 bottom-3 z-20 flex justify-center">
         <div className="flex w-fit gap-2">
           <button
-            className="group/hero-slider_navigation flex size-6 items-center justify-center rounded-md bg-white opacity-0 transition-all duration-300 group-hover/hero-slider:opacity-100"
+            className="group/hero-slider_navigation flex size-6 items-center justify-center rounded-md bg-white"
             onClick={() => swiperRef.current.swiper.slidePrev()}
           >
-            <HiChevronLeft className="fill-gray-600 group-hover/hero-slider_navigation:fill-gray-800" />
+            <HiChevronLeft className="fill-gray-600 group-hover/hero-slider_navigation:fill-gray-900" />
           </button>
           <div className="pagination" />
           <button
-            className="group/hero-slider_navigation flex size-6 items-center justify-center rounded-md bg-white opacity-0 transition-all duration-300 group-hover/hero-slider:opacity-100"
+            className="group/hero-slider_navigation flex size-6 items-center justify-center rounded-md bg-white"
             onClick={() => swiperRef.current.swiper.slideNext()}
           >
-            <HiChevronRight className="fill-gray-600 group-hover/hero-slider_navigation:fill-gray-800" />
+            <HiChevronRight className="fill-gray-600 group-hover/hero-slider_navigation:fill-gray-900" />
           </button>
         </div>
       </div>
