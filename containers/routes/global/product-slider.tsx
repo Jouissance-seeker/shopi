@@ -50,7 +50,7 @@ export default function ProductSlider(props: IProductSliderProps) {
               return (
                 <SwiperSlide
                   key={item.id}
-                  className="!w-[268px] rounded-xl border border-gray-200 bg-white"
+                  className="group !w-[268px] overflow-hidden rounded-xl border border-gray-200 bg-white transition-all hover:border-gray-300"
                 >
                   <div className="flex !h-[400px] flex-col items-center justify-center p-5">
                     {/* rate */}
@@ -134,6 +134,8 @@ export default function ProductSlider(props: IProductSliderProps) {
                     <button className="absolute bottom-4 right-4 rounded-lg bg-red p-2">
                       <FiShoppingBag size={20} className="stroke-white" />
                     </button>
+                    {/* bottom border */}
+                    <span className="invisible absolute bottom-0 h-px w-full grow bg-red-200 bg-gradient-to-r from-white via-red to-white opacity-0 group-hover:visible group-hover:opacity-100" />
                   </div>
                 </SwiperSlide>
               );

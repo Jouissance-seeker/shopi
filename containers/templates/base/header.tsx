@@ -20,7 +20,7 @@ import { cn } from '@/utils/cn';
 
 export function Header() {
   return (
-    <header>
+    <header className="mb-3">
       <Mobile />
       <Desktop />
     </header>
