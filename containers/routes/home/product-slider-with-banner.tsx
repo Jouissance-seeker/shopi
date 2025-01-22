@@ -25,7 +25,7 @@ export default function ProductSliderWithBanner(props: IProductSliderProps) {
   return (
     <section
       dir={props.position === 'right' ? 'ltr' : 'rtl'}
-      className="group/product_section container relative z-10 col-span-full grid h-[402px] w-full grid-cols-5 gap-5 overflow-hidden rounded-lg"
+      className="group/product_section container relative z-10 col-span-full grid w-full grid-cols-5 gap-5 overflow-hidden rounded-lg"
     >
       {/* banner */}
       <Link
@@ -48,7 +48,7 @@ export default function ProductSliderWithBanner(props: IProductSliderProps) {
           </p>
         </div>
       </Link>
-      <div className="col-span-full md:col-span-4 lg:relative">
+      <div className="relative col-span-full md:col-span-4">
         {/* slider */}
         <div>
           <Swiper
