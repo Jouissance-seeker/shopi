@@ -18,7 +18,7 @@ export default function HeroSlider() {
     <section
       id="hero_slider"
       dir="ltr"
-      className="group/hero-slider relative col-span-full xl:col-span-3"
+      className="group/hero-slider container relative col-span-full xl:col-span-3 xl:mx-0 xl:max-w-none xl:p-0"
     >
       <Swiper
         ref={swiperRef}
@@ -39,7 +39,7 @@ export default function HeroSlider() {
           return (
             <SwiperSlide key={item.image}>
               <Link href={item.path}>
-                <div className="aspect-h-1 aspect-w-[2.5] bg-gray-100 ">
+                <div className="aspect-h-1 aspect-w-2 bg-gray-100 sm:aspect-h-1 sm:aspect-w-[2.5] ">
                   <Image
                     fill
                     src={item.image}

@@ -4,9 +4,10 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FiShoppingBag } from 'react-icons/fi';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2';
+import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { heroOfferSliderData } from '@/resources/routes/home/hero-offer-slider';
 import { cn } from '@/utils/cn';
@@ -16,40 +17,39 @@ export default function HeroOfferSlider() {
 
   // countdown timer
   const [timeLeftFromDay, setTimeLeftFromDay] = useState([0, 0, 0]);
-  const interval = setInterval(() => {
-    const currentTime: any = new Date();
-    const endOfDay: any = new Date();
-    endOfDay.setHours(23, 59, 59, 999);
-    const timeDiff = endOfDay - currentTime;
-    const hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
-    const minutesLeft = Math.floor((timeDiff / (1000 * 60)) % 60);
-    const secondsLeft = Math.floor((timeDiff / 1000) % 60);
-    setTimeLeftFromDay([hoursLeft, minutesLeft, secondsLeft]);
-    if (timeDiff < 0) {
-      clearInterval(interval);
-    }
-  }, 1000);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const currentTime: any = new Date();
+      const endOfDay: any = new Date();
+      endOfDay.setHours(23, 59, 59, 999);
+      const timeDiff = endOfDay - currentTime;
+      const hoursLeft = Math.floor(timeDiff / (1000 * 60 * 60));
+      const minutesLeft = Math.floor((timeDiff / (1000 * 60)) % 60);
+      const secondsLeft = Math.floor((timeDiff / 1000) % 60);
+      setTimeLeftFromDay([hoursLeft, minutesLeft, secondsLeft]);
+      if (timeDiff < 0) {
+        clearInterval(interval);
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <section className="relative z-10 col-span-full overflow-hidden rounded-2xl xl:col-span-1">
-      <div className="h-full bg-red">
+    <section className="group/hero-offer_section relative z-10 col-span-full overflow-hidden xl:col-span-1">
+      {/* slider */}
+      <div className="container bg-white xl:mx-0 xl:max-w-none xl:p-0">
         <Swiper
-          slidesPerView={2}
-          className="h-full"
+          slidesPerView="auto"
+          spaceBetween={13}
           ref={swiperRef}
           autoplay={{
             delay: 3000,
             disableOnInteraction: false,
           }}
           loop
+          modules={[Autoplay]}
           id="hero-offer-slider"
           breakpoints={{
-            640: {
-              slidesPerView: 3,
-            },
-            768: {
-              slidesPerView: 4,
-            },
             1024: {
               slidesPerView: 1,
             },
@@ -57,16 +57,19 @@ export default function HeroOfferSlider() {
         >
           {heroOfferSliderData.map((item) => {
             return (
-              <SwiperSlide key={item.id}>
-                <div className="flex h-full flex-col items-center justify-center p-5 pb-10">
-                  {/* navigation */}
-                  <div>
+              <SwiperSlide
+                key={item.id}
+                className="!w-[268px] rounded-xl bg-red xl:size-full xl:!h-[372px] xl:!w-[297px]"
+              >
+                <div className="flex !h-[380px] flex-col items-center justify-center p-5 xl:pb-10">
+                  {/* navigation - desktop */}
+                  <div className="hidden xl:block">
                     <div className="absolute left-4 top-4 flex w-fit gap-2">
                       <button
-                        className="group/hero-slider_navigation flex size-6 items-center justify-center rounded-md bg-white"
+                        className="group/hero-slider_navigation-btn flex size-6 items-center justify-center rounded-md bg-white"
                         onClick={() => swiperRef.current.swiper.slideNext()}
                       >
-                        <HiChevronRight className="fill-gray-600 group-hover/hero-slider_navigation:fill-gray-900" />
+                        <HiChevronRight className="fill-gray-600 group-hover/hero-slider_navigation-btn:fill-gray-900" />
                       </button>
                       <button
                         className="group/hero-slider_navigation flex size-6 items-center justify-center rounded-md bg-white"
@@ -138,6 +141,21 @@ export default function HeroOfferSlider() {
             );
           })}
         </Swiper>
+      </div>
+      {/* navigation - mobile */}
+      <div className="group/hero-slider_navigation hidden w-fit gap-2 transition-all group-hover/hero-offer_section:flex">
+        <button
+          className="group/hero-slider_navigation_btn absolute bottom-0 right-1 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-lg border bg-white xl:hidden xl:size-9 xl:rounded-md"
+          onClick={() => swiperRef.current.swiper.slideNext()}
+        >
+          <HiChevronRight className="size-4 fill-gray-600 group-hover/hero-slider_navigation_btn:fill-gray-900" />
+        </button>
+        <button
+          className="group/hero-slider_navigation_btn absolute bottom-0 left-1 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-lg border bg-white xl:hidden xl:size-9"
+          onClick={() => swiperRef.current.swiper.slidePrev()}
+        >
+          <HiChevronLeft className="size-4 fill-gray-600 group-hover/hero-slider_navigation_btn:fill-gray-900" />
+        </button>
       </div>
     </section>
   );

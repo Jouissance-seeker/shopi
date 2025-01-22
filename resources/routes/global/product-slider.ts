@@ -1,7 +1,9 @@
-export const heroOfferSliderData = [
+export const productSliderData = [
   {
     id: 1,
+    rate: 3,
     path: '/product/1',
+    colors: ['#3c62ea', '#fc282f', '#00A651'],
     image: '/images/routes/home/hero-offer-slider-1.png',
     title:
       'کنسول بازی مایکروسافت مدل ایکس باکس سری ایکس دیجیتال ادیتییشن سه ترابایت',
@@ -11,16 +13,20 @@ export const heroOfferSliderData = [
   },
   {
     id: 2,
+    rate: 0,
+    colors: ['#3c62ea', '#fc282f'],
     path: '/product/2',
     image: '/images/routes/home/hero-offer-slider-2.png',
     title:
       'گوشی موبایل اپل مدل آیفون 13 ریجن آسیا نات اکتیو تک سیم کارت ظرفیت 128 گیگابایت',
-    discount: 11,
+    discount: 0,
     priceWithoutDiscount: 43532000,
-    priceWithDiscount: 38532000,
+    priceWithDiscount: 43532000,
   },
   {
     id: 3,
+    rate: 3,
+    colors: ['#3c62ea'],
     path: '/product/3',
     image: '/images/routes/home/hero-offer-slider-3.png',
     title: 'هدست پلی استیشن سونی اسلیم مدل پالس لایت وایرلس',
@@ -30,15 +36,18 @@ export const heroOfferSliderData = [
   },
   {
     id: 4,
+    rate: 3,
     path: '/product/4',
     image: '/images/routes/home/hero-offer-slider-4.png',
     title: 'کنسول بازی سونی پلی استیشن پرو مدل ظرفیت 2 ترابایت ریجن اروپا',
-    discount: 11,
+    discount: 0,
     priceWithoutDiscount: 43532000,
-    priceWithDiscount: 38532000,
+    priceWithDiscount: 43532000,
   },
   {
     id: 5,
+    rate: 2,
+    colors: ['#3c62ea', '#fc282f', '#00A651'],
     path: '/product/5',
     image: '/images/routes/home/hero-offer-slider-5.png',
     title: 'لپ تاپ 13 اینچ اپل مدل مک بوک ایر',
@@ -48,6 +57,8 @@ export const heroOfferSliderData = [
   },
   {
     id: 6,
+    rate: 3,
+    colors: ['#3c62ea', '#fc282f', '#00A651'],
     path: '/product/4',
     image: '/images/routes/home/hero-offer-slider-6.png',
     title: 'کنسول بازی سونی پلی استیشن پرو مدل ظرفیت 2 ترابایت ریجن اروپا',
@@ -57,6 +68,8 @@ export const heroOfferSliderData = [
   },
   {
     id: 7,
+    rate: 3,
+    colors: ['#3c62ea', '#fc282f', '#00A651'],
     path: '/product/7',
     image: '/images/routes/home/hero-offer-slider-7.png',
     title: 'سرخ کن بدون روغن مدل نوتریکوک 7 لیتری مدل ایرفلایر',
@@ -66,6 +79,8 @@ export const heroOfferSliderData = [
   },
   {
     id: 8,
+    rate: 5,
+    colors: ['#3c62ea', '#fc282f', '#00A651'],
     path: '/product/8',
     image: '/images/routes/home/hero-offer-slider-8.png',
     title: 'گوشی موبایل موتورولا مدل ادج پرو ظرفیت 256 به همراه کارت هدیه',
@@ -75,6 +90,8 @@ export const heroOfferSliderData = [
   },
   {
     id: 9,
+    rate: 3,
+    colors: ['#3c62ea', '#fc282f', '#00A651'],
     path: '/product/9',
     image: '/images/routes/home/hero-offer-slider-9.png',
     title: 'دسته بازی پلی استیشن 5 سونی مدل دوئل سنس',
@@ -84,6 +101,8 @@ export const heroOfferSliderData = [
   },
   {
     id: 10,
+    rate: 3,
+    colors: ['#3c62ea', '#fc282f', '#00A651'],
     path: '/product/10',
     image: '/images/routes/home/hero-offer-slider-10.png',
     title:
