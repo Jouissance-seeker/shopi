@@ -5,7 +5,7 @@ import HeroSlider from '@/containers/routes/home/hero-slider';
 export default function Home() {
   return (
     <div className="flex size-full flex-col gap-8">
-      <div className="grid grid-cols-4 gap-5 xl:container">
+      <div className="container grid grid-cols-4 gap-5">
         <HeroSlider />
         <HeroOfferSlider />
       </div>

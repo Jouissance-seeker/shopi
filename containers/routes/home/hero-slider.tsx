@@ -18,7 +18,7 @@ export default function HeroSlider() {
     <section
       id="hero_slider"
       dir="ltr"
-      className="group/hero-slider container relative col-span-full xl:col-span-3 xl:mx-0 xl:max-w-none xl:p-0"
+      className="group/hero-slider relative col-span-full xl:col-span-3 xl:mx-0 xl:max-w-none xl:p-0"
     >
       <Swiper
         ref={swiperRef}
