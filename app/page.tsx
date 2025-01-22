@@ -12,7 +12,6 @@ export default function Home() {
         <HeroOfferSlider />
       </div>
       <CategorySlider />
-      <CategorySlider />
       <ProductSlider title="جدیدترین محصولات" path="/" />
       <Banners />
       <ProductSlider title="پرفروش ترین محصولات" path="/" />

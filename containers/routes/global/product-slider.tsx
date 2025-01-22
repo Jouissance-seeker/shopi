@@ -144,16 +144,16 @@ export default function ProductSlider(props: IProductSliderProps) {
         {/* navigation */}
         <div className="group/product-slider_navigation hidden w-fit gap-2 transition-all group-hover/product_section:flex">
           <button
-            className="group/product-slider_navigation_btn absolute bottom-0 right-1 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-lg border bg-white"
+            className="group/product-slider_navigation_btn absolute bottom-0 left-1 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-lg border bg-white"
             onClick={() => swiperRef.current.swiper.slideNext()}
           >
-            <HiChevronRight className="size-4 fill-gray-600 group-hover/product-slider_navigation_btn:fill-gray-900" />
+            <HiChevronLeft className="size-4 fill-gray-600 group-hover/product-slider_navigation_btn:fill-gray-900" />
           </button>
           <button
-            className="group/product-slider_navigation_btn absolute bottom-0 left-1 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-lg border bg-white"
+            className="group/product-slider_navigation_btn absolute bottom-0 right-1 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-lg border bg-white"
             onClick={() => swiperRef.current.swiper.slidePrev()}
           >
-            <HiChevronLeft className="size-4 fill-gray-600 group-hover/product-slider_navigation_btn:fill-gray-900" />
+            <HiChevronRight className="size-4 fill-gray-600 group-hover/product-slider_navigation_btn:fill-gray-900" />
           </button>
         </div>
       </div>

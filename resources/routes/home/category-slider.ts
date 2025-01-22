@@ -44,4 +44,49 @@ export const categorySliderData = [
       en: 'Sport & Entertainment',
     },
   },
+  {
+    id: 6,
+    path: '/category/1',
+    image: '/images/routes/home/category-slider-1.png',
+    text: {
+      fa: 'موبایل و لوازم جانبی',
+      en: 'Mobile & Accessories',
+    },
+  },
+  {
+    id: 7,
+    path: '/category/2',
+    image: '/images/routes/home/category-slider-2.png',
+    text: {
+      fa: 'لپ تاپ و کامپیوتر',
+      en: 'Laptop & Computer',
+    },
+  },
+  {
+    id: 8,
+    path: '/category/3',
+    image: '/images/routes/home/category-slider-3.png',
+    text: {
+      fa: 'لوازم خانگی',
+      en: 'Home Appliances',
+    },
+  },
+  {
+    id: 9,
+    path: '/category/4',
+    image: '/images/routes/home/category-slider-4.png',
+    text: {
+      fa: 'مد و پوشاک',
+      en: 'Fashion & Clothing',
+    },
+  },
+  {
+    id: 10,
+    path: '/category/5',
+    image: '/images/routes/home/category-slider-5.png',
+    text: {
+      fa: 'ورزش و سرگرمی',
+      en: 'Sport & Entertainment',
+    },
+  },
 ];
