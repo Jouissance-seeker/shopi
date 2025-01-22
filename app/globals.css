@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* global */
+
 :root {
   --red: #ed1944;
   --green: #00a651;
@@ -17,12 +19,17 @@ p {
 input {
   @apply outline-none;
 }
+
+/* custom classes */
+
 .show {
   @apply opacity-100 visible;
 }
 .hide {
   @apply opacity-0 invisible;
 }
+
+/* home/hero-slider */
 
 #hero_slider {
   .pagination {

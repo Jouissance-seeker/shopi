@@ -1,4 +1,5 @@
 import ProductSlider from '@/containers/routes/global/product-slider';
+import Banners from '@/containers/routes/home/banners';
 import CategorySlider from '@/containers/routes/home/category-slider';
 import HeroOfferSlider from '@/containers/routes/home/hero-offer-slider';
 import HeroSlider from '@/containers/routes/home/hero-slider';
@@ -10,11 +11,13 @@ export default function Home() {
         <HeroSlider />
         <HeroOfferSlider />
       </div>
+      <CategorySlider />
+      <CategorySlider />
       <ProductSlider title="جدیدترین محصولات" path="/" />
+      <Banners />
       <ProductSlider title="پرفروش ترین محصولات" path="/" />
+      <Banners />
       <ProductSlider title="ارزان ترین محصولات" path="/" />
-      <CategorySlider />
-      <CategorySlider />
     </div>
   );
 }

@@ -46,7 +46,6 @@ export default function HeroOfferSlider() {
             delay: 3000,
             disableOnInteraction: false,
           }}
-          loop
           modules={[Autoplay]}
           id="hero-offer-slider"
           breakpoints={{
@@ -145,7 +144,7 @@ export default function HeroOfferSlider() {
       {/* navigation - mobile */}
       <div className="group/hero-slider_navigation hidden w-fit gap-2 transition-all group-hover/hero-offer_section:flex">
         <button
-          className="group/hero-slider_navigation_btn absolute bottom-0 right-1 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-lg border bg-white xl:hidden xl:size-9 xl:rounded-md"
+          className="group/hero-slider_navigation_btn absolute bottom-0 right-1 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-lg border bg-white xl:hidden xl:size-9"
           onClick={() => swiperRef.current.swiper.slideNext()}
         >
           <HiChevronRight className="size-4 fill-gray-600 group-hover/hero-slider_navigation_btn:fill-gray-900" />
