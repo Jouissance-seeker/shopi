@@ -10,7 +10,9 @@ export default function TemplateBase(props: ILayoutProps) {
   return (
     <>
       <Header />
-      <main className="flex-center flex-1">{props.children}</main>
+      <main className="flex flex-1 items-center justify-center">
+        {props.children}
+      </main>
       <Footer />
     </>
   );

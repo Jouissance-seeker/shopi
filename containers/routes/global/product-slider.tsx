@@ -21,7 +21,7 @@ export default function ProductSlider(props: IProductSliderProps) {
   const swiperRef = useRef<any>(null);
 
   return (
-    <section className="group/hero-offer_section container relative z-10 col-span-full flex flex-col gap-6 overflow-hidden">
+    <section className="group/product_section container relative z-10 col-span-full flex flex-col gap-5 overflow-hidden">
       {/* head */}
       <div className="flex items-center gap-3">
         <h2 className="text-xl font-bold text-gray-600">{props.title}</h2>
@@ -44,7 +44,7 @@ export default function ProductSlider(props: IProductSliderProps) {
             ref={swiperRef}
             loop
             modules={[Autoplay]}
-            id="hero-offer-slider"
+            id="product-slider"
           >
             {productSliderData.map((item) => {
               return (
@@ -100,7 +100,7 @@ export default function ProductSlider(props: IProductSliderProps) {
                     <div>
                       <del
                         className={cn(
-                          'absolute bottom-8 left-20 text-smp text-gray-400',
+                          'absolute bottom-8 left-[74px] text-smp text-gray-400',
                           {
                             hidden: Boolean(item.discount === 0),
                           },
@@ -143,18 +143,18 @@ export default function ProductSlider(props: IProductSliderProps) {
           </Swiper>
         </div>
         {/* navigation */}
-        <div className="group/hero-slider_navigation hidden w-fit gap-2 transition-all group-hover/hero-offer_section:flex">
+        <div className="group/product-slider_navigation hidden w-fit gap-2 transition-all group-hover/product_section:flex">
           <button
-            className="group/hero-slider_navigation_btn absolute bottom-0 right-1 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-lg border bg-white xl:rounded-md"
+            className="group/product-slider_navigation_btn absolute bottom-0 right-1 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-lg border bg-white xl:rounded-md"
             onClick={() => swiperRef.current.swiper.slideNext()}
           >
-            <HiChevronRight className="size-4 fill-gray-600 group-hover/hero-slider_navigation_btn:fill-gray-900" />
+            <HiChevronRight className="size-4 fill-gray-600 group-hover/product-slider_navigation_btn:fill-gray-900" />
           </button>
           <button
-            className="group/hero-slider_navigation_btn absolute bottom-0 left-1 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-lg border bg-white"
+            className="group/product-slider_navigation_btn absolute bottom-0 left-1 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-lg border bg-white"
             onClick={() => swiperRef.current.swiper.slidePrev()}
           >
-            <HiChevronLeft className="size-4 fill-gray-600 group-hover/hero-slider_navigation_btn:fill-gray-900" />
+            <HiChevronLeft className="size-4 fill-gray-600 group-hover/product-slider_navigation_btn:fill-gray-900" />
           </button>
         </div>
       </div>

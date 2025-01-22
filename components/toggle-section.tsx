@@ -45,7 +45,7 @@ export function ToggleSection(props: IToggleSectionProps) {
               <p className="text-smp font-bold">{props.title}</p>
               <button
                 onClick={props.onClose}
-                className="flex-center size-6 overflow-hidden rounded-md bg-red"
+                className="flex size-6 items-center justify-center overflow-hidden rounded-md bg-red"
               >
                 <HiMiniXMark size={20} className="fill-white" />
               </button>

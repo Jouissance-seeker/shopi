@@ -197,7 +197,7 @@ const MobileBottomSearch = () => {
           <div className="rounded-md border border-gray-200 bg-white">
             <div className="p-2 text-smp">
               {searchValue.length ? (
-                <div className="flex-center">
+                <div className="flex items-center justify-center">
                   <ThreeDots color="#ED1944" width={60} />
                 </div>
               ) : (
@@ -237,7 +237,7 @@ const MobileBottomCart = () => {
         className="relative mx-0.5 border-x px-2"
       >
         <HiOutlineShoppingCart size={20} />
-        <p className="flex-center absolute -top-1.5 right-1 h-3.5 rounded-[3px] bg-red px-[3px] text-[11px] font-bold text-white">
+        <p className="absolute -top-1.5 right-1 flex h-3.5 items-center justify-center rounded-[3px] bg-red px-[3px] text-[11px] font-bold text-white">
           0
         </p>
       </button>
@@ -442,7 +442,7 @@ const DesktopBottomCart = () => {
           <HiOutlineShoppingCart className="text-gray-700" size={24} />
           <p className="font-bold text-gray-700">سبد خرید</p>
         </div>
-        <p className="flex-center size-6 rounded-full bg-red text-lg font-bold text-white">
+        <p className="flex size-6 items-center justify-center rounded-full bg-red text-lg font-bold text-white">
           0
         </p>
       </button>
@@ -505,7 +505,7 @@ const DesktopBottomSearch = () => {
         <div className="rounded-xl border border-gray-200 bg-white">
           <div className="p-2 text-smp">
             {searchValue.length ? (
-              <div className="flex-center">
+              <div className="flex items-center justify-center">
                 <ThreeDots color="#ED1944" width={60} />
               </div>
             ) : (
