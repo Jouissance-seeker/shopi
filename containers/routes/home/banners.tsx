@@ -16,7 +16,7 @@ export default function Banners() {
           href={item.path}
           key={item.id}
           className={cn({
-            'hidden sm:flex': index !== 0,
+            'hidden sm:grid': index !== 0,
           })}
         >
           <div className="aspect-h-1 aspect-w-3 overflow-hidden rounded-xl bg-gray-100 sm:aspect-h-1 sm:aspect-w-[2.5]">
