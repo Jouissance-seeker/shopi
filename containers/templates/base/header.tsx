@@ -14,7 +14,6 @@ import { RiUser3Line } from 'react-icons/ri';
 import { ThreeDots } from 'react-loader-spinner';
 import { ToggleSection } from '@/components/toggle-section';
 import { CATEGORIES } from '@/constants/templates/base/categories';
-import { NAV } from '@/constants/templates/base/nav';
 import { useToggleUrlState } from '@/hooks/toggle-url-state';
 import { cn } from '@/utils/cn';
 
@@ -74,15 +73,6 @@ const MobileTopHumbergerMenu = () => {
       >
         <nav className="text-sm">
           <ul className="w-full">
-            {/* main nav */}
-            {NAV.map((item) => (
-              <li
-                key={item.text}
-                className="flex border-b p-2 font-medium transition-all hover:bg-gray-50"
-              >
-                <Link href={item.path}>{item.text}</Link>
-              </li>
-            ))}
             {/* categories */}
             <li>
               <Link
@@ -277,21 +267,8 @@ const DesktopTop = () => {
       {/* user */}
       <Link href="/auth" className="flex items-center gap-1">
         <RiUser3Line size={20} className="text-black" />
-        <p className="text-sm font-bold">وارد شوید</p>
+        <p className="font-bold">وارد شوید</p>
       </Link>
-      {/* nav items */}
-      <ul className="mr-4 flex h-6 items-center gap-4 before:ml-1 before:h-2.5 before:w-[1px] before:bg-gray-300">
-        {NAV.map((item) => (
-          <li key={item.text}>
-            <Link
-              href={item.path}
-              className="text-xsp font-bold text-gray-400 transition-all hover:text-red"
-            >
-              {item.text}
-            </Link>
-          </li>
-        ))}
-      </ul>
       {/* logo */}
       <div>
         <Link href="/">
@@ -364,7 +341,7 @@ const DesktopBottomCategory = () => {
       className="relative"
     >
       {/* btn */}
-      <button className="flex items-center gap-2 rounded-2xl bg-red p-3.5">
+      <button className="flex items-center gap-2 rounded-xl bg-red p-3.5">
         <HiMiniBars3 className="text-white" size={24} />
         <p className="font-bold text-white">دسته بندی ها</p>
       </button>
@@ -437,7 +414,7 @@ const DesktopBottomCart = () => {
       onMouseLeave={() => cartToggleUrlState.hide()}
     >
       {/* btn */}
-      <button className="flex items-center justify-between gap-3 rounded-2xl border p-3.5">
+      <button className="flex items-center justify-between gap-3 rounded-xl border p-3.5">
         <div className="flex items-center gap-2">
           <HiOutlineShoppingCart className="text-gray-700" size={24} />
           <p className="font-bold text-gray-700">سبد خرید</p>
