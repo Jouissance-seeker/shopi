@@ -13,43 +13,57 @@ import { productSliderData } from '@/resources/routes/global/product-slider';
 import { cn } from '@/utils/cn';
 
 interface IProductSliderProps {
-  title: string;
+  image: string;
+  category: string;
   path: string;
+  position: 'left' | 'right';
 }
 
-export default function ProductSlider(props: IProductSliderProps) {
+export default function ProductSliderWithBanner(props: IProductSliderProps) {
   const swiperRef = useRef<any>(null);
 
   return (
-    <section className="group/product_section container relative z-10 col-span-full flex flex-col gap-5 overflow-hidden">
-      {/* head */}
-      <div className="flex items-center gap-3">
-        <h2 className="text-xl font-bold text-gray-600">{props.title}</h2>
-        <span className="h-px grow bg-gradient-to-r from-white via-[#e4e8ef] to-white" />
-        <Link
-          href={props.path}
-          className="flex gap-1 text-sm font-bold transition-all duration-300 hover:text-red"
-        >
-          <span>مشاهده همه</span>
-          <HiChevronLeft className="size-4" />
-        </Link>
-      </div>
-      {/* body */}
-      <div>
+    <section
+      dir={props.position === 'right' ? 'ltr' : 'rtl'}
+      className="group/product_section container relative z-10 col-span-full grid h-[402px] w-full grid-cols-5 gap-5 overflow-hidden rounded-lg"
+    >
+      {/* banner */}
+      <Link
+        href={props.path}
+        className="col-span-full flex justify-between rounded-xl bg-red p-3 md:col-span-1 md:flex-col md:items-center md:gap-4"
+      >
+        <Image
+          alt={props.category}
+          src={props.image}
+          width={150}
+          height={150}
+          className="md:w-[220px] md:pt-10"
+        />
+        <div className="flex w-fit flex-col items-center justify-center md:gap-2 md:pb-8">
+          <p className="text-smp font-bold text-white lg:text-base">
+            مجموعه محصولات
+          </p>
+          <p className="text-2xl font-bold text-white lg:text-2xl">
+            {props.category}
+          </p>
+        </div>
+      </Link>
+      <div className="col-span-full md:col-span-4 lg:relative">
         {/* slider */}
-        <div className="bg-white">
+        <div>
           <Swiper
             slidesPerView="auto"
             spaceBetween={13}
             ref={swiperRef}
             modules={[Autoplay]}
             id="product-slider"
+            className="rounded-xl border border-gray-200 bg-white"
           >
             {productSliderData.map((item) => {
               return (
                 <SwiperSlide
                   key={item.id}
-                  className="group !w-[268px] overflow-hidden rounded-xl border border-gray-200 bg-white transition-all hover:border-gray-300"
+                  className="group !w-[268px] border-l last:border-none"
                 >
                   <div className="flex !h-[400px] flex-col items-center justify-center p-5">
                     {/* rate */}
@@ -144,13 +158,13 @@ export default function ProductSlider(props: IProductSliderProps) {
         {/* navigation */}
         <div className="group/product-slider_navigation hidden w-fit gap-2 transition-all group-hover/product_section:flex">
           <button
-            className="group/product-slider_navigation_btn absolute bottom-0 left-1 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-lg border bg-white"
+            className="group/product-slider_navigation_btn absolute -left-4 bottom-0 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-lg border bg-white"
             onClick={() => swiperRef.current.swiper.slideNext()}
           >
             <HiChevronLeft className="size-4 fill-gray-600 group-hover/product-slider_navigation_btn:fill-gray-900" />
           </button>
           <button
-            className="group/product-slider_navigation_btn absolute bottom-0 right-1 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-lg border bg-white"
+            className="group/product-slider_navigation_btn absolute -right-4 bottom-0 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-lg border bg-white"
             onClick={() => swiperRef.current.swiper.slidePrev()}
           >
             <HiChevronRight className="size-4 fill-gray-600 group-hover/product-slider_navigation_btn:fill-gray-900" />

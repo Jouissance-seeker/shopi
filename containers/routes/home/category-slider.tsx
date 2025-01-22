@@ -16,7 +16,7 @@ export default function CategorySlider() {
   return (
     <section className="group/category_section container relative z-10 col-span-full flex flex-col overflow-hidden">
       {/* slider */}
-      <div className="bg-white xl:mx-0 xl:max-w-none xl:p-0">
+      <div className="bg-white">
         <Swiper
           slidesPerView="auto"
           spaceBetween={13}
