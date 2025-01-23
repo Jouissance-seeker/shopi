@@ -67,7 +67,7 @@ export default function ProductSliderWithBanner(props: IProductSliderProps) {
         <div>
           <Swiper
             slidesPerView="auto"
-            spaceBetween={13}
+            spaceBetween={0}
             ref={swiperRef}
             modules={[Autoplay]}
             id="product-slider"
@@ -127,7 +127,7 @@ export default function ProductSliderWithBanner(props: IProductSliderProps) {
                     <div>
                       <del
                         className={cn(
-                          'absolute bottom-8 left-[74px] text-smp text-gray-400',
+                          'absolute bottom-9 left-[74px] text-smp text-gray-400',
                           {
                             hidden: Boolean(item.discount === 0),
                           },
@@ -136,15 +136,15 @@ export default function ProductSliderWithBanner(props: IProductSliderProps) {
                         {item.priceWithDiscount.toLocaleString('fa-IR')}
                       </del>
                       <div>
-                        <p className="absolute bottom-1 left-8 text-2xl font-bold text-black">
+                        <p className="absolute bottom-2 left-8 text-2xl font-bold text-black">
                           {item.priceWithoutDiscount.toLocaleString('fa-IR')}
                         </p>
-                        <p className="absolute bottom-3.5 left-3 -rotate-90 text-[10px] font-bold text-gray-500">
+                        <p className="absolute bottom-5 left-3 -rotate-90 text-[10px] font-bold text-gray-500">
                           تومان
                         </p>
                         <div
                           className={cn(
-                            'absolute bottom-9 left-8 flex h-[22px] gap-1 rounded-full rounded-bl-none bg-red px-2',
+                            'absolute bottom-10 left-8 flex h-[22px] gap-1 rounded-full rounded-bl-none bg-red px-2',
                             {
                               hidden: Boolean(item.discount === 0),
                             },
@@ -157,14 +157,15 @@ export default function ProductSliderWithBanner(props: IProductSliderProps) {
                         </div>
                       </div>
                     </div>
-                    {/* add to cart btn / increment quantity / decrement quantity / remove from cart btn*/}
+                    {/* add to cart btn / increment quantity btn / decrement quantity btn / remove from cart btn */}
                     {localstorageCart.selectors.isInCart(item) ? (
-                      <div className="absolute -bottom-1.5 flex w-full justify-between rounded-lg p-4 font-bold text-gray-900">
+                      <div className="absolute -bottom-0.5 flex w-full justify-between rounded-lg p-4 font-bold text-gray-900">
                         <div className="flex w-full justify-between rounded-lg border bg-white p-3 text-lg text-gray-700">
                           <button
                             onClick={() =>
                               localstorageCart.reducers.increment(item)
                             }
+                            className="text-lg"
                           >
                             +
                           </button>
@@ -184,6 +185,7 @@ export default function ProductSliderWithBanner(props: IProductSliderProps) {
                               onClick={() =>
                                 localstorageCart.reducers.decrement(item)
                               }
+                              className="text-lg"
                             >
                               -
                             </button>

@@ -7,9 +7,11 @@ import { useState } from 'react';
 import {
   HiChevronLeft,
   HiMiniBars3,
+  HiMiniXMark,
   HiOutlineMagnifyingGlass,
   HiOutlineShoppingCart,
   HiOutlineUser,
+  HiTrash,
 } from 'react-icons/hi2';
 import { RiUser3Line } from 'react-icons/ri';
 import { ThreeDots } from 'react-loader-spinner';
@@ -241,15 +243,129 @@ const MobileBottomCart = () => {
         onClose={() => cartToggleUrlState.hide()}
         className="container absolute left-0 top-[110px] z-50 h-4 w-screen"
       >
-        <div className="flex flex-col items-center py-3">
-          <Image
-            src="/images/templates/base/empty-cart.svg"
-            height={125}
-            width={125}
-            alt="سبد خرید خالی"
-          />
-          <p className="text-smp font-medium">سبد خرید خالی است!</p>
-        </div>
+        {localstorageCart.selectors.isEmpty() ? (
+          <div className="flex flex-col items-center py-3">
+            <Image
+              src="/images/templates/base/empty-cart.svg"
+              height={125}
+              width={125}
+              alt="سبد خرید خالی"
+            />
+            <p className="text-smp font-medium">سبد خرید خالی است!</p>
+          </div>
+        ) : (
+          <div>
+            {/** cart items */}
+            {localstorageCart.get().map((item) => (
+              <div
+                key={item.id}
+                className="relative mt-3 flex items-center gap-5 px-3"
+              >
+                {/* remove btn */}
+                <button
+                  className="absolute top-0 rounded-md bg-red p-[3px]"
+                  onClick={() => localstorageCart.reducers.remove(item)}
+                >
+                  <HiMiniXMark size={15} className="fill-white" />
+                </button>
+                {/* image */}
+                <Image
+                  alt={item.title}
+                  src={item.image}
+                  width={60}
+                  height={60}
+                />
+                <div className="mb-4 w-full">
+                  {/* title */}
+                  <p className="mb-2 text-smp font-bold">{item.title}</p>
+                  <div className="relative flex flex-col items-end">
+                    {/* increment btn / decrement btn / remove btn */}
+                    <div className="flex w-24 justify-between rounded-lg border bg-white px-3 py-1.5 font-bold text-gray-700">
+                      <button
+                        onClick={() =>
+                          localstorageCart.reducers.increment(item)
+                        }
+                      >
+                        +
+                      </button>
+                      <p>{localstorageCart.selectors.quantity(item)}</p>
+                      {localstorageCart.selectors.quantity(item) === 1 ? (
+                        <button
+                          onClick={() => localstorageCart.reducers.remove(item)}
+                        >
+                          <HiTrash size={16} className="fill-gray-700" />
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() =>
+                            localstorageCart.reducers.decrement(item)
+                          }
+                          className="text-gray-700"
+                        >
+                          -
+                        </button>
+                      )}
+                    </div>
+                    {/* price */}
+                    <div className="flex">
+                      <del
+                        className={cn(
+                          'absolute bottom-[20px] left-[118px] text-sm text-gray-400',
+                          {
+                            hidden: Boolean(item.discount === 0),
+                          },
+                        )}
+                      >
+                        {item.priceWithoutDiscount.toLocaleString('fa-IR')}
+                      </del>
+                      <p className="absolute bottom-3 left-[100px] -rotate-90 text-[10px] font-bold text-black/40">
+                        تومان
+                      </p>
+                      <p className="absolute bottom-0 left-[120px] text-lg font-bold text-black">
+                        {item.priceWithDiscount.toLocaleString('fa-IR')}
+                      </p>
+                    </div>
+                    {/* discount */}
+                    <div
+                      className={cn(
+                        'absolute bottom-2 left-[210px] flex h-[22px] gap-1 rounded-md bg-red px-2',
+                        {
+                          hidden: Boolean(item.discount === 0),
+                        },
+                      )}
+                    >
+                      <p className="pt-0.5 text-xsp font-bold text-white">
+                        {item.discount}
+                      </p>
+                      <p className="pt-1 text-xs font-bold text-white">%</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+            {/** total price / place order */}
+            <div className="flex items-center justify-between border-t py-3">
+              <div className="relative flex w-fit flex-col px-4">
+                <p className="text-xsp font-bold">مبلغ قابل پرداخت</p>
+                <p className="text-xl font-bold text-black">
+                  {localstorageCart.selectors
+                    .totalPrice()
+                    .toLocaleString('fa-IR')}
+                </p>
+                <p className="absolute -left-1 bottom-3 -rotate-90 text-[10px] font-bold text-black/40">
+                  تومان
+                </p>
+              </div>
+              <Link
+                href="/checkout"
+                className="ml-4 rounded-lg bg-red px-4 py-2 text-white"
+                onClick={() => cartToggleUrlState.hide()}
+              >
+                ثبت سفارش
+              </Link>
+            </div>
+          </div>
+        )}
       </ToggleSection>
     </div>
   );
@@ -438,15 +554,131 @@ const DesktopBottomCart = () => {
         )}
       >
         <div className="rounded-2xl border border-gray-200 bg-white">
-          <div className="flex flex-col items-center gap-3 py-5">
-            <Image
-              src="/images/templates/base/empty-cart.svg"
-              height={125}
-              width={125}
-              alt="سبد خرید خالی"
-            />
-            <p className="font-medium">سبد خرید خالی است!</p>
-          </div>
+          {localstorageCart.selectors.isEmpty() ? (
+            <div className="flex flex-col items-center py-3">
+              <Image
+                src="/images/templates/base/empty-cart.svg"
+                height={125}
+                width={125}
+                alt="سبد خرید خالی"
+              />
+              <p className="text-smp font-medium">سبد خرید خالی است!</p>
+            </div>
+          ) : (
+            <div>
+              {/** cart items */}
+              {localstorageCart.get().map((item) => (
+                <div
+                  key={item.id}
+                  className="relative mt-3 flex items-center gap-5 px-3"
+                >
+                  {/* remove btn */}
+                  <button
+                    className="absolute top-0 rounded-md bg-red p-[3px]"
+                    onClick={() => localstorageCart.reducers.remove(item)}
+                  >
+                    <HiMiniXMark size={15} className="fill-white" />
+                  </button>
+                  {/* image */}
+                  <Image
+                    alt={item.title}
+                    src={item.image}
+                    width={60}
+                    height={60}
+                  />
+                  <div className="mb-4 w-full">
+                    {/* title */}
+                    <p className="mb-2 text-smp font-bold">{item.title}</p>
+                    <div className="relative flex flex-col items-end">
+                      {/* increment btn / decrement btn / remove btn */}
+                      <div className="flex w-24 justify-between rounded-lg border bg-white px-3 py-1.5 font-bold text-gray-700">
+                        <button
+                          onClick={() =>
+                            localstorageCart.reducers.increment(item)
+                          }
+                        >
+                          +
+                        </button>
+                        <p>{localstorageCart.selectors.quantity(item)}</p>
+                        {localstorageCart.selectors.quantity(item) === 1 ? (
+                          <button
+                            onClick={() =>
+                              localstorageCart.reducers.remove(item)
+                            }
+                          >
+                            <HiTrash size={16} className="fill-gray-700" />
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() =>
+                              localstorageCart.reducers.decrement(item)
+                            }
+                            className="text-gray-700"
+                          >
+                            -
+                          </button>
+                        )}
+                      </div>
+                      {/* price */}
+                      <div className="flex">
+                        <del
+                          className={cn(
+                            'absolute bottom-[20px] left-[118px] text-sm text-gray-400',
+                            {
+                              hidden: Boolean(item.discount === 0),
+                            },
+                          )}
+                        >
+                          {item.priceWithoutDiscount.toLocaleString('fa-IR')}
+                        </del>
+                        <p className="absolute bottom-3 left-[100px] -rotate-90 text-[10px] font-bold text-black/40">
+                          تومان
+                        </p>
+                        <p className="absolute bottom-0 left-[120px] text-lg font-bold text-black">
+                          {item.priceWithDiscount.toLocaleString('fa-IR')}
+                        </p>
+                      </div>
+                      {/* discount */}
+                      <div
+                        className={cn(
+                          'absolute bottom-2 left-[210px] flex h-[22px] gap-1 rounded-md bg-red px-2',
+                          {
+                            hidden: Boolean(item.discount === 0),
+                          },
+                        )}
+                      >
+                        <p className="pt-0.5 text-xsp font-bold text-white">
+                          {item.discount}
+                        </p>
+                        <p className="pt-1 text-xs font-bold text-white">%</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+              {/** total price / place order */}
+              <div className="flex items-center justify-between border-t py-3">
+                <div className="relative flex w-fit flex-col px-4">
+                  <p className="text-xsp font-bold">مبلغ قابل پرداخت</p>
+                  <p className="text-xl font-bold text-black">
+                    {localstorageCart.selectors
+                      .totalPrice()
+                      .toLocaleString('fa-IR')}
+                  </p>
+                  <p className="absolute -left-1 bottom-3 -rotate-90 text-[10px] font-bold text-black/40">
+                    تومان
+                  </p>
+                </div>
+                <Link
+                  href="/checkout"
+                  className="ml-4 rounded-lg bg-red px-4 py-2 text-white"
+                  onClick={() => cartToggleUrlState.hide()}
+                >
+                  ثبت سفارش
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

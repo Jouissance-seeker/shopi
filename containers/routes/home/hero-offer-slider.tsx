@@ -136,9 +136,9 @@ export default function HeroOfferSlider() {
                       </div>
                     </div>
                   </div>
-                  {/* add to cart btn / increment quantity / decrement quantity / remove from cart btn*/}
+                  {/* add to cart btn / increment quantity btn / decrement quantity btn / remove from cart btn */}
                   {localstorageCart.selectors.isInCart(item) ? (
-                    <div className="absolute -bottom-1.5 flex w-full justify-between rounded-lg p-4 font-bold text-gray-900">
+                    <div className="absolute -bottom-0.5 flex w-full justify-between rounded-lg p-4 font-bold text-gray-900">
                       <div className="flex w-full justify-between rounded-lg bg-white p-3 text-lg text-gray-700">
                         <button
                           onClick={() =>
@@ -161,6 +161,7 @@ export default function HeroOfferSlider() {
                             onClick={() =>
                               localstorageCart.reducers.decrement(item)
                             }
+                            className="text-lg"
                           >
                             -
                           </button>
