@@ -24,7 +24,7 @@ export default function ProductSlider(props: IProductSliderProps) {
     <section className="group/product_section container relative z-10 col-span-full flex flex-col gap-5 overflow-hidden">
       {/* head */}
       <div className="flex items-center gap-3">
-        <h2 className="text-xl font-bold text-gray-600">{props.title}</h2>
+        <h2 className="text-lg font-bold text-gray-600">{props.title}</h2>
         <span className="h-px grow bg-gradient-to-r from-white via-[#e4e8ef] to-white" />
         <Link
           href={props.path}

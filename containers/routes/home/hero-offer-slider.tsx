@@ -9,7 +9,7 @@ import { FiShoppingBag } from 'react-icons/fi';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { heroOfferSliderData } from '@/resources/routes/home/hero-offer-slider';
+import { productSliderData } from '@/resources/routes/global/product-slider';
 import { cn } from '@/utils/cn';
 
 export default function HeroOfferSlider() {
@@ -35,7 +35,7 @@ export default function HeroOfferSlider() {
   }, []);
 
   return (
-    <section className="group/hero-offer_section relative z-10 col-span-full overflow-hidden xl:col-span-1">
+    <section className="group/section relative z-10 col-span-full overflow-hidden xl:col-span-1">
       {/* slider */}
       <div className="bg-white">
         <Swiper
@@ -54,7 +54,7 @@ export default function HeroOfferSlider() {
             },
           }}
         >
-          {heroOfferSliderData.map((item) => {
+          {productSliderData.map((item) => {
             return (
               <SwiperSlide
                 key={item.id}
@@ -65,16 +65,16 @@ export default function HeroOfferSlider() {
                   <div className="hidden xl:block">
                     <div className="absolute left-4 top-4 flex w-fit gap-2">
                       <button
-                        className="group/hero-slider_navigation-btn flex size-6 items-center justify-center rounded-md bg-white"
-                        onClick={() => swiperRef.current.swiper.slideNext()}
-                      >
-                        <HiChevronRight className="fill-gray-600 group-hover/hero-slider_navigation-btn:fill-gray-900" />
-                      </button>
-                      <button
-                        className="group/hero-slider_navigation flex size-6 items-center justify-center rounded-md bg-white"
+                        className="group/navigation_btn flex size-6 items-center justify-center rounded-md bg-white"
                         onClick={() => swiperRef.current.swiper.slidePrev()}
                       >
-                        <HiChevronLeft className="fill-gray-600 group-hover/hero-slider_navigation:fill-gray-900" />
+                        <HiChevronRight className="fill-gray-600 group-hover/navigation_btn:fill-gray-900" />
+                      </button>
+                      <button
+                        className="group/navigation_btn flex size-6 items-center justify-center rounded-md bg-white"
+                        onClick={() => swiperRef.current.swiper.slideNext()}
+                      >
+                        <HiChevronLeft className="fill-gray-600 group-hover/navigation_btn:fill-gray-900" />
                       </button>
                     </div>
                   </div>
@@ -126,7 +126,9 @@ export default function HeroOfferSlider() {
                         تومان
                       </p>
                       <div className="absolute bottom-9 left-8 flex h-[22px] gap-1 rounded-full rounded-bl-none bg-white px-2">
-                        <p className="pt-0.5 font-bold text-red">10</p>
+                        <p className="pt-0.5 font-bold text-red">
+                          {item.discount}
+                        </p>
                         <p className="pt-1 text-sm font-bold text-red">%</p>
                       </div>
                     </div>
@@ -142,18 +144,18 @@ export default function HeroOfferSlider() {
         </Swiper>
       </div>
       {/* navigation - mobile */}
-      <div className="group/hero-slider_navigation hidden w-fit gap-2 transition-all group-hover/hero-offer_section:flex">
+      <div className="hidden w-fit gap-2 transition-all group-hover/section:flex">
         <button
-          className="group/hero-slider_navigation_btn absolute bottom-0 right-1 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-lg border bg-white xl:hidden xl:size-9"
+          className="group/navigation_btn absolute bottom-0 right-1 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-lg border bg-white xl:hidden xl:size-9"
           onClick={() => swiperRef.current.swiper.slideNext()}
         >
-          <HiChevronRight className="size-4 fill-gray-600 group-hover/hero-slider_navigation_btn:fill-gray-900" />
+          <HiChevronRight className="size-4 fill-gray-600 group-hover/navigation_btn:fill-gray-900" />
         </button>
         <button
-          className="group/hero-slider_navigation_btn absolute bottom-0 left-1 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-lg border bg-white xl:hidden xl:size-9"
+          className="group/navigation_btn absolute bottom-0 left-1 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-lg border bg-white xl:hidden xl:size-9"
           onClick={() => swiperRef.current.swiper.slidePrev()}
         >
-          <HiChevronLeft className="size-4 fill-gray-600 group-hover/hero-slider_navigation_btn:fill-gray-900" />
+          <HiChevronLeft className="size-4 fill-gray-600 group-hover/navigation_btn:fill-gray-900" />
         </button>
       </div>
     </section>

@@ -18,7 +18,7 @@ export default function HeroSlider() {
     <section
       id="hero_slider"
       dir="ltr"
-      className="group/hero-slider relative col-span-full xl:col-span-3 xl:mx-0 xl:max-w-none xl:p-0"
+      className="relative col-span-full xl:col-span-3 xl:mx-0 xl:max-w-none xl:p-0"
     >
       <Swiper
         ref={swiperRef}
@@ -56,17 +56,17 @@ export default function HeroSlider() {
       <div className="absolute inset-x-0 bottom-3 z-20 flex justify-center">
         <div className="flex w-fit gap-2">
           <button
-            className="group/hero-slider_navigation flex size-6 items-center justify-center rounded-md bg-white"
+            className="group/navigation flex size-6 items-center justify-center rounded-md bg-white"
             onClick={() => swiperRef.current.swiper.slidePrev()}
           >
-            <HiChevronLeft className="fill-gray-600 group-hover/hero-slider_navigation:fill-gray-900" />
+            <HiChevronLeft className="fill-gray-600 group-hover/navigation:fill-gray-900" />
           </button>
           <div className="pagination" />
           <button
-            className="group/hero-slider_navigation flex size-6 items-center justify-center rounded-md bg-white"
+            className="group/navigation flex size-6 items-center justify-center rounded-md bg-white"
             onClick={() => swiperRef.current.swiper.slideNext()}
           >
-            <HiChevronRight className="fill-gray-600 group-hover/hero-slider_navigation:fill-gray-900" />
+            <HiChevronRight className="fill-gray-600 group-hover/navigation:fill-gray-900" />
           </button>
         </div>
       </div>
