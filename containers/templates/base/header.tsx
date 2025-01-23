@@ -1,5 +1,6 @@
 'use client';
 
+import { useKillua } from 'killua';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -15,6 +16,7 @@ import { ThreeDots } from 'react-loader-spinner';
 import { ToggleSection } from '@/components/toggle-section';
 import { CATEGORIES } from '@/constants/templates/base/categories';
 import { useToggleUrlState } from '@/hooks/toggle-url-state';
+import { cartSlice } from '@/slices/cart';
 import { cn } from '@/utils/cn';
 
 export function Header() {
@@ -218,6 +220,7 @@ const MobileBottomSearch = () => {
 
 const MobileBottomCart = () => {
   const cartToggleUrlState = useToggleUrlState('cart-section');
+  const localstorageCart = useKillua(cartSlice);
 
   return (
     <div className="flex items-center">
@@ -228,7 +231,7 @@ const MobileBottomCart = () => {
       >
         <HiOutlineShoppingCart size={20} />
         <p className="absolute -top-1.5 right-1 flex h-3.5 items-center justify-center rounded-[3px] bg-red px-[3px] text-[11px] font-bold text-white">
-          0
+          {localstorageCart.selectors.totalItems()}
         </p>
       </button>
       {/* section */}
@@ -238,7 +241,7 @@ const MobileBottomCart = () => {
         onClose={() => cartToggleUrlState.hide()}
         className="container absolute left-0 top-[110px] z-50 h-4 w-screen"
       >
-        <div className="flex flex-col items-center gap-3 py-5">
+        <div className="flex flex-col items-center py-3">
           <Image
             src="/images/templates/base/empty-cart.svg"
             height={125}
@@ -406,6 +409,7 @@ const DesktopBottomCategory = () => {
 
 const DesktopBottomCart = () => {
   const cartToggleUrlState = useToggleUrlState('cart-section');
+  const localstorageCart = useKillua(cartSlice);
 
   return (
     <div
@@ -420,7 +424,7 @@ const DesktopBottomCart = () => {
           <p className="font-bold text-gray-700">سبد خرید</p>
         </div>
         <p className="flex size-6 items-center justify-center rounded-full bg-red text-lg font-bold text-white">
-          0
+          {localstorageCart.selectors.totalItems()}
         </p>
       </button>
       {/* section */}
@@ -441,7 +445,7 @@ const DesktopBottomCart = () => {
               width={125}
               alt="سبد خرید خالی"
             />
-            <p className="text-smp font-medium">سبد خرید خالی است!</p>
+            <p className="font-medium">سبد خرید خالی است!</p>
           </div>
         </div>
       </div>

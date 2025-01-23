@@ -2,14 +2,21 @@
 
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { useKillua } from 'killua';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRef } from 'react';
 import { FiShoppingBag } from 'react-icons/fi';
-import { HiChevronLeft, HiChevronRight, HiStar } from 'react-icons/hi2';
+import {
+  HiChevronLeft,
+  HiChevronRight,
+  HiStar,
+  HiTrash,
+} from 'react-icons/hi2';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { productSliderData } from '@/resources/routes/global/product-slider';
+import { cartSlice } from '@/slices/cart';
 import { cn } from '@/utils/cn';
 
 interface IProductSliderProps {
@@ -19,6 +26,7 @@ interface IProductSliderProps {
 
 export default function ProductSlider(props: IProductSliderProps) {
   const swiperRef = useRef<any>(null);
+  const localstorageCart = useKillua(cartSlice);
 
   return (
     <section className="group/product_section container relative z-10 col-span-full flex flex-col gap-5 overflow-hidden">
@@ -129,10 +137,47 @@ export default function ProductSlider(props: IProductSliderProps) {
                         </div>
                       </div>
                     </div>
-                    {/* add to cart btn */}
-                    <button className="absolute bottom-4 right-4 rounded-lg bg-red p-2">
-                      <FiShoppingBag size={20} className="stroke-white" />
-                    </button>
+                    {/* add to cart btn / increment quantity / decrement quantity / remove from cart btn*/}
+                    {localstorageCart.selectors.isInCart(item) ? (
+                      <div className="absolute -bottom-1.5 flex w-full justify-between rounded-lg p-4 font-bold text-gray-900">
+                        <div className="flex w-full justify-between rounded-lg border bg-white p-3 text-lg text-gray-700">
+                          <button
+                            onClick={() =>
+                              localstorageCart.reducers.increment(item)
+                            }
+                          >
+                            +
+                          </button>
+                          <span>
+                            {localstorageCart.selectors.quantity(item)}
+                          </span>
+                          {localstorageCart.selectors.quantity(item) === 1 ? (
+                            <button
+                              onClick={() =>
+                                localstorageCart.reducers.remove(item)
+                              }
+                            >
+                              <HiTrash size={20} className="fill-gray-700" />
+                            </button>
+                          ) : (
+                            <button
+                              onClick={() =>
+                                localstorageCart.reducers.decrement(item)
+                              }
+                            >
+                              -
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    ) : (
+                      <button
+                        className="absolute bottom-4 right-4 rounded-lg bg-red p-2"
+                        onClick={() => localstorageCart.reducers.add(item)}
+                      >
+                        <FiShoppingBag size={20} className="stroke-white" />
+                      </button>
+                    )}
                     {/* bottom border */}
                     <span className="invisible absolute bottom-0 h-px w-full grow bg-red-200 bg-gradient-to-r from-white via-red to-white opacity-0 group-hover:visible group-hover:opacity-100" />
                   </div>

@@ -1,4 +1,6 @@
-export const productSliderData = [
+import { TProduct } from '@/types/product';
+
+export const productSliderData: TProduct[] = [
   {
     id: 1,
     rate: 2,
