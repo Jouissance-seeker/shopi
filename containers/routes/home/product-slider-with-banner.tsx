@@ -119,9 +119,9 @@ export default function ProductSliderWithBanner(props: IProductSliderProps) {
                       className="flex flex-col items-center gap-3"
                     >
                       <div className="relative size-[175px]">
-                        <Image src={item.image} alt={item.title} fill />
+                        <Image src={item.images[0]} alt={item.title.fa} fill />
                       </div>
-                      <p className="line-clamp-2 font-bold">{item.title}</p>
+                      <p className="line-clamp-2 font-bold">{item.title.fa}</p>
                     </Link>
                     {/* price */}
                     <div>

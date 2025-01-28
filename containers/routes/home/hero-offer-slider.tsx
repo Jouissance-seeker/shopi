@@ -45,10 +45,10 @@ export default function HeroOfferSlider() {
           slidesPerView="auto"
           spaceBetween={13}
           ref={swiperRef}
-          // autoplay={{
-          //   delay: 3000,
-          //   disableOnInteraction: false,
-          // }}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
           modules={[Autoplay]}
           id="hero-offer-slider"
           breakpoints={{
@@ -110,10 +110,10 @@ export default function HeroOfferSlider() {
                     className="flex flex-col items-center gap-3"
                   >
                     <div className="relative size-[175px] bg-[url('/images/routes/home/hero-offer-slider-wave-bg.svg')] bg-center bg-no-repeat">
-                      <Image src={item.image} alt={item.title} fill />
+                      <Image src={item.images[0]} alt={item.title.fa} fill />
                     </div>
                     <p className="line-clamp-2 font-bold text-white">
-                      {item.title}
+                      {item.title.fa}
                     </p>
                   </Link>
                   {/* price */}
