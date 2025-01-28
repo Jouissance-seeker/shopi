@@ -22,6 +22,29 @@ export default function CategorySlider() {
   );
 }
 
+interface ISliderProps {
+  swiperRef: any;
+}
+
+const Slider = (props: ISliderProps) => {
+  return (
+    <Swiper
+      slidesPerView="auto"
+      spaceBetween={13}
+      ref={props.swiperRef}
+      modules={[Autoplay]}
+      id="category-slider"
+      className="container"
+    >
+      {categorySliderData.map((item) => (
+        <SwiperSlide key={item.id} className="!w-[268px]">
+          <Card data={item} />
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  );
+};
+
 interface ICardProps {
   data: (typeof categorySliderData)[0];
 }
@@ -49,28 +72,5 @@ const Card = (props: ICardProps) => {
         <CardBorderBottom />
       </Link>
     </SwiperSlide>
-  );
-};
-
-interface ISliderProps {
-  swiperRef: any;
-}
-
-const Slider = (props: ISliderProps) => {
-  return (
-    <Swiper
-      slidesPerView="auto"
-      spaceBetween={13}
-      ref={props.swiperRef}
-      modules={[Autoplay]}
-      id="category-slider"
-      className="container"
-    >
-      {categorySliderData.map((item) => (
-        <SwiperSlide key={item.id} className="!w-[268px]">
-          <Card data={item} />
-        </SwiperSlide>
-      ))}
-    </Swiper>
   );
 };

@@ -1,12 +1,10 @@
-import { useKillua } from 'killua';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FiShoppingBag } from 'react-icons/fi';
-import { HiStar, HiTrash } from 'react-icons/hi2';
-import { cartSlice } from '@/slices/cart';
+import { HiStar } from 'react-icons/hi2';
 import { TProduct } from '@/types/product';
 import { cn } from '@/utils/cn';
 import { CardBorderBottom } from './card-border-bottom';
+import ProductCardActions from './product-card-actions';
 
 interface IProps {
   data: TProduct;
@@ -20,7 +18,7 @@ export function ProductCard(props: IProps) {
         <Colors data={props.data} />
         <ImageWithText data={props.data} />
         <Price data={props.data} />
-        <Actions data={props.data} />
+        <ProductCardActions item={props.data} color="red" />
         <CardBorderBottom />
       </div>
     </div>
@@ -103,42 +101,5 @@ const Price = (props: IProps) => {
         </div>
       </div>
     </div>
-  );
-};
-
-const Actions = (props: IProps) => {
-  const localstorageCart = useKillua(cartSlice);
-
-  return localstorageCart.selectors.isInCart(props.data) ? (
-    <div className="absolute -bottom-0.5 flex w-full justify-between rounded-lg p-4 font-bold text-gray-900">
-      <div className="flex w-full justify-between rounded-lg border bg-white p-3 text-lg text-gray-700">
-        <button
-          onClick={() => localstorageCart.reducers.increment(props.data)}
-          className="text-lg"
-        >
-          +
-        </button>
-        <span>{localstorageCart.selectors.quantity(props.data)}</span>
-        {localstorageCart.selectors.quantity(props.data) === 1 ? (
-          <button onClick={() => localstorageCart.reducers.remove(props.data)}>
-            <HiTrash size={20} className="fill-gray-700" />
-          </button>
-        ) : (
-          <button
-            onClick={() => localstorageCart.reducers.decrement(props.data)}
-            className="text-lg"
-          >
-            -
-          </button>
-        )}
-      </div>
-    </div>
-  ) : (
-    <button
-      className="absolute bottom-4 right-4 rounded-lg bg-red p-2"
-      onClick={() => localstorageCart.reducers.add(props.data)}
-    >
-      <FiShoppingBag size={20} className="stroke-white" />
-    </button>
   );
 };
