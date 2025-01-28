@@ -16,7 +16,7 @@ interface IProductSliderProps {
   path: string;
 }
 
-export default function ProductSlider(props: IProductSliderProps) {
+export function ProductSlider(props: IProductSliderProps) {
   const swiperRef = useRef<any>(null);
 
   return (

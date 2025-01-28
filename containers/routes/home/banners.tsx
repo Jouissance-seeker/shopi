@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { bannersData } from '@/resources/routes/home/banners';
 import { cn } from '@/utils/cn';
 
-export default function Banners() {
+export function Banners() {
   return (
     <section className="container grid grid-cols-1 gap-4 lg:grid-cols-3">
       {bannersData.map((item, index) => (

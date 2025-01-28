@@ -10,7 +10,7 @@ interface IProductCardActionsProps {
   color: 'white' | 'red';
 }
 
-export default function ProductCardActions(props: IProductCardActionsProps) {
+export function ProductCardActions(props: IProductCardActionsProps) {
   const localstorageCart = useKillua(cartSlice);
 
   return localstorageCart.selectors.isInCart(props.item) ? (

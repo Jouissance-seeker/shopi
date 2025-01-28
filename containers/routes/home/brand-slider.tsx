@@ -12,7 +12,7 @@ import { CardBorderBottom } from '@/components/card-border-bottom';
 import { SliderNavigation } from '@/components/slider-navigation';
 import { brandSliderData } from '@/resources/routes/home/brand-slider';
 
-export default function BrandSlider() {
+export function BrandSlider() {
   const swiperRef = useRef<any>(null);
 
   return (

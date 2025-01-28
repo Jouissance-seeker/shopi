@@ -8,11 +8,11 @@ import { useEffect, useRef, useState } from 'react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import ProductCardActions from '@/components/product-card-actions';
+import { ProductCardActions } from '@/components/product-card-actions';
 import { productSliderData } from '@/resources/routes/global/product-slider';
 import { cn } from '@/utils/cn';
 
-export default function HeroOfferSlider() {
+export function HeroOfferSlider() {
   const swiperRef = useRef<any>(null);
 
   return (

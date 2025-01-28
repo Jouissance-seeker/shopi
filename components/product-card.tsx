@@ -4,7 +4,7 @@ import { HiStar } from 'react-icons/hi2';
 import { TProduct } from '@/types/product';
 import { cn } from '@/utils/cn';
 import { CardBorderBottom } from './card-border-bottom';
-import ProductCardActions from './product-card-actions';
+import { ProductCardActions } from './product-card-actions';
 
 interface IProps {
   data: TProduct;

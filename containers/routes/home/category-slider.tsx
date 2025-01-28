@@ -11,7 +11,7 @@ import { CardBorderBottom } from '@/components/card-border-bottom';
 import { SliderNavigation } from '@/components/slider-navigation';
 import { categorySliderData } from '@/resources/routes/home/category-slider';
 
-export default function CategorySlider() {
+export function CategorySlider() {
   const swiperRef = useRef<any>(null);
 
   return (

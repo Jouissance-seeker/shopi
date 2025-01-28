@@ -1,10 +1,10 @@
-import ProductSlider from '@/containers/routes/global/product-slider';
-import Banners from '@/containers/routes/home/banners';
-import BrandSlider from '@/containers/routes/home/brand-slider';
-import CategorySlider from '@/containers/routes/home/category-slider';
-import HeroOfferSlider from '@/containers/routes/home/hero-offer-slider';
-import HeroSlider from '@/containers/routes/home/hero-slider';
-import ProductSliderWithBanner from '@/containers/routes/home/product-slider-with-banner';
+import { ProductSlider } from '@/containers/routes/global/product-slider';
+import { Banners } from '@/containers/routes/home/banners';
+import { BrandSlider } from '@/containers/routes/home/brand-slider';
+import { CategorySlider } from '@/containers/routes/home/category-slider';
+import { HeroOfferSlider } from '@/containers/routes/home/hero-offer-slider';
+import { HeroSlider } from '@/containers/routes/home/hero-slider';
+import { ProductSliderWithBanner } from '@/containers/routes/home/product-slider-with-banner';
 
 export default function Home() {
   return (
