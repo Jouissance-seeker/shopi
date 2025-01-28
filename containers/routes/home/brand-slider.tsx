@@ -5,78 +5,79 @@ import 'swiper/css/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRef } from 'react';
-import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2';
+import { HiChevronLeft } from 'react-icons/hi2';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { CardBorderBottom } from '@/components/card-border-bottom';
+import { SliderNavigation } from '@/components/slider-navigation';
 import { brandSliderData } from '@/resources/routes/home/brand-slider';
 
 export default function BrandSlider() {
   const swiperRef = useRef<any>(null);
 
   return (
-    <section className="group/category_section container relative z-10 col-span-full flex flex-col overflow-hidden">
-      {/* slider */}
-      <div className="bg-white">
-        <Swiper
-          slidesPerView="auto"
-          spaceBetween={13}
-          ref={swiperRef}
-          modules={[Autoplay]}
-          id="category-slider"
-          className="container"
-        >
-          {brandSliderData.map((item) => {
-            return (
-              <SwiperSlide
-                key={item.id}
-                className="group !w-48 overflow-hidden rounded-xl border border-gray-200 bg-white transition-all hover:border-gray-300"
-              >
-                <Link
-                  href={item.path}
-                  className="flex flex-col items-center justify-between gap-5 p-5"
-                >
-                  {/* image */}
-                  <Image
-                    src={item.image}
-                    alt={item.text.fa}
-                    width={60}
-                    height={60}
-                  />
-                  <div className="flex w-full items-center justify-between">
-                    <div>
-                      <p className="text-xsp font-bold text-gray-400">
-                        محصولات
-                      </p>
-                      <p className="text-smp font-bold">{item.text.fa}</p>
-                    </div>
-                    <div className="flex gap-1">
-                      <p className="text-smp font-bold">{item.text.en}</p>
-                      <HiChevronLeft className="size-4 fill-gray-500" />
-                    </div>
-                  </div>
-                  {/* bottom border */}
-                  <span className="invisible absolute bottom-0 h-px w-full grow bg-red-200 bg-gradient-to-r from-white via-red to-white opacity-0 group-hover:visible group-hover:opacity-100" />
-                </Link>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
-      </div>
-      {/* navigation */}
-      <div className="group/navigation top-4 hidden w-fit gap-2 transition-all group-hover/category_section:flex">
-        <button
-          className="group/navigation_btn absolute bottom-0 left-1 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-lg border bg-white"
-          onClick={() => swiperRef.current.swiper.slideNext()}
-        >
-          <HiChevronLeft className="size-4 fill-gray-600 group-hover/category-slider_navigation_btn:fill-gray-900" />
-        </button>
-        <button
-          className="group/navigation_btn absolute bottom-0 right-1 top-1/2 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-lg border bg-white"
-          onClick={() => swiperRef.current.swiper.slidePrev()}
-        >
-          <HiChevronRight className="size-4 fill-gray-600 group-hover/category-slider_navigation_btn:fill-gray-900" />
-        </button>
-      </div>
+    <section className="group/section container relative z-10 col-span-full flex flex-col overflow-hidden">
+      <Slider swiperRef={swiperRef} />
+      <SliderNavigation swiperRef={swiperRef} />
     </section>
   );
 }
+
+interface ISliderProps {
+  swiperRef: any;
+}
+
+const Slider = (props: ISliderProps) => {
+  return (
+    <Swiper
+      slidesPerView="auto"
+      spaceBetween={13}
+      ref={props.swiperRef}
+      modules={[Autoplay]}
+      id="brand-slider"
+      className="container"
+    >
+      {brandSliderData.map((item) => (
+        <SwiperSlide key={item.id} className="!w-48">
+          <Card data={item} />
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  );
+};
+
+interface ICardProps {
+  data: (typeof brandSliderData)[0];
+}
+
+const Card = (props: ICardProps) => {
+  return (
+    <div
+      key={props.data.id}
+      className="group !w-48 overflow-hidden rounded-xl border border-gray-200 bg-white transition-all hover:border-gray-300"
+    >
+      <Link
+        href={props.data.path}
+        className="flex flex-col items-center justify-between gap-5 p-5"
+      >
+        <Image
+          src={props.data.image}
+          alt={props.data.text.fa}
+          width={60}
+          height={60}
+        />
+        <div className="flex w-full items-center justify-between">
+          <div>
+            <p className="text-xsp font-bold text-gray-400">محصولات</p>
+            <p className="text-smp font-bold">{props.data.text.fa}</p>
+          </div>
+          <div className="flex gap-1">
+            <p className="text-smp font-bold">{props.data.text.en}</p>
+            <HiChevronLeft className="size-4 fill-gray-500" />
+          </div>
+        </div>
+        <CardBorderBottom />
+      </Link>
+    </div>
+  );
+};

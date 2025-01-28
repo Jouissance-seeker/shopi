@@ -270,14 +270,14 @@ const MobileBottomCart = () => {
                 </button>
                 {/* image */}
                 <Image
-                  alt={item.title}
-                  src={item.image}
+                  alt={item.title.fa}
+                  src={item.images[0]}
                   width={60}
                   height={60}
                 />
                 <div className="mb-4 w-full">
                   {/* title */}
-                  <p className="mb-2 text-smp font-bold">{item.title}</p>
+                  <p className="mb-2 text-smp font-bold">{item.title.fa}</p>
                   <div className="relative flex flex-col items-end">
                     {/* increment btn / decrement btn / remove btn */}
                     <div className="flex w-24 justify-between rounded-lg border bg-white px-3 py-1.5 font-bold text-gray-700">
@@ -581,14 +581,14 @@ const DesktopBottomCart = () => {
                   </button>
                   {/* image */}
                   <Image
-                    alt={item.title}
-                    src={item.image}
+                    alt={item.title.fa}
+                    src={item.images[0]}
                     width={60}
                     height={60}
                   />
                   <div className="mb-4 w-full">
                     {/* title */}
-                    <p className="mb-2 text-smp font-bold">{item.title}</p>
+                    <p className="mb-2 text-smp font-bold">{item.title.fa}</p>
                     <div className="relative flex flex-col items-end">
                       {/* increment btn / decrement btn / remove btn */}
                       <div className="flex w-24 justify-between rounded-lg border bg-white px-3 py-1.5 font-bold text-gray-700">

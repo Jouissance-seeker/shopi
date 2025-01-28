@@ -28,6 +28,9 @@ export default {
           DEFAULT: 'var(--gray)',
         },
       },
+      transitionDuration: {
+        DEFAULT: '300ms',
+      },
       fontSize: {
         smp: '15px',
         xsp: '13px',
