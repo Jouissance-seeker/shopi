@@ -9,6 +9,8 @@ export const cartSlice = slice({
     isEmpty: (value) => Boolean(!value.length),
     isInCart: (value, payload: TProduct) =>
       value.some((product) => product.id === payload.id),
+    isOne: (value, payload: TProduct) =>
+      value.find((product) => product.id === payload.id)?.quantity === 1,
     totalPrice: (value) =>
       value.reduce(
         (acc, product) => acc + product.priceWithDiscount * product.quantity,

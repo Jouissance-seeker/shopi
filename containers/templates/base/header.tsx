@@ -76,64 +76,53 @@ const MobileTopHumbergerMenu = () => {
         className="container absolute left-0 top-[110px] z-50 h-4 w-screen"
       >
         <nav className="text-sm">
-          <ul className="w-full">
-            {/* categories */}
-            <li>
-              <Link
-                href="/shop"
-                className="flex w-full border-b p-2 font-medium transition-all hover:bg-gray-50"
-              >
-                {'دسته بندی'}
-              </Link>
-              <div className="mb-2.5 mr-2.5 overflow-hidden rounded-b-lg border-b border-r">
-                <ul className="max-h-[calc(100dvh_-_320px)] overflow-y-auto scrollbar-hide">
-                  {CATEGORIES.map((categoryItem) => (
-                    <li
-                      key={categoryItem.text}
-                      className="border-b last:border-b-0"
-                    >
-                      <Link
-                        href={categoryItem.path}
-                        className="flex w-full border-b p-2 transition-all hover:bg-gray-50"
+          <div className="mb-2.5 overflow-hidden rounded-b-lg border-b">
+            <ul className="max-h-[calc(100dvh_-_320px)] overflow-y-auto scrollbar-hide">
+              {CATEGORIES.map((categoryItem) => (
+                <li
+                  key={categoryItem.text}
+                  className="border-b last:border-b-0"
+                >
+                  <Link
+                    href={categoryItem.path}
+                    className="flex w-full border-b p-2 transition-all hover:bg-gray-50"
+                  >
+                    {categoryItem.text}
+                  </Link>
+                  <ul className="mr-2.5">
+                    {categoryItem.children.map((childItem) => (
+                      <li
+                        key={childItem.text}
+                        className="border-r border-t first:border-t-0"
                       >
-                        {categoryItem.text}
-                      </Link>
-                      <ul className="mr-2.5">
-                        {categoryItem.children.map((childItem) => (
-                          <li
-                            key={childItem.text}
-                            className="border-r border-t first:border-t-0"
-                          >
-                            <Link
-                              href={childItem.link}
-                              className="flex border-y p-2 transition-all first:border-t-0 hover:bg-gray-50"
+                        <Link
+                          href={childItem.link}
+                          className="flex border-y p-2 transition-all first:border-t-0 hover:bg-gray-50"
+                        >
+                          {childItem.text}
+                        </Link>
+                        <ul className="mr-2.5">
+                          {childItem.children.map((subChildItem) => (
+                            <li
+                              key={subChildItem.text}
+                              className="border-b border-r last:border-b-0"
                             >
-                              {childItem.text}
-                            </Link>
-                            <ul className="mr-2.5">
-                              {childItem.children.map((subChildItem) => (
-                                <li
-                                  key={subChildItem.text}
-                                  className="border-b border-r last:border-b-0"
-                                >
-                                  <Link
-                                    href={subChildItem.link}
-                                    className="flex p-2 transition-all hover:bg-gray-50"
-                                  >
-                                    {subChildItem.text}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          </li>
-                        ))}
-                      </ul>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </li>
-          </ul>
+                              <Link
+                                href={subChildItem.link}
+                                className="flex p-2 transition-all hover:bg-gray-50"
+                              >
+                                {subChildItem.text}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </div>
         </nav>
       </ToggleSection>
     </div>
@@ -289,7 +278,7 @@ const MobileBottomCart = () => {
                         +
                       </button>
                       <p>{localstorageCart.selectors.quantity(item)}</p>
-                      {localstorageCart.selectors.quantity(item) === 1 ? (
+                      {localstorageCart.selectors.isInCart(item) ? (
                         <button
                           onClick={() => localstorageCart.reducers.remove(item)}
                         >

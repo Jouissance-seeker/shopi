@@ -37,7 +37,7 @@ const Slider = (props: ISliderProps) => {
       className="container"
     >
       {categorySliderData.map((item) => (
-        <SwiperSlide key={item.id} className="!w-[268px]">
+        <SwiperSlide key={item.id} className="!w-[300px]">
           <Card data={item} />
         </SwiperSlide>
       ))}
@@ -53,22 +53,24 @@ const Card = (props: ICardProps) => {
   return (
     <SwiperSlide
       key={props.data.id}
-      className="group !w-[268px] overflow-hidden rounded-xl border border-gray-200 bg-white transition-all hover:border-gray-300"
+      className="group overflow-hidden rounded-xl border border-gray-200 bg-white transition-all hover:border-gray-300"
     >
       <Link
         href={props.data.path}
-        className="flex items-center justify-center gap-5 p-5"
+        className="flex items-center justify-between gap-5 p-5"
       >
-        <div className="flex flex-col gap-0.5">
-          <p className="text-smp font-bold">{props.data.text.fa}</p>
-          <p className="text-sm text-gray-400">{props.data.text.en}</p>
+        <div className="flex items-center gap-3">
+          <Image
+            src={props.data.image}
+            alt={props.data.text.fa}
+            width={60}
+            height={60}
+          />
+          <div className="flex flex-col gap-0.5">
+            <p className="text-smp font-bold">{props.data.text.fa}</p>
+            <p className="text-sm text-gray-400">{props.data.text.en}</p>
+          </div>
         </div>
-        <Image
-          src={props.data.image}
-          alt={props.data.text.fa}
-          width={60}
-          height={60}
-        />
         <CardBorderBottom />
       </Link>
     </SwiperSlide>

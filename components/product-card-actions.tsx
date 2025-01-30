@@ -15,14 +15,14 @@ export function ProductCardActions(props: IProductCardActionsProps) {
 
   return localstorageCart.selectors.isInCart(props.item) ? (
     <div className="absolute -bottom-0.5 flex w-full justify-between rounded-lg p-4 font-bold text-gray-900">
-      <div className="flex w-full justify-between rounded-lg p-3 text-lg text-gray-700">
+      <div className="flex w-full justify-between rounded-lg border bg-white fill-gray-700 p-3 text-lg text-gray-700">
         <button onClick={() => localstorageCart.reducers.increment(props.item)}>
           +
         </button>
         <span>{localstorageCart.selectors.quantity(props.item)}</span>
         {localstorageCart.selectors.quantity(props.item) === 1 ? (
           <button onClick={() => localstorageCart.reducers.remove(props.item)}>
-            <HiTrash size={20} className="fill-gray-700" />
+            <HiTrash size={20} />
           </button>
         ) : (
           <button
