@@ -68,7 +68,7 @@ const Card = (props: ICardProps) => {
     >
       <Link
         href={props.data.path}
-        className="flex items-center justify-between gap-5 p-5"
+        className="flex items-center justify-between gap-5 p-3"
       >
         <div className="flex items-center gap-3">
           <Image
