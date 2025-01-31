@@ -8,7 +8,7 @@ import { useRef } from 'react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { ProductCard } from '@/components/product-card';
+import { ProductCard } from '@/components/global/product-card';
 import { productSliderData } from '@/resources/routes/global/product-slider';
 import { cn } from '@/utils/cn';
 

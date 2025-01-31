@@ -14,22 +14,20 @@ export default function Home() {
         <HeroOfferSlider />
       </div>
       <CategorySlider />
+      <Banners />
       <ProductSliderWithBanner
         category="لپ تاپ"
         position="right"
         path="/"
         image="/images/routes/home/product-slider-with-banner-laptop.png"
       />
-      <Banners />
+      <ProductSlider title="جدیدترین محصولات" path="/" />
       <ProductSliderWithBanner
         category="کنسول بازی"
         position="left"
         path="/"
         image="/images/routes/home/product-slider-with-banner-play-station.png"
       />
-      <Banners />
-      <ProductSlider title="جدیدترین محصولات" path="/" />
-      <Banners />
       <BrandSlider />
     </div>
   );

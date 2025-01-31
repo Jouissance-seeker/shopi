@@ -13,7 +13,7 @@ interface IProps {
 export function ProductCard(props: IProps) {
   return (
     <div key={props.data.id} className="group overflow-hidden">
-      <div className="flex !h-[400px] w-full flex-col items-center justify-center p-5">
+      <div className="relative flex !h-[400px] w-full flex-col items-center justify-center overflow-hidden p-5">
         <Rate data={props.data} />
         <Colors data={props.data} />
         <ImageWithText data={props.data} />

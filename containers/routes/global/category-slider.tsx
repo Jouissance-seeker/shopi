@@ -4,20 +4,31 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useRef } from 'react';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { CardBorderBottom } from '@/components/card-border-bottom';
-import { SliderNavigation } from '@/components/slider-navigation';
+import { CardBorderBottom } from '@/components/global/card-border-bottom';
+import { SliderNavigation } from '@/components/global/slider-navigation';
 import { categorySliderData } from '@/resources/routes/home/category-slider';
+import { cn } from '@/utils/cn';
 
 export function CategorySlider() {
   const swiperRef = useRef<any>(null);
+  const pathname = usePathname();
+  const isPathnameHomepage = pathname === '/';
 
   return (
-    <section className="group/section container relative z-10 col-span-full flex flex-col overflow-hidden">
+    <section
+      className={cn(
+        'group/section relative z-10 col-span-full flex flex-col overflow-hidden',
+        {
+          container: isPathnameHomepage,
+        },
+      )}
+    >
       <Slider swiperRef={swiperRef} />
-      <SliderNavigation swiperRef={swiperRef} />
+      {isPathnameHomepage ? <SliderNavigation swiperRef={swiperRef} /> : null}
     </section>
   );
 }
@@ -37,7 +48,7 @@ const Slider = (props: ISliderProps) => {
       className="container"
     >
       {categorySliderData.map((item) => (
-        <SwiperSlide key={item.id} className="!w-[300px]">
+        <SwiperSlide key={item.id} className="!w-[250px]">
           <Card data={item} />
         </SwiperSlide>
       ))}

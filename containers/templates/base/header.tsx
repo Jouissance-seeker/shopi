@@ -15,7 +15,7 @@ import {
 } from 'react-icons/hi2';
 import { RiUser3Line } from 'react-icons/ri';
 import { ThreeDots } from 'react-loader-spinner';
-import { ToggleSection } from '@/components/toggle-section';
+import { ToggleSection } from '@/components/global/toggle-section';
 import { CATEGORIES } from '@/constants/templates/base/categories';
 import { useToggleUrlState } from '@/hooks/toggle-url-state';
 import { cartSlice } from '@/slices/cart';
@@ -420,19 +420,6 @@ const DesktopBottom = () => {
       <div className="ml-48 flex gap-4">
         {/* search */}
         <DesktopBottomSearch />
-        {/* blog */}
-        <Link href="/blog" className="z-10 flex items-center gap-2">
-          <Image
-            src="/images/templates/base/header-blog-icon.svg"
-            alt="آیکون بلاگ"
-            width={30}
-            height={30}
-          />
-          <div>
-            <p className="font-bold">بلاگ شاپی</p>
-            <p className="text-xs text-gray-400">مطالعه کنید!</p>
-          </div>
-        </Link>
       </div>
     </div>
   );
