@@ -9,7 +9,7 @@ import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ProductCard } from '@/components/global/product-card';
 import { SliderNavigation } from '@/components/global/slider-navigation';
-import { productSliderData } from '@/resources/routes/global/product-slider';
+import { productsData } from '@/resources/routes/global/products';
 
 interface IProductSliderProps {
   title: string;
@@ -44,7 +44,7 @@ export function ProductSlider(props: IProductSliderProps) {
             modules={[Autoplay]}
             id="product-slider"
           >
-            {productSliderData.map((item) => {
+            {productsData.map((item) => {
               return (
                 <SwiperSlide
                   key={item.id}

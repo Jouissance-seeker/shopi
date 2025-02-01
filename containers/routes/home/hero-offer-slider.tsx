@@ -9,7 +9,7 @@ import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ProductCardActions } from '@/components/global/product-card-actions';
-import { productSliderData } from '@/resources/routes/global/product-slider';
+import { productsData } from '@/resources/routes/global/products';
 import { cn } from '@/utils/cn';
 
 export function HeroOfferSlider() {
@@ -35,7 +35,7 @@ export function HeroOfferSlider() {
             },
           }}
         >
-          {productSliderData.map((item) => {
+          {productsData.map((item) => {
             return (
               <SwiperSlide
                 key={item.id}

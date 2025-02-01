@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { HiStar } from 'react-icons/hi2';
 import { TProduct } from '@/types/product';
 import { cn } from '@/utils/cn';
 import { CardBorderBottom } from './card-border-bottom';
@@ -13,8 +12,7 @@ interface IProps {
 export function ProductCard(props: IProps) {
   return (
     <div key={props.data.id} className="group overflow-hidden">
-      <div className="relative flex !h-[400px] w-full flex-col items-center justify-center overflow-hidden p-5">
-        <Rate data={props.data} />
+      <div className="relative flex !h-[370px] w-full flex-col items-center justify-center overflow-hidden p-5">
         <Colors data={props.data} />
         <ImageWithText data={props.data} />
         <Price data={props.data} />
@@ -25,28 +23,9 @@ export function ProductCard(props: IProps) {
   );
 }
 
-const Rate = (props: IProps) => {
-  return (
-    <div
-      className={cn('absolute left-3 top-4 flex flex-col items-center gap-1', {
-        hidden: Boolean(props.data.rate === 0),
-      })}
-    >
-      <HiStar className="size-4 fill-green" />
-      <span className="text-smp font-bold text-gray-500">
-        {props.data.rate}
-      </span>
-    </div>
-  );
-};
-
 const Colors = (props: IProps) => {
   return (
-    <div
-      className={cn('absolute right-3 top-4 flex flex-col items-center gap-1', {
-        hidden: Boolean(props.data.rate === 0),
-      })}
-    >
+    <div className="absolute right-3 top-4 flex flex-col items-center gap-1">
       <div className="grid grid-cols-2 gap-1">
         {props.data.colors?.map((item) => (
           <span
@@ -62,7 +41,10 @@ const Colors = (props: IProps) => {
 
 const ImageWithText = (props: IProps) => {
   return (
-    <Link href={props.data.path} className="flex flex-col items-center gap-3">
+    <Link
+      href={props.data.path}
+      className="mb-5 flex flex-col items-center gap-3"
+    >
       <div className="relative size-[175px]">
         <Image src={props.data.images[0]} alt={props.data.title.fa} fill />
       </div>

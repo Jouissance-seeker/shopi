@@ -1,25 +1,35 @@
 import { BreadCrumb } from '@/components/global/bread-crumb';
-import { productSliderData } from '@/resources/routes/global/product-slider';
+import { Images } from '@/containers/routes/single-product/images';
+import { Price } from '@/containers/routes/single-product/price';
+import { Quantity } from '@/containers/routes/single-product/quantity';
+import { Title } from '@/containers/routes/single-product/title';
+import { productsData } from '@/resources/routes/global/products';
 
 export default function Page() {
+  const data = productsData[0];
+
   return (
     <div className="container">
-      <div className="flex size-full items-center gap-3">
-        <BreadCrumb title="فروشگاه" link={productSliderData[0].category} />
+      <div className="mb-2 flex size-full items-center gap-3">
+        <BreadCrumb title="فروشگاه" link={data.category} />
         <span className="h-px grow bg-[#e6e9ee]" />
       </div>
-      <div className="lg:flex lg:flex-col lg:justify-between">
-        <section className="h-10 w-full bg-red-100">image</section>
-        <div className="flex flex-col sm:flex-row sm:justify-between">
-          <section className="bg-blue-100">title</section>
-          <section className="bg-yellow-100">like</section>
-        </div>
-        <div className="md:flex md:flex-row-reverse">
-          <section className="bg-green-100">add to cart</section>
-          <div className="sm:flex sm:justify-between md:flex-row-reverse">
-            <section className="bg-blue-100">spec</section>
-            <section className="bg-red-100">detail</section>
-          </div>
+      <div className="gap-5 lg:flex">
+        <Images />
+        <Title en={data.title.en} fa={data.title.fa} />
+      </div>
+      <div className="gap-3 md:flex md:flex-row-reverse">
+        <Price
+          discount={data.discount}
+          priceWithDiscount={data.priceWithDiscount}
+          priceWithoutDiscount={data.priceWithoutDiscount}
+        />
+        <Quantity quantity={data.quantity} />
+        <div className="w-full gap-3 bg-red-200 sm:flex sm:justify-between md:flex-row-reverse">
+          <section className="bg-blue-100 md:w-1/2">ویژگی های محصول</section>
+          <section className="bg-blue-300 md:w-1/2">
+            <p>{data.description}</p>
+          </section>
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ProductCard } from '@/components/global/product-card';
-import { productSliderData } from '@/resources/routes/global/product-slider';
+import { productsData } from '@/resources/routes/global/products';
 import { cn } from '@/utils/cn';
 
 interface IProductSliderProps {
@@ -94,7 +94,7 @@ const Slider = (props: ISliderProps) => {
         id="product-slider"
         className="rounded-xl border border-gray-200 bg-white"
       >
-        {productSliderData.map((item) => {
+        {productsData.map((item) => {
           return (
             <SwiperSlide
               key={item.id}

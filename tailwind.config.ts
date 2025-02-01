@@ -31,6 +31,9 @@ export default {
       transitionDuration: {
         DEFAULT: '300ms',
       },
+      borderColor: {
+        DEFAULT: '#efefef',
+      },
       fontSize: {
         smp: '15px',
         xsp: '13px',

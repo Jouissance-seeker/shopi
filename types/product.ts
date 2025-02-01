@@ -1,6 +1,5 @@
 export type TProduct = {
   id: number;
-  rate: number;
   quantity: number;
   colors: string[];
   path: string;
