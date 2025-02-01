@@ -78,7 +78,7 @@ export function HeroOfferSlider() {
                       </div>
                     </div>
                   </div>
-                  <ProductCardActions item={item} color="white" />
+                  <ProductCardActions data={item} type="offer-slider" />
                 </div>
               </SwiperSlide>
             );

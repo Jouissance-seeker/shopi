@@ -16,7 +16,7 @@ export function ProductCard(props: IProps) {
         <Colors data={props.data} />
         <ImageWithText data={props.data} />
         <Price data={props.data} />
-        <ProductCardActions item={props.data} color="red" />
+        <ProductCardActions data={props.data} type="product-slider" />
         <CardBorderBottom />
       </div>
     </div>

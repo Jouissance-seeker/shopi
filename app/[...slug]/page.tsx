@@ -1,5 +1,10 @@
+'use client';
+
 import { BreadCrumb } from '@/components/global/bread-crumb';
+import { ProductCardActions } from '@/components/global/product-card-actions';
 import { Images } from '@/containers/routes/single-product/images';
+import { MiniAttributes } from '@/containers/routes/single-product/mini-attributes';
+import { MiniDescription } from '@/containers/routes/single-product/mini-description';
 import { Price } from '@/containers/routes/single-product/price';
 import { Quantity } from '@/containers/routes/single-product/quantity';
 import { Title } from '@/containers/routes/single-product/title';
@@ -14,22 +19,25 @@ export default function Page() {
         <BreadCrumb title="فروشگاه" link={data.category} />
         <span className="h-px grow bg-[#e6e9ee]" />
       </div>
-      <div className="gap-5 lg:flex">
+      <div className="gap-5 xl:flex">
         <Images />
-        <Title en={data.title.en} fa={data.title.fa} />
-      </div>
-      <div className="gap-3 md:flex md:flex-row-reverse">
-        <Price
-          discount={data.discount}
-          priceWithDiscount={data.priceWithDiscount}
-          priceWithoutDiscount={data.priceWithoutDiscount}
-        />
-        <Quantity quantity={data.quantity} />
-        <div className="w-full gap-3 bg-red-200 sm:flex sm:justify-between md:flex-row-reverse">
-          <section className="bg-blue-100 md:w-1/2">ویژگی های محصول</section>
-          <section className="bg-blue-300 md:w-1/2">
-            <p>{data.description}</p>
-          </section>
+        <div>
+          <Title en={data.title.en} fa={data.title.fa} />
+          <div className="gap-3 md:flex md:flex-row-reverse">
+            <div className="relative z-10 h-fit min-w-[300px] rounded-xl border p-3">
+              <Price
+                discount={data.discount}
+                priceWithDiscount={data.priceWithDiscount}
+                priceWithoutDiscount={data.priceWithoutDiscount}
+              />
+              <Quantity quantity={data.quantity} />
+              <ProductCardActions type="single-product" data={data} />
+            </div>
+            <div className="mt-4 flex w-full flex-col gap-3 sm:flex-row-reverse md:mt-0 xl:gap-5">
+              <MiniAttributes attributes={data.attributes} />
+              <MiniDescription description={data.description} />
+            </div>
+          </div>
         </div>
       </div>
     </div>

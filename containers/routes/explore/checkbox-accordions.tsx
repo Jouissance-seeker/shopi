@@ -103,7 +103,7 @@ const CheckboxsAccordion = (props: ICheckboxsAccordionProps) => {
       >
         <div className="flex flex-col gap-1.5 border-t p-2.5">
           {props.items.map((item) => (
-            <CheckboxItem key={item.id} item={item} />
+            <CheckboxItem key={item.id} data={item} />
           ))}
         </div>
       </div>
@@ -112,7 +112,7 @@ const CheckboxsAccordion = (props: ICheckboxsAccordionProps) => {
 };
 
 interface ICheckboxItemProps {
-  item: {
+  data: {
     text: string;
     id: number;
     query: string;
@@ -122,14 +122,14 @@ interface ICheckboxItemProps {
 const CheckboxItem = (props: ICheckboxItemProps) => {
   const searchParams = useSearchParams();
   const updateQuery = useUpdateQuery();
-  const queryWithPrefix = `filter-${props.item.query}`;
+  const queryWithPrefix = `filter-${props.data.query}`;
   const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
     const paramValues =
       searchParams.get(queryWithPrefix)?.split(',').map(Number) || [];
-    setIsChecked(paramValues.includes(props.item.id));
-  }, [searchParams, queryWithPrefix, props.item.id]);
+    setIsChecked(paramValues.includes(props.data.id));
+  }, [searchParams, queryWithPrefix, props.data.id]);
 
   const handleCheck = () => {
     updateQuery((prev) => {
@@ -139,10 +139,10 @@ const CheckboxItem = (props: ICheckboxItemProps) => {
       let updatedValues;
       if (isChecked) {
         updatedValues = currentValues.filter(
-          (value: number) => value !== props.item.id,
+          (value: number) => value !== props.data.id,
         );
       } else {
-        updatedValues = [...currentValues, props.item.id];
+        updatedValues = [...currentValues, props.data.id];
       }
       return {
         ...prev,
@@ -165,7 +165,7 @@ const CheckboxItem = (props: ICheckboxItemProps) => {
       >
         {isChecked ? <HiCheck className="fill-white p-0.5" /> : null}
       </button>
-      <p className="text-xsp text-gray-600 lg:text-smp">{props.item.text}</p>
+      <p className="text-xsp text-gray-600 lg:text-smp">{props.data.text}</p>
     </div>
   );
 };
