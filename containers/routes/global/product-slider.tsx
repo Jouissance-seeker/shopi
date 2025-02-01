@@ -24,7 +24,7 @@ export function ProductSlider(props: IProductSliderProps) {
       {/* head */}
       <div className="flex items-center gap-3">
         <h2 className="text-lg font-bold text-gray-600">{props.title}</h2>
-        <span className="h-px grow bg-gradient-to-r from-white via-[#e4e8ef] to-white" />
+        <span className="h-px grow bg-[#e6e9ee]" />
         <Link
           href={props.path}
           className="flex gap-1 text-sm font-bold transition-all duration-300 hover:text-red"

@@ -22,7 +22,7 @@ export function Sort() {
 
   return (
     <div>
-      <ul className="flex gap-3 text-sm font-medium text-gray-500">
+      <ul className="flex gap-2 text-sm font-medium text-gray-500">
         {[
           { title: 'جدید ترین', value: 'newest' },
           { title: 'گران ترین', value: 'highest' },

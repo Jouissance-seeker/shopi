@@ -136,7 +136,7 @@ const MobileBottom = () => {
     <div className="flex items-center justify-between border-t pt-3">
       <MobileBottomSearch />
       <div className="flex items-center">
-        <MobileBottomFilterBtn />
+        <MobileBottomFilter />
         <MobileBottomCart />
         <Link href="/auth">
           <HiOutlineUser size={20} />
@@ -360,7 +360,7 @@ const MobileBottomCart = () => {
   );
 };
 
-const MobileBottomFilterBtn = () => {
+const MobileBottomFilter = () => {
   const filterToggleUrlState = useToggleUrlState('filter-section');
   const pathname = usePathname();
 
@@ -372,9 +372,6 @@ const MobileBottomFilterBtn = () => {
       className="relative border-r px-2"
     >
       <HiOutlineFilter size={20} />
-      <p className="absolute -top-1.5 right-1 flex h-3.5 items-center justify-center rounded-[3px] bg-red px-[3px] text-[11px] font-bold text-white">
-        0
-      </p>
     </button>
   );
 };

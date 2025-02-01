@@ -38,16 +38,18 @@ export function CheckboxAccordions() {
   ];
 
   return (
-    <div className="flex flex-col gap-3">
-      {/* desktop */}
-      {data.map((item) => (
-        <div key={item.title} className="hidden min-w-64 lg:block">
-          <div className="sticky top-4 flex flex-col gap-3 overflow-y-auto">
-            <CheckboxsAccordion {...item} />
+    <div className="lg:relative">
+      <div className="sticky top-3 flex  flex-col gap-3 overflow-y-auto">
+        {/* Desktop */}
+        {data.map((item) => (
+          <div key={item.title} className="hidden min-w-64 lg:block">
+            <div className="flex flex-col gap-3">
+              <CheckboxsAccordion {...item} />
+            </div>
           </div>
-        </div>
-      ))}
-      {/* mobile */}
+        ))}
+      </div>
+      {/* Mobile */}
       <ToggleSection
         title="فیلتر"
         isShow={filterToggleUrlState.isShow}
@@ -85,7 +87,7 @@ const CheckboxsAccordion = (props: ICheckboxsAccordionProps) => {
         onClick={() => setIsShow((prev) => !prev)}
         className="flex w-full items-center justify-between p-2.5 text-smp font-medium"
       >
-        <p className="text-sm text-gray-600 lg:text-base">{props.title}</p>
+        <p className="text-sm text-gray-600 lg:text-smp">{props.title}</p>
         <HiChevronDown
           size={18}
           className={cn('transition-all', {
