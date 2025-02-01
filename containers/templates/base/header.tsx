@@ -3,7 +3,9 @@
 import { useKillua } from 'killua';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { HiOutlineFilter } from 'react-icons/hi';
 import {
   HiChevronLeft,
   HiMiniBars3,
@@ -131,13 +133,11 @@ const MobileTopHumbergerMenu = () => {
 
 const MobileBottom = () => {
   return (
-    <div className="flex items-center justify-between gap-2 border-t pt-3">
-      {/* search */}
+    <div className="flex items-center justify-between border-t pt-3">
       <MobileBottomSearch />
-      <div className="flex items-center gap-1">
-        {/* cart */}
+      <div className="flex items-center">
+        <MobileBottomFilterBtn />
         <MobileBottomCart />
-        {/* user */}
         <Link href="/auth">
           <HiOutlineUser size={20} />
         </Link>
@@ -218,7 +218,7 @@ const MobileBottomCart = () => {
       {/* btn */}
       <button
         onClick={() => cartToggleUrlState.show()}
-        className="relative mx-0.5 border-x px-2"
+        className="relative ml-1.5 border-x px-2"
       >
         <HiOutlineShoppingCart size={20} />
         <p className="absolute -top-1.5 right-1 flex h-3.5 items-center justify-center rounded-[3px] bg-red px-[3px] text-[11px] font-bold text-white">
@@ -230,7 +230,7 @@ const MobileBottomCart = () => {
         title="سبد خرید"
         isShow={cartToggleUrlState.isShow}
         onClose={() => cartToggleUrlState.hide()}
-        className="container absolute left-0 top-[110px] z-50 h-4 w-screen"
+        className="absolute left-0 top-[110px] z-50 h-4 w-screen"
       >
         {localstorageCart.selectors.isEmpty() ? (
           <div className="flex flex-col items-center py-3">
@@ -357,6 +357,25 @@ const MobileBottomCart = () => {
         )}
       </ToggleSection>
     </div>
+  );
+};
+
+const MobileBottomFilterBtn = () => {
+  const filterToggleUrlState = useToggleUrlState('filter-section');
+  const pathname = usePathname();
+
+  if (pathname !== '/explore') return;
+
+  return (
+    <button
+      onClick={() => filterToggleUrlState.show()}
+      className="relative border-r px-2"
+    >
+      <HiOutlineFilter size={20} />
+      <p className="absolute -top-1.5 right-1 flex h-3.5 items-center justify-center rounded-[3px] bg-red px-[3px] text-[11px] font-bold text-white">
+        0
+      </p>
+    </button>
   );
 };
 

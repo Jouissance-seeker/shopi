@@ -21,7 +21,7 @@ export function useToggleUrlState(key: string) {
       }
     });
     if (newState) {
-      updatedSearchParams.set(prefixedKey, '');
+      updatedSearchParams.set(prefixedKey, 'true');
     }
     router.push(`${pathname}?${updatedSearchParams.toString()}`, {
       scroll: false,
