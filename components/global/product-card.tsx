@@ -79,11 +79,11 @@ const Price = (props: IProps) => {
           hidden: Boolean(props.data.discount === 0),
         })}
       >
-        {props.data.priceWithDiscount.toLocaleString('fa-IR')}
+        {props.data.priceWithoutDiscount.toLocaleString('fa-IR')}
       </del>
       <div>
         <p className="absolute bottom-2 left-8 text-2xl font-bold text-black">
-          {props.data.priceWithoutDiscount.toLocaleString('fa-IR')}
+          {props.data.priceWithDiscount.toLocaleString('fa-IR')}
         </p>
         <p className="absolute bottom-5 left-3 -rotate-90 text-[10px] font-bold text-gray-500">
           تومان
