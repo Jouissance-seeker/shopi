@@ -10,7 +10,7 @@ export function MiniAttributes(props: IMiniAttributesProps) {
     <section className="flex min-w-40 flex-col gap-1">
       {/* head */}
       <div className="flex items-center gap-1">
-        <p className="mb-1 text-sm font-bold text-gray-400">ویژگی ها</p>
+        <p className="mb-1 text-smp font-bold text-gray-400">ویژگی ها</p>
         <span className="h-px grow bg-[#e6e9ee]" />
       </div>
       {/* body */}

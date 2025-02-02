@@ -17,6 +17,7 @@ export type TProduct = {
   category: {
     text: string;
     path: string;
+    image: string;
   };
   images: string[];
   description: string;

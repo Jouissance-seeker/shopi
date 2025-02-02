@@ -11,7 +11,9 @@ export function Price(props: IPriceProps) {
 
   return (
     <section
-      className={cn('flex h-16 justify-between px-3', { 'h-10': !hasDiscount })}
+      className={cn('flex h-16 items-center justify-between px-3', {
+        'h-12': !hasDiscount,
+      })}
     >
       <div>
         <del

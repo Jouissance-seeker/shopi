@@ -60,7 +60,7 @@ export function Images() {
                   swiperImagesRef.current?.slideTo(index);
                   swiperImageMainRef.current?.slideTo(index);
                 }}
-                className={cn('rounded-lg border p-1', {
+                className={cn('rounded-lg border overflow-hidden', {
                   'border-gray-300': activedIndex === index,
                 })}
               >

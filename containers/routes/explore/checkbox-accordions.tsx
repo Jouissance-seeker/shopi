@@ -159,7 +159,7 @@ const CheckboxItem = (props: ICheckboxItemProps) => {
       <button
         onClick={handleCheck}
         className={cn(
-          'size-[18px] rounded-md border transition-all border-gray-300 bg-gray-100 flex items-center justify-center',
+          'size-[18px] rounded-md border transition-all border-gray-200 bg-gray flex items-center justify-center',
           { 'bg-green': isChecked },
         )}
       >

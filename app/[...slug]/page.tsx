@@ -2,6 +2,7 @@
 
 import { BreadCrumb } from '@/components/global/bread-crumb';
 import { ProductCardActions } from '@/components/global/product-card-actions';
+import { Category } from '@/containers/routes/single-product/category';
 import { Images } from '@/containers/routes/single-product/images';
 import { MiniAttributes } from '@/containers/routes/single-product/mini-attributes';
 import { MiniDescription } from '@/containers/routes/single-product/mini-description';
@@ -20,7 +21,10 @@ export default function Page() {
         <span className="h-px grow bg-[#e6e9ee]" />
       </div>
       <div className="gap-5 xl:flex">
-        <Images />
+        <div className="flex flex-col gap-3">
+          <Images />
+          <Category category={data.category} />
+        </div>
         <div>
           <Title en={data.title.en} fa={data.title.fa} />
           <div className="gap-5 md:flex md:flex-row-reverse">
