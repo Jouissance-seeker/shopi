@@ -7,12 +7,14 @@ interface IMiniAttributesProps {
 
 export function MiniAttributes(props: IMiniAttributesProps) {
   return (
-    <section className="min-w-36">
+    <section className="flex min-w-40 flex-col gap-1">
+      {/* head */}
       <div className="flex items-center gap-1">
-        <p className="mb-1 text-xsp font-bold text-gray-400">ویژگی های محصول</p>
+        <p className="mb-1 text-sm font-bold text-gray-400">ویژگی ها</p>
         <span className="h-px grow bg-[#e6e9ee]" />
       </div>
-      <div className="flex flex-col text-xsp font-medium text-gray-400">
+      {/* body */}
+      <div className="flex flex-col text-sm font-medium text-gray-400">
         {props.attributes.map((item) => {
           return (
             <div key={item.key} className="flex justify-between">

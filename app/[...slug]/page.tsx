@@ -23,7 +23,7 @@ export default function Page() {
         <Images />
         <div>
           <Title en={data.title.en} fa={data.title.fa} />
-          <div className="gap-3 md:flex md:flex-row-reverse">
+          <div className="gap-5 md:flex md:flex-row-reverse">
             <div className="relative z-10 h-fit min-w-[300px] rounded-xl border p-3">
               <Price
                 discount={data.discount}
@@ -33,7 +33,7 @@ export default function Page() {
               <Quantity quantity={data.quantity} />
               <ProductCardActions type="single-product" data={data} />
             </div>
-            <div className="mt-4 flex w-full flex-col gap-3 sm:flex-row-reverse md:mt-0 xl:gap-5">
+            <div className="mt-5 flex w-full flex-col gap-5 sm:flex-row-reverse md:mt-0 xl:gap-5">
               <MiniAttributes attributes={data.attributes} />
               <MiniDescription description={data.description} />
             </div>

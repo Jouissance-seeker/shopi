@@ -4,14 +4,14 @@ interface IDescriptionProps {
 
 export function MiniDescription(props: IDescriptionProps) {
   return (
-    <section>
+    <section className="flex flex-col gap-1">
+      {/* head */}
       <div className="flex items-center gap-1">
-        <p className="mb-1 text-xsp font-bold text-gray-400">توضیح محصول</p>
+        <p className="mb-1 text-sm font-bold text-gray-400">توضیحات</p>
         <span className="h-px grow bg-[#e6e9ee]" />
       </div>
-      <p className="text-xsp font-medium text-gray-400">
-        توضیحات {props.description}
-      </p>
+      {/* body */}
+      <p className="text-sm font-medium text-gray-400">{props.description}</p>
     </section>
   );
 }
