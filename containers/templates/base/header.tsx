@@ -27,7 +27,6 @@ import { cn } from '@/utils/cn';
 export function Header() {
   return (
     <header className="mb-3">
-      <ToggleSections />
       <Mobile />
       <Desktop />
     </header>
@@ -69,9 +68,69 @@ const MobileTopCategories = () => {
   const mobileCategoriesToggleUrlState = useToggleUrlState('mobile-categories');
 
   return (
-    <button onClick={() => mobileCategoriesToggleUrlState.show()}>
-      <BiSolidCategory size={30} className="fill-red" />
-    </button>
+    <div>
+      {/* btn */}
+      <button onClick={() => mobileCategoriesToggleUrlState.show()}>
+        <BiSolidCategory size={30} className="fill-red" />
+      </button>
+      {/* section */}
+      <ToggleSection
+        title="دسته بندی ها"
+        isShow={mobileCategoriesToggleUrlState.isShow}
+        onClose={() => mobileCategoriesToggleUrlState.hide()}
+        className="absolute left-0 top-[100px] z-50 h-4 w-screen"
+      >
+        <nav className="text-sm">
+          <div className="mb-2.5 overflow-hidden rounded-b-lg border-b">
+            <ul className="max-h-[calc(100dvh_-_320px)] overflow-y-auto scrollbar-hide">
+              {CATEGORIES.map((categoryItem) => (
+                <li
+                  key={categoryItem.text}
+                  className="border-b last:border-b-0"
+                >
+                  <Link
+                    href={categoryItem.path}
+                    className="flex w-full border-b p-2 transition-all hover:bg-gray-50"
+                  >
+                    {categoryItem.text}
+                  </Link>
+                  <ul className="mr-2.5">
+                    {categoryItem.children.map((childItem) => (
+                      <li
+                        key={childItem.text}
+                        className="border-r border-t first:border-t-0"
+                      >
+                        <Link
+                          href={childItem.link}
+                          className="flex border-y p-2 transition-all first:border-t-0 hover:bg-gray-50"
+                        >
+                          {childItem.text}
+                        </Link>
+                        <ul className="mr-2.5">
+                          {childItem.children.map((subChildItem) => (
+                            <li
+                              key={subChildItem.text}
+                              className="border-b border-r last:border-b-0"
+                            >
+                              <Link
+                                href={subChildItem.link}
+                                className="flex p-2 transition-all hover:bg-gray-50"
+                              >
+                                {subChildItem.text}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </nav>
+      </ToggleSection>
+    </div>
   );
 };
 
@@ -154,13 +213,14 @@ const MobileBottomSearch = () => {
 };
 
 const MobileBottomCart = () => {
-  const cartToggleUrlState = useToggleUrlState('mobile-cart');
+  const mobileCartToggleUrlState = useToggleUrlState('mobile-cart');
   const localstorageCart = useKillua(cartSlice);
 
   return (
     <div className="flex items-center">
+      {/* btn */}
       <button
-        onClick={() => cartToggleUrlState.show()}
+        onClick={() => mobileCartToggleUrlState.show()}
         className="relative ml-1.5 border-x px-2"
       >
         <HiOutlineShoppingCart size={20} />
@@ -168,6 +228,137 @@ const MobileBottomCart = () => {
           {localstorageCart.selectors.totalItems()}
         </p>
       </button>
+      {/* section */}
+      <ToggleSection
+        title="سبد خرید"
+        isShow={mobileCartToggleUrlState.isShow}
+        onClose={() => mobileCartToggleUrlState.hide()}
+        className="absolute left-0 top-[100px] z-50 h-4 w-screen"
+      >
+        {localstorageCart.selectors.isEmpty() ? (
+          <div className="flex flex-col items-center py-3">
+            <Image
+              src="/images/templates/base/empty-cart.svg"
+              height={125}
+              width={125}
+              alt="سبد خرید خالی"
+            />
+            <p className="text-smp font-medium">سبد خرید خالی است!</p>
+          </div>
+        ) : (
+          <div>
+            {/** cart items */}
+            {localstorageCart.get().map((item) => (
+              <div
+                key={item.id}
+                className="relative mt-3 flex items-center gap-5 px-3"
+              >
+                {/* remove btn */}
+                <button
+                  className="absolute top-0 rounded-md bg-red p-[3px]"
+                  onClick={() => localstorageCart.reducers.remove(item)}
+                >
+                  <HiMiniXMark size={15} className="fill-white" />
+                </button>
+                {/* image */}
+                <Image
+                  alt={item.title.fa}
+                  src={item.images[0]}
+                  width={60}
+                  height={60}
+                />
+                <div className="mb-4 w-full">
+                  {/* title */}
+                  <p className="mb-2 text-smp font-bold">{item.title.fa}</p>
+                  <div className="relative flex flex-col items-end">
+                    {/* increment btn / decrement btn / remove btn */}
+                    <div className="flex w-24 justify-between rounded-lg border bg-white px-3 py-1.5 font-bold text-gray-700">
+                      <button
+                        onClick={() =>
+                          localstorageCart.reducers.increment(item)
+                        }
+                      >
+                        +
+                      </button>
+                      <p>{localstorageCart.selectors.quantity(item)}</p>
+                      {localstorageCart.selectors.isInCart(item) ? (
+                        <button
+                          onClick={() => localstorageCart.reducers.remove(item)}
+                        >
+                          <HiTrash size={16} className="fill-gray-700" />
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() =>
+                            localstorageCart.reducers.decrement(item)
+                          }
+                          className="text-gray-700"
+                        >
+                          -
+                        </button>
+                      )}
+                    </div>
+                    {/* price */}
+                    <div className="flex">
+                      <del
+                        className={cn(
+                          'absolute bottom-[20px] left-[118px] text-sm text-gray-400',
+                          {
+                            hidden: Boolean(item.discount === 0),
+                          },
+                        )}
+                      >
+                        {item.priceWithoutDiscount.toLocaleString('fa-IR')}
+                      </del>
+                      <p className="absolute bottom-3 left-[100px] -rotate-90 text-[10px] font-bold text-black/40">
+                        تومان
+                      </p>
+                      <p className="absolute bottom-0 left-[120px] text-lg font-bold text-black">
+                        {item.priceWithDiscount.toLocaleString('fa-IR')}
+                      </p>
+                    </div>
+                    {/* discount */}
+                    <div
+                      className={cn(
+                        'absolute bottom-2 left-[210px] flex h-[22px] gap-1 rounded-md bg-red px-2',
+                        {
+                          hidden: Boolean(item.discount === 0),
+                        },
+                      )}
+                    >
+                      <p className="pt-0.5 text-xsp font-bold text-white">
+                        {item.discount}
+                      </p>
+                      <p className="pt-1 text-xs font-bold text-white">%</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+            {/** total price / place order */}
+            <div className="flex items-center justify-between border-t py-3">
+              <div className="relative flex w-fit flex-col px-4">
+                <p className="text-xsp font-bold">مبلغ قابل پرداخت</p>
+                <p className="text-xl font-bold text-black">
+                  {localstorageCart.selectors
+                    .totalPrice()
+                    .toLocaleString('fa-IR')}
+                </p>
+                <p className="absolute -left-1 bottom-3 -rotate-90 text-[10px] font-bold text-black/40">
+                  تومان
+                </p>
+              </div>
+              <Link
+                href="/checkout"
+                className="ml-4 rounded-lg bg-red px-4 py-2 text-white"
+                onClick={() => mobileCartToggleUrlState.hide()}
+              >
+                ثبت سفارش
+              </Link>
+            </div>
+          </div>
+        )}
+      </ToggleSection>
     </div>
   );
 };
@@ -568,214 +759,5 @@ const DesktopBottomSearch = () => {
         </div>
       </div>
     </div>
-  );
-};
-
-const ToggleSections = () => {
-  const mobileCategoriesToggleUrlState = useToggleUrlState('mobile-categories');
-  const mobileCartToggleUrlState = useToggleUrlState('mobile-cart');
-  const authToggleUrlState = useToggleUrlState('auth');
-  const localstorageCart = useKillua(cartSlice);
-
-  return (
-    <>
-      {/* mobile categories */}
-      <ToggleSection
-        title="دسته بندی ها"
-        isShow={mobileCategoriesToggleUrlState.isShow}
-        onClose={() => mobileCategoriesToggleUrlState.hide()}
-        className="absolute left-0 top-[100px] z-50 h-4 w-screen"
-      >
-        <nav className="text-sm">
-          <div className="mb-2.5 overflow-hidden rounded-b-lg border-b">
-            <ul className="max-h-[calc(100dvh_-_320px)] overflow-y-auto scrollbar-hide">
-              {CATEGORIES.map((categoryItem) => (
-                <li
-                  key={categoryItem.text}
-                  className="border-b last:border-b-0"
-                >
-                  <Link
-                    href={categoryItem.path}
-                    className="flex w-full border-b p-2 transition-all hover:bg-gray-50"
-                  >
-                    {categoryItem.text}
-                  </Link>
-                  <ul className="mr-2.5">
-                    {categoryItem.children.map((childItem) => (
-                      <li
-                        key={childItem.text}
-                        className="border-r border-t first:border-t-0"
-                      >
-                        <Link
-                          href={childItem.link}
-                          className="flex border-y p-2 transition-all first:border-t-0 hover:bg-gray-50"
-                        >
-                          {childItem.text}
-                        </Link>
-                        <ul className="mr-2.5">
-                          {childItem.children.map((subChildItem) => (
-                            <li
-                              key={subChildItem.text}
-                              className="border-b border-r last:border-b-0"
-                            >
-                              <Link
-                                href={subChildItem.link}
-                                className="flex p-2 transition-all hover:bg-gray-50"
-                              >
-                                {subChildItem.text}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </nav>
-      </ToggleSection>
-      {/* mobile cart */}
-      <ToggleSection
-        title="سبد خرید"
-        isShow={mobileCartToggleUrlState.isShow}
-        onClose={() => mobileCartToggleUrlState.hide()}
-        className="absolute left-0 top-[100px] z-50 h-4 w-screen"
-      >
-        {localstorageCart.selectors.isEmpty() ? (
-          <div className="flex flex-col items-center py-3">
-            <Image
-              src="/images/templates/base/empty-cart.svg"
-              height={125}
-              width={125}
-              alt="سبد خرید خالی"
-            />
-            <p className="text-smp font-medium">سبد خرید خالی است!</p>
-          </div>
-        ) : (
-          <div>
-            {/** cart items */}
-            {localstorageCart.get().map((item) => (
-              <div
-                key={item.id}
-                className="relative mt-3 flex items-center gap-5 px-3"
-              >
-                {/* remove btn */}
-                <button
-                  className="absolute top-0 rounded-md bg-red p-[3px]"
-                  onClick={() => localstorageCart.reducers.remove(item)}
-                >
-                  <HiMiniXMark size={15} className="fill-white" />
-                </button>
-                {/* image */}
-                <Image
-                  alt={item.title.fa}
-                  src={item.images[0]}
-                  width={60}
-                  height={60}
-                />
-                <div className="mb-4 w-full">
-                  {/* title */}
-                  <p className="mb-2 text-smp font-bold">{item.title.fa}</p>
-                  <div className="relative flex flex-col items-end">
-                    {/* increment btn / decrement btn / remove btn */}
-                    <div className="flex w-24 justify-between rounded-lg border bg-white px-3 py-1.5 font-bold text-gray-700">
-                      <button
-                        onClick={() =>
-                          localstorageCart.reducers.increment(item)
-                        }
-                      >
-                        +
-                      </button>
-                      <p>{localstorageCart.selectors.quantity(item)}</p>
-                      {localstorageCart.selectors.isInCart(item) ? (
-                        <button
-                          onClick={() => localstorageCart.reducers.remove(item)}
-                        >
-                          <HiTrash size={16} className="fill-gray-700" />
-                        </button>
-                      ) : (
-                        <button
-                          onClick={() =>
-                            localstorageCart.reducers.decrement(item)
-                          }
-                          className="text-gray-700"
-                        >
-                          -
-                        </button>
-                      )}
-                    </div>
-                    {/* price */}
-                    <div className="flex">
-                      <del
-                        className={cn(
-                          'absolute bottom-[20px] left-[118px] text-sm text-gray-400',
-                          {
-                            hidden: Boolean(item.discount === 0),
-                          },
-                        )}
-                      >
-                        {item.priceWithoutDiscount.toLocaleString('fa-IR')}
-                      </del>
-                      <p className="absolute bottom-3 left-[100px] -rotate-90 text-[10px] font-bold text-black/40">
-                        تومان
-                      </p>
-                      <p className="absolute bottom-0 left-[120px] text-lg font-bold text-black">
-                        {item.priceWithDiscount.toLocaleString('fa-IR')}
-                      </p>
-                    </div>
-                    {/* discount */}
-                    <div
-                      className={cn(
-                        'absolute bottom-2 left-[210px] flex h-[22px] gap-1 rounded-md bg-red px-2',
-                        {
-                          hidden: Boolean(item.discount === 0),
-                        },
-                      )}
-                    >
-                      <p className="pt-0.5 text-xsp font-bold text-white">
-                        {item.discount}
-                      </p>
-                      <p className="pt-1 text-xs font-bold text-white">%</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-            {/** total price / place order */}
-            <div className="flex items-center justify-between border-t py-3">
-              <div className="relative flex w-fit flex-col px-4">
-                <p className="text-xsp font-bold">مبلغ قابل پرداخت</p>
-                <p className="text-xl font-bold text-black">
-                  {localstorageCart.selectors
-                    .totalPrice()
-                    .toLocaleString('fa-IR')}
-                </p>
-                <p className="absolute -left-1 bottom-3 -rotate-90 text-[10px] font-bold text-black/40">
-                  تومان
-                </p>
-              </div>
-              <Link
-                href="/checkout"
-                className="ml-4 rounded-lg bg-red px-4 py-2 text-white"
-                onClick={() => mobileCartToggleUrlState.hide()}
-              >
-                ثبت سفارش
-              </Link>
-            </div>
-          </div>
-        )}
-      </ToggleSection>
-      {/* auth */}
-      <ToggleSection
-        title="ورود / ثبت نام"
-        isShow={authToggleUrlState.isShow}
-        onClose={() => authToggleUrlState.hide()}
-        className="absolute left-0 top-[100px] z-50 h-4 w-screen"
-      >
-        hi
-      </ToggleSection>
-    </>
   );
 };
