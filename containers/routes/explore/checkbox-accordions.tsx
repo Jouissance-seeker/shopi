@@ -9,7 +9,7 @@ import { useUpdateQuery } from '@/hooks/update-query';
 import { cn } from '@/utils/cn';
 
 export function CheckboxAccordions() {
-  const filterToggleUrlState = useToggleUrlState('filter-section');
+  const filterToggleUrlState = useToggleUrlState('filter');
   const data = [
     {
       title: 'دسته بندی',
