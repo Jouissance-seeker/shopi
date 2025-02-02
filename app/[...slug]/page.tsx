@@ -1,5 +1,3 @@
-'use client';
-
 import { BreadCrumb } from '@/components/global/bread-crumb';
 import { ProductCardActions } from '@/components/global/product-card-actions';
 import { Category } from '@/containers/routes/single-product/category';
@@ -11,8 +9,15 @@ import { Quantity } from '@/containers/routes/single-product/quantity';
 import { Title } from '@/containers/routes/single-product/title';
 import { productsData } from '@/resources/routes/global/products';
 
-export default function Page() {
-  const data = productsData[0];
+interface IPageProps {
+  params: Promise<{
+    slug: string;
+  }>;
+}
+
+export default async function Page(props: IPageProps) {
+  const { slug } = await props.params;
+  const data = productsData[Number(slug[1]) - 1];
 
   return (
     <div className="container">
@@ -22,7 +27,7 @@ export default function Page() {
       </div>
       <div className="gap-5 xl:flex">
         <div className="flex flex-col gap-3">
-          <Images />
+          <Images images={data.images} title={data.title} />
           <Category category={data.category} />
         </div>
         <div>

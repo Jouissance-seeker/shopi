@@ -4,13 +4,20 @@ import 'swiper/css';
 import Image from 'next/image';
 import { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { productsData } from '@/resources/routes/global/products';
 import { cn } from '@/utils/cn';
 
-export function Images() {
+interface IImagesProps {
+  title: {
+    fa: string;
+    en: string;
+  };
+  images: string[];
+}
+
+export function Images(props: IImagesProps) {
   const swiperImageMainRef = useRef<any>(null);
   const swiperImagesRef = useRef<any>(null);
-  const data = productsData[0];
+
   const [activedIndex, setActivedIndex] = useState(0);
 
   return (
@@ -29,12 +36,12 @@ export function Images() {
           spaceBetween={8}
           className="container"
         >
-          {data.images.map((item) => (
+          {props.images.map((item) => (
             <SwiperSlide key={item}>
               <button className="flex w-full justify-center rounded-lg border p-1">
                 <Image
                   src={item}
-                  alt={data.title.fa}
+                  alt={props.title.fa}
                   width={260}
                   height={260}
                 />
@@ -52,7 +59,7 @@ export function Images() {
           id="product-images-slider"
           className="container w-fit"
         >
-          {data.images.map((item, index) => (
+          {props.images.map((item, index) => (
             <SwiperSlide key={item} className="!w-[70px] rounded-lg">
               <button
                 onClick={() => {
@@ -64,7 +71,7 @@ export function Images() {
                   'border-gray-300': activedIndex === index,
                 })}
               >
-                <Image src={item} alt={data.title.fa} width={70} height={70} />
+                <Image src={item} alt={props.title.fa} width={70} height={70} />
               </button>
             </SwiperSlide>
           ))}

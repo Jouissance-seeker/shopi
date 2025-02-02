@@ -1,3 +1,5 @@
+'use client';
+
 import { useKillua } from 'killua';
 import { FiShoppingBag } from 'react-icons/fi';
 import { HiTrash } from 'react-icons/hi2';
@@ -35,7 +37,7 @@ export function ProductCardActions({ data, type }: IProductCardActionsProps) {
             'flex w-full justify-between rounded-lg border bg-white fill-gray-700 text-lg text-gray-700',
             {
               'p-4': type === 'single-product',
-              'p-3': type !== 'single-product',
+              'p-2': type !== 'single-product',
             },
           )}
         >

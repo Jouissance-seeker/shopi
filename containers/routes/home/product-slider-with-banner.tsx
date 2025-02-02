@@ -55,7 +55,7 @@ const Banner = (props: IBannerProps) => {
     <Link
       href={props.path}
       className={cn(
-        'col-span-full flex justify-between rounded-xl bg-red p-3 md:col-span-1 md:flex-col md:items-center md:gap-4',
+        'col-span-full flex justify-between rounded-xl bg-red p-3 md:col-span-1 md:flex-col md:items-center',
         { 'md:order-1': props.position === 'left' },
         { 'md:order-2': props.position === 'right' },
       )}
@@ -65,7 +65,7 @@ const Banner = (props: IBannerProps) => {
         src={props.image}
         width={150}
         height={150}
-        className="md:w-[220px] md:pt-10"
+        className="md:w-[220px]"
       />
       <div className="flex w-fit flex-col items-center justify-center md:gap-2 md:pb-8">
         <p className="text-smp font-bold text-white lg:text-base">

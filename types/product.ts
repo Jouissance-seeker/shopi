@@ -5,7 +5,6 @@ export type TProduct = {
     key: string;
     value: string;
   }[];
-  colors: string[];
   path: string;
   discount: number;
   priceWithoutDiscount: number;

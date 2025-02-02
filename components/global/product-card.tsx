@@ -12,8 +12,7 @@ interface IProps {
 export function ProductCard(props: IProps) {
   return (
     <div key={props.data.id} className="group overflow-hidden">
-      <div className="relative flex !h-[370px] w-full flex-col items-center justify-center overflow-hidden p-5">
-        <Colors data={props.data} />
+      <div className="relative flex !h-[330px] w-full flex-col items-center justify-center overflow-hidden p-5">
         <ImageWithText data={props.data} />
         <Price data={props.data} />
         <ProductCardActions data={props.data} type="product-slider" />
@@ -23,27 +22,11 @@ export function ProductCard(props: IProps) {
   );
 }
 
-const Colors = (props: IProps) => {
-  return (
-    <div className="absolute right-3 top-4 flex flex-col items-center gap-1">
-      <div className="grid grid-cols-2 gap-1">
-        {props.data.colors?.map((item) => (
-          <span
-            key={item}
-            className="size-2 rounded-full bg-gray-200"
-            style={{ backgroundColor: item }}
-          />
-        ))}
-      </div>
-    </div>
-  );
-};
-
 const ImageWithText = (props: IProps) => {
   return (
     <Link
       href={props.data.path}
-      className="mb-5 flex flex-col items-center gap-3"
+      className="mb-10 flex flex-col items-center gap-3"
     >
       <div className="relative size-[175px]">
         <Image src={props.data.images[0]} alt={props.data.title.fa} fill />
@@ -57,7 +40,7 @@ const Price = (props: IProps) => {
   return (
     <div>
       <del
-        className={cn('absolute bottom-9 left-[74px] text-smp text-gray-400', {
+        className={cn('absolute bottom-9 left-[80px] text-smp text-gray-400', {
           hidden: Boolean(props.data.discount === 0),
         })}
       >
