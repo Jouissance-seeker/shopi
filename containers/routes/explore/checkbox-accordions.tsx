@@ -40,7 +40,7 @@ export function CheckboxAccordions() {
   return (
     <div className="lg:relative">
       <div className="sticky top-3 flex  flex-col gap-3 overflow-y-auto">
-        {/* Desktop */}
+        {/* desktop */}
         {data.map((item) => (
           <div key={item.title} className="hidden min-w-64 lg:block">
             <div className="flex flex-col gap-3">
@@ -49,7 +49,7 @@ export function CheckboxAccordions() {
           </div>
         ))}
       </div>
-      {/* Mobile */}
+      {/* mobile */}
       <ToggleSection
         title="فیلتر"
         isShow={filterToggleUrlState.isShow}

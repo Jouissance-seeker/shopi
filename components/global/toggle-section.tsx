@@ -23,7 +23,7 @@ export function ToggleSection(props: IToggleSectionProps) {
     <div>
       {/* backdrop */}
       <div
-        className={cn('fixed inset-0 transition-all', {
+        className={cn('fixed inset-0 z-40 transition-all', {
           show: props.isShow,
           hide: !props.isShow,
           'backdrop-blur-sm bg-black/10': props.isBackDrop,
@@ -33,7 +33,7 @@ export function ToggleSection(props: IToggleSectionProps) {
       {/* section */}
       <div
         ref={sectionRef}
-        className={cn('transition-all', props.className, {
+        className={cn('transition-all  relative z-50', props.className, {
           show: props.isShow,
           hide: !props.isShow,
         })}

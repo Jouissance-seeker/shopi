@@ -45,37 +45,41 @@ const Mobile = () => {
 const MobileTop = () => {
   return (
     <div className="flex justify-between">
-      {/* humberger menu */}
-      <MobileTopHumbergerMenu />
-      {/* logo */}
-      <Link href="/">
-        <Image
-          src="/images/templates/base/header-logo-mobile.svg"
-          alt="لوگو"
-          width={80}
-          height={20}
-        />
-      </Link>
+      <MobileTopCategories />
+      <MobileTopLogo />
     </div>
   );
 };
 
-const MobileTopHumbergerMenu = () => {
-  const humbergerMenuToggleUrlState = useToggleUrlState(
-    'humberger-menu-section',
+const MobileTopLogo = () => {
+  return (
+    <Link href="/">
+      <Image
+        src="/images/templates/base/header-logo-mobile.svg"
+        alt="لوگو"
+        width={80}
+        height={20}
+      />
+    </Link>
+  );
+};
+
+const MobileTopCategories = () => {
+  const mobileCategoriesToggleUrlState = useToggleUrlState(
+    'mobile-categories-section',
   );
 
   return (
     <div>
       {/* btn */}
-      <button onClick={() => humbergerMenuToggleUrlState.show()}>
+      <button onClick={() => mobileCategoriesToggleUrlState.show()}>
         <BiSolidCategory size={30} className="fill-red" />
       </button>
       {/* section */}
       <ToggleSection
-        title="دسته بندی"
-        isShow={humbergerMenuToggleUrlState.isShow}
-        onClose={() => humbergerMenuToggleUrlState.hide()}
+        title="دسته بندی ها"
+        isShow={mobileCategoriesToggleUrlState.isShow}
+        onClose={() => mobileCategoriesToggleUrlState.hide()}
         className="absolute left-0 top-[105px] z-50 h-4 w-screen"
       >
         <nav className="text-sm">
@@ -389,38 +393,53 @@ const Desktop = () => {
 const DesktopTop = () => {
   return (
     <div className="relative mb-8 mt-6 flex">
-      {/* user */}
-      <Link href="/auth" className="flex items-center gap-1">
-        <RiUser3Line size={20} className="text-black" />
-        <p className="font-bold">وارد شوید</p>
-      </Link>
-      {/* logo */}
-      <div>
-        <Link href="/">
-          <Image
-            src="/images/templates/base/header-logo-desktop.svg"
-            alt="لوگو"
-            width={130}
-            height={80}
-            className="absolute left-0 z-10"
-          />
-        </Link>
+      <DesktopTopAuth />
+      <DesktopTopLogo />
+      <DesktopTopCall />
+    </div>
+  );
+};
+
+const DesktopTopAuth = () => {
+  return (
+    <Link href="/auth" className="flex items-center gap-1">
+      <RiUser3Line size={20} className="text-black" />
+      <p className="font-bold">وارد شوید</p>
+    </Link>
+  );
+};
+
+const DesktopTopCall = () => {
+  return (
+    <Link
+      href="tel:021-12345678"
+      className="absolute left-52 flex items-center gap-1"
+    >
+      <p className="text-lg font-bold text-red">12345678</p>
+      <p className="text-xs font-bold text-gray-400">021</p>
+    </Link>
+  );
+};
+
+const DesktopTopLogo = () => {
+  return (
+    <div>
+      <Link href="/">
         <Image
-          src="/images/templates/base/bg-logo-wave.png"
+          src="/images/templates/base/header-logo-desktop.svg"
           alt="لوگو"
-          width={350}
-          height={130}
-          className="absolute left-0"
+          width={130}
+          height={80}
+          className="absolute left-0 z-10"
         />
-      </div>
-      {/* call */}
-      <Link
-        href="tel:021-12345678"
-        className="absolute left-52 flex items-center gap-1"
-      >
-        <p className="text-lg font-bold text-red">12345678</p>
-        <p className="text-xs font-bold text-gray-400">021</p>
       </Link>
+      <Image
+        src="/images/templates/base/bg-logo-wave.png"
+        alt="لوگو"
+        width={350}
+        height={130}
+        className="absolute left-0"
+      />
     </div>
   );
 };
@@ -443,13 +462,15 @@ const DesktopBottom = () => {
 };
 
 const DesktopBottomCategory = () => {
-  const categoriesToggleUrlState = useToggleUrlState('categories-section');
+  const desktopCategoriesToggleUrlState = useToggleUrlState(
+    'desktop-categories-section',
+  );
   const [activedCategoryData, setActivedCategoryData] = useState(CATEGORIES[0]);
 
   return (
     <div
-      onMouseEnter={() => categoriesToggleUrlState.show()}
-      onMouseLeave={() => categoriesToggleUrlState.hide()}
+      onMouseEnter={() => desktopCategoriesToggleUrlState.show()}
+      onMouseLeave={() => desktopCategoriesToggleUrlState.hide()}
       className="relative"
     >
       {/* btn */}
@@ -462,8 +483,8 @@ const DesktopBottomCategory = () => {
         className={cn(
           'absolute right-0 container z-50 p-0 top-[70px] w-screen transition-all',
           {
-            show: categoriesToggleUrlState.isShow,
-            hide: !categoriesToggleUrlState.isShow,
+            show: desktopCategoriesToggleUrlState.isShow,
+            hide: !desktopCategoriesToggleUrlState.isShow,
           },
         )}
       >
