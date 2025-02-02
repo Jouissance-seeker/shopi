@@ -141,11 +141,17 @@ const MobileBottom = () => {
       <div className="flex items-center">
         <MobileBottomFilter />
         <MobileBottomCart />
-        <Link href="/auth">
-          <HiOutlineUser size={20} />
-        </Link>
+        <MobileBottomAuth />
       </div>
     </div>
+  );
+};
+
+const MobileBottomAuth = () => {
+  return (
+    <Link href="/auth">
+      <HiOutlineUser size={20} />
+    </Link>
   );
 };
 
@@ -399,16 +405,11 @@ const DesktopTop = () => {
 };
 
 const DesktopTopAuth = () => {
-  const authToggleUrlState = useToggleUrlState('auth');
-
   return (
-    <button
-      onClick={() => authToggleUrlState.show()}
-      className="flex items-center gap-1"
-    >
+    <Link href="/auth" className="flex items-center gap-1">
       <RiUser3Line size={20} className="text-black" />
       <p className="font-bold">وارد شوید</p>
-    </button>
+    </Link>
   );
 };
 

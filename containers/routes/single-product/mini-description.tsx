@@ -11,7 +11,9 @@ export function MiniDescription(props: IDescriptionProps) {
         <span className="h-px grow bg-[#e6e9ee]" />
       </div>
       {/* body */}
-      <p className="text-smp font-medium text-gray-400">{props.description}</p>
+      <p className="text-smp font-medium text-gray-400 lg:text-sm">
+        {props.description}
+      </p>
     </section>
   );
 }

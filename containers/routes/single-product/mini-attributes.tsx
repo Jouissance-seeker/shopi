@@ -14,7 +14,7 @@ export function MiniAttributes(props: IMiniAttributesProps) {
         <span className="h-px grow bg-[#e6e9ee]" />
       </div>
       {/* body */}
-      <div className="flex flex-col text-smp font-medium text-gray-400">
+      <div className="flex flex-col text-smp font-medium text-gray-400 lg:text-sm">
         {props.attributes.map((item) => {
           return (
             <div key={item.key} className="flex justify-between">
