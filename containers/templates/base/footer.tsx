@@ -6,7 +6,7 @@ import { HiArrowUp } from 'react-icons/hi2';
 
 export function Footer() {
   return (
-    <footer className="container mt-7">
+    <footer className="container mt-10">
       <Info />
       <Attribute />
       <Content />

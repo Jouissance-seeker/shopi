@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { BiSolidCategory } from 'react-icons/bi';
 import { HiOutlineFilter } from 'react-icons/hi';
 import {
   HiChevronLeft,
@@ -68,14 +69,14 @@ const MobileTopHumbergerMenu = () => {
     <div>
       {/* btn */}
       <button onClick={() => humbergerMenuToggleUrlState.show()}>
-        <HiMiniBars3 size={25} />
+        <BiSolidCategory size={30} className="fill-red" />
       </button>
       {/* section */}
       <ToggleSection
-        title="فهرست"
+        title="دسته بندی"
         isShow={humbergerMenuToggleUrlState.isShow}
         onClose={() => humbergerMenuToggleUrlState.hide()}
-        className="container absolute left-0 top-[110px] z-50 h-4 w-screen"
+        className="absolute left-0 top-[105px] z-50 h-4 w-screen"
       >
         <nav className="text-sm">
           <div className="mb-2.5 overflow-hidden rounded-b-lg border-b">
@@ -169,7 +170,7 @@ const MobileBottomSearch = () => {
       {/* section */}
       <div
         className={cn(
-          'absolute z-50 left-0 h-4 w-screen transition-all top-[110px]',
+          'absolute z-50 left-0 h-4 w-screen transition-all top-[105px]',
           {
             show: searchResultToggleUrlState.isShow,
             hide: !searchResultToggleUrlState.isShow,
@@ -230,7 +231,7 @@ const MobileBottomCart = () => {
         title="سبد خرید"
         isShow={cartToggleUrlState.isShow}
         onClose={() => cartToggleUrlState.hide()}
-        className="absolute left-0 top-[110px] z-50 h-4 w-screen"
+        className="absolute left-0 top-[105px] z-50 h-4 w-screen"
       >
         {localstorageCart.selectors.isEmpty() ? (
           <div className="flex flex-col items-center py-3">
