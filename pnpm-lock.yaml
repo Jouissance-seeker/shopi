@@ -44,9 +44,9 @@ importers:
       react-loader-spinner:
         specifier: ^6.1.6
         version: 6.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      react-otp-input:
-        specifier: ^3.1.1
-        version: 3.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react18-input-otp:
+        specifier: ^1.1.4
+        version: 1.1.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       swiper:
         specifier: ^11.2.1
         version: 11.2.1
@@ -1913,11 +1913,11 @@ packages:
       react: ^16.0.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
 
-  react-otp-input@3.1.1:
-    resolution: {integrity: sha512-bjPavgJ0/Zmf/AYi4onj8FbH93IjeD+e8pWwxIJreDEWsU1ILR5fs8jEJmMGWSBe/yyvPP6X/W6Mk9UkOCkTPw==}
+  react18-input-otp@1.1.4:
+    resolution: {integrity: sha512-35xvmTeuPWIxd0Z0Opx4z3OoMaTmKN4ubirQCx1YMZiNoe+2h1hsOSUco4aKPlGXWZCtXrfOFieAh46vqiK9mA==}
     peerDependencies:
-      react: '>=16.8.6 || ^17.0.0 || ^18.0.0'
-      react-dom: '>=16.8.6 || ^17.0.0 || ^18.0.0'
+      react: 16.2.0 - 18
+      react-dom: 16.2.0 - 18
 
   react@19.0.0:
     resolution: {integrity: sha512-V8AVnmPIICiWpGfm6GLzCR/W5FXLchHop40W4nXBmdlEceh16rCN8O8LNWm5bh5XUX91fh7KpA+W0TgMKmgTpQ==}
@@ -4226,7 +4226,7 @@ snapshots:
       react-is: 18.3.1
       styled-components: 6.1.14(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
 
-  react-otp-input@3.1.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  react18-input-otp@1.1.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)

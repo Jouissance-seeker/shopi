@@ -6,7 +6,7 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaArrowRight } from 'react-icons/fa6';
-import OTPInput from 'react-otp-input';
+import OtpInput from 'react18-input-otp';
 import { z } from 'zod';
 import { useApiCall } from '@/hooks/api-call';
 import { useUpdateQuery } from '@/hooks/update-query';
@@ -31,13 +31,13 @@ const FormLogin = () => {
   const [, isLoadingSubmitBtn] = useApiCall();
   const formSchema = z.object({
     phoneNumber: z.string().regex(new RegExp(/^0\d{10}$/), {
-      message: 'کد تایید وارد شده معتبر نیست!',
+      message: 'شماره موبایل وارد شده معتبر نیست!',
     }),
   });
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      phoneNumber: String(queryPhoneNumber ?? ''),
+      phoneNumber: queryPhoneNumber || '',
     },
   });
   const handleSubmitForm = async () => {
@@ -49,7 +49,7 @@ const FormLogin = () => {
   };
 
   useEffect(() => {
-    $('#feild-1')?.focus();
+    $('#feild-phone-number')?.focus();
   }, []);
 
   return (
@@ -71,19 +71,25 @@ const FormLogin = () => {
       >
         {/* fields */}
         <div className="flex flex-col gap-2.5">
-          <input
-            id="feild-1"
-            type="tel"
-            spellCheck={false}
-            className={cn(
-              'w-full truncate font-medium rounded-md border p-2.5 border-gray-200 text-slate-500 bg-white text-smp placeholder:text-sm focus:border-purple transition-colors',
-              {
-                'border-red-500': form.formState.errors.phoneNumber,
-              },
-            )}
-            placeholder="شمره موبایل"
-            {...form.register('phoneNumber')}
-          />
+          {/* phone number */}
+          <div className="flex flex-col gap-2">
+            <input
+              id="feild-phone-number"
+              type="number"
+              spellCheck={false}
+              className={cn(
+                'w-full truncate font-medium rounded-md border p-2.5 border-gray-200 text-slate-500 bg-white text-smp placeholder:text-sm focus:border-purple transition-colors',
+                {
+                  'border-red-500': form.formState.errors.phoneNumber,
+                },
+              )}
+              placeholder="شماره موبایل خود را وارد کنید ..."
+              {...form.register('phoneNumber')}
+            />
+            <p className="text-sm text-red-500">
+              {form.formState.errors.phoneNumber?.message}
+            </p>
+          </div>
         </div>
         {/* submit */}
         <button
@@ -99,10 +105,11 @@ const FormLogin = () => {
 
 const FormVerification = () => {
   // callApiSubmitBtn
-  const updateQuery = useUpdateQuery();
   const [, isLoadingSubmitBtn] = useApiCall();
+  const updateQuery = useUpdateQuery();
   const formSchema = z.object({
-    otpCode: z.string().regex(new RegExp(/^0\d{10}$/), {
+    // length 4
+    otpCode: z.string().regex(new RegExp(/^\d{4}$/), {
       message: 'کد وارد شده معتبر نیست!',
     }),
   });
@@ -149,22 +156,35 @@ const FormVerification = () => {
       >
         {/* fields */}
         <div className="flex flex-col gap-2.5">
-          <OTPInput
-            value={form.getValues('otpCode')}
-            onChange={(code) =>
-              form.setValue('otpCode', code) as unknown as void
-            }
-            numInputs={4}
-            containerStyle="w-full flex justify-between gap-2"
-            inputStyle={cn(
-              'rounded-lg font-medium border-gray-200 border h-14 !w-full',
-              {
-                'border-red-500': form.formState.errors.otpCode,
-              },
-            )}
-            shouldAutoFocus
-            renderInput={(props) => <input {...props} />}
-          />
+          {/* otp code */}
+          <div className="flex flex-col gap-2">
+            <div dir="ltr">
+              <OtpInput
+                shouldAutoFocus
+                value={form.watch('otpCode')}
+                onChange={(value: any) => {
+                  form.setValue('otpCode', value);
+                  if (form.watch('otpCode').length === 4) {
+                    form.trigger('otpCode');
+                  }
+                }}
+                containerStyle="flex gap-3"
+                inputStyle="!w-full !h-full rounded-lg"
+                className={cn(
+                  'rounded-lg font-medium border-gray-200 border h-14 !w-full',
+                  {
+                    'border-red-500': form.formState.errors.otpCode,
+                  },
+                )}
+                numInputs={4}
+                isInputNum
+                separator={<span />}
+              />
+            </div>
+            <p className="text-sm text-red-500">
+              {form.formState.errors.otpCode?.message}
+            </p>
+          </div>
         </div>
         {/* submit */}
         <button
