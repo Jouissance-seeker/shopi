@@ -18,8 +18,8 @@ import {
 } from 'react-icons/hi2';
 import { RiUser3Line } from 'react-icons/ri';
 import { ThreeDots } from 'react-loader-spinner';
-import { ToggleSection } from '@/components/global/toggle-section';
-import { CATEGORIES } from '@/constants/templates/base/categories';
+import { ToggleSection } from '@/components/toggle-section';
+import { CATEGORIES } from '@/constants/categories';
 import { useToggleUrlState } from '@/hooks/toggle-url-state';
 import { cartSlice } from '@/slices/cart';
 import { cn } from '@/utils/cn';

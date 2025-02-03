@@ -3,7 +3,7 @@
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { HiCheck, HiChevronDown } from 'react-icons/hi2';
-import { ToggleSection } from '@/components/global/toggle-section';
+import { ToggleSection } from '@/components/toggle-section';
 import { useToggleUrlState } from '@/hooks/toggle-url-state';
 import { useUpdateQuery } from '@/hooks/update-query';
 import { cn } from '@/utils/cn';

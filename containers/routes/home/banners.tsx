@@ -5,7 +5,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Image from 'next/image';
 import Link from 'next/link';
-import { bannersData } from '@/resources/routes/home/banners';
+import { bannersData } from '@/resources/banners';
 import { cn } from '@/utils/cn';
 
 export function Banners() {

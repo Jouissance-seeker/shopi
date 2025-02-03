@@ -1,0 +1,179 @@
+'use client';
+
+import { zodResolver } from '@hookform/resolvers/zod';
+import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { FaArrowRight } from 'react-icons/fa6';
+import OTPInput from 'react-otp-input';
+import { z } from 'zod';
+import { useApiCall } from '@/hooks/api-call';
+import { useUpdateQuery } from '@/hooks/update-query';
+import { cn } from '@/utils/cn';
+import { $ } from '@/utils/element-selector';
+
+export function Form() {
+  const searchParams = useSearchParams();
+  const queryForm = searchParams.get('form') || 'login';
+  const [activedForm, setActivedForm] = useState(queryForm);
+  useEffect(() => {
+    setActivedForm(queryForm);
+  }, [queryForm]);
+
+  return activedForm === 'login' ? <FormLogin /> : <FormVerification />;
+}
+
+const FormLogin = () => {
+  const updateQuery = useUpdateQuery();
+  const searchParams = useSearchParams();
+  const queryPhoneNumber = searchParams.get('phoneNumber');
+  const [, isLoadingSubmitBtn] = useApiCall();
+  const formSchema = z.object({
+    phoneNumber: z.string().regex(new RegExp(/^0\d{10}$/), {
+      message: 'کد تایید وارد شده معتبر نیست!',
+    }),
+  });
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      phoneNumber: String(queryPhoneNumber ?? ''),
+    },
+  });
+  const handleSubmitForm = async () => {
+    updateQuery((prev) => ({
+      ...prev,
+      form: 'verification',
+      phoneNumber: form.getValues('phoneNumber'),
+    }));
+  };
+
+  useEffect(() => {
+    $('#feild-1')?.focus();
+  }, []);
+
+  return (
+    <section className="flex w-[350px] flex-col gap-5 rounded-xl border bg-white p-4">
+      {/* head */}
+      <div className="flex items-center justify-between">
+        <p className="font-bold text-gray-500">ورود / ثبت نام</p>
+        <Image
+          src="/images/routes/auth/logo.svg"
+          alt="ورود"
+          width={25}
+          height={25}
+        />
+      </div>
+      {/* body */}
+      <form
+        onSubmit={form.handleSubmit(handleSubmitForm)}
+        className="flex flex-col gap-2"
+      >
+        {/* fields */}
+        <div className="flex flex-col gap-2.5">
+          <input
+            id="feild-1"
+            type="tel"
+            spellCheck={false}
+            className={cn(
+              'w-full truncate font-medium rounded-md border p-2.5 border-gray-200 text-slate-500 bg-white text-smp placeholder:text-sm focus:border-purple transition-colors',
+              {
+                'border-red-500': form.formState.errors.phoneNumber,
+              },
+            )}
+            placeholder="شمره موبایل"
+            {...form.register('phoneNumber')}
+          />
+        </div>
+        {/* submit */}
+        <button
+          disabled={isLoadingSubmitBtn}
+          className="mt-1 h-12 w-full justify-center rounded-lg bg-red font-medium text-white"
+        >
+          ورود
+        </button>
+      </form>
+    </section>
+  );
+};
+
+const FormVerification = () => {
+  // callApiSubmitBtn
+  const updateQuery = useUpdateQuery();
+  const [, isLoadingSubmitBtn] = useApiCall();
+  const formSchema = z.object({
+    otpCode: z.string().regex(new RegExp(/^0\d{10}$/), {
+      message: 'کد وارد شده معتبر نیست!',
+    }),
+  });
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      otpCode: '',
+    },
+  });
+  const handleSubmitForm = async () => {
+    // ...
+  };
+  const handleBackBtn = () => {
+    updateQuery((prev) => ({
+      ...prev,
+      form: 'login',
+    }));
+  };
+
+  return (
+    <section className="flex w-[350px] flex-col gap-5 rounded-xl border bg-white p-4">
+      {/* head */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <button
+            onClick={handleBackBtn}
+            className="w-fit rounded-md border border-gray-200 p-2"
+          >
+            <FaArrowRight className="fill-red" />
+          </button>
+          <p className="font-bold text-gray-500">کد تایید را وارد کنید</p>
+        </div>
+        <Image
+          src="/images/routes/auth/logo.svg"
+          alt="ورود"
+          width={25}
+          height={25}
+        />
+      </div>
+      {/* body */}
+      <form
+        onSubmit={form.handleSubmit(handleSubmitForm)}
+        className="flex flex-col gap-2"
+      >
+        {/* fields */}
+        <div className="flex flex-col gap-2.5">
+          <OTPInput
+            value={form.getValues('otpCode')}
+            onChange={(code) =>
+              form.setValue('otpCode', code) as unknown as void
+            }
+            numInputs={4}
+            containerStyle="w-full flex justify-between gap-2"
+            inputStyle={cn(
+              'rounded-lg font-medium border-gray-200 border h-14 !w-full',
+              {
+                'border-red-500': form.formState.errors.otpCode,
+              },
+            )}
+            shouldAutoFocus
+            renderInput={(props) => <input {...props} />}
+          />
+        </div>
+        {/* submit */}
+        <button
+          disabled={isLoadingSubmitBtn}
+          className="mt-1 h-12 w-full justify-center rounded-lg bg-red font-medium text-white"
+        >
+          ورود
+        </button>
+      </form>
+    </section>
+  );
+};

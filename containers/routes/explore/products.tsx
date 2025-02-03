@@ -1,7 +1,7 @@
 'use client';
 
-import { ProductCard } from '@/components/global/product-card';
-import { productsData } from '@/resources/routes/global/products';
+import { ProductCard } from '@/components/product-card';
+import { productsData } from '@/resources/products';
 
 export function Products() {
   return (

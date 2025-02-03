@@ -1,5 +1,5 @@
-import { BreadCrumb } from '@/components/global/bread-crumb';
-import { ProductCardActions } from '@/components/global/product-card-actions';
+import { BreadCrumb } from '@/components/bread-crumb';
+import { ProductCardActions } from '@/components/product-card-actions';
 import { Category } from '@/containers/routes/single-product/category';
 import { Images } from '@/containers/routes/single-product/images';
 import { MiniAttributes } from '@/containers/routes/single-product/mini-attributes';
@@ -7,7 +7,7 @@ import { MiniDescription } from '@/containers/routes/single-product/mini-descrip
 import { Price } from '@/containers/routes/single-product/price';
 import { Quantity } from '@/containers/routes/single-product/quantity';
 import { Title } from '@/containers/routes/single-product/title';
-import { productsData } from '@/resources/routes/global/products';
+import { productsData } from '@/resources/products';
 
 interface IPageProps {
   params: Promise<{
@@ -17,7 +17,7 @@ interface IPageProps {
 
 export default async function Page(props: IPageProps) {
   const { slug } = await props.params;
-  const data = productsData[Number(slug[1]) - 1];
+  const data = productsData[Number(slug[0]) - 1];
 
   return (
     <div className="container">

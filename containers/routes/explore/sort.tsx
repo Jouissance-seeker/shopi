@@ -8,17 +8,18 @@ import { cn } from '@/utils/cn';
 export function Sort() {
   const updateQuery = useUpdateQuery();
   const searchParams = useSearchParams();
-  const [activedSort, setActivedSort] = useState(() => {
-    const sort = searchParams.get('sort') || 'newest';
-    return sort as 'newest' | 'highest' | 'lowest';
-  });
-
+  const querySort = searchParams.get('sort') || 'newest';
+  const [activedSort, setActivedSort] = useState(querySort);
   useEffect(() => {
+    setActivedSort(querySort);
+  }, [querySort]);
+
+  const handleSort = (value: string) => {
     updateQuery((prev) => ({
       ...prev,
-      sort: activedSort,
+      sort: value,
     }));
-  }, [activedSort]);
+  };
 
   return (
     <div>
@@ -33,9 +34,7 @@ export function Sort() {
               className={cn({
                 'text-green font-bold': activedSort === item.value,
               })}
-              onClick={() =>
-                setActivedSort(item.value as 'newest' | 'highest' | 'lowest')
-              }
+              onClick={() => handleSort(item.value)}
             >
               {item.title}
             </button>

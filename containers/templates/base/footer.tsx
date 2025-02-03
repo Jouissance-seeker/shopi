@@ -278,7 +278,7 @@ const CopyRight = () => {
   return (
     <div className="flex justify-between py-5">
       <p className="text-xsp font-medium text-gray-500">
-        توسعه توسط حمید شاهسونی - بهمن ماه 1403
+        توسعه توسط حمید شاهسونی
       </p>
       <button
         className="flex gap-1"

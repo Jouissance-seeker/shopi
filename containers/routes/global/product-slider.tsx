@@ -7,9 +7,9 @@ import { useRef } from 'react';
 import { HiChevronLeft } from 'react-icons/hi2';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { ProductCard } from '@/components/global/product-card';
-import { SliderNavigation } from '@/components/global/slider-navigation';
-import { productsData } from '@/resources/routes/global/products';
+import { ProductCard } from '@/components/product-card';
+import { SliderNavigation } from '@/components/slider-navigation';
+import { productsData } from '@/resources/products';
 
 interface IProductSliderProps {
   title: string;

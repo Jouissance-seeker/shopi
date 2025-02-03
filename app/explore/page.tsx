@@ -1,4 +1,4 @@
-import { BreadCrumb } from '@/components/global/bread-crumb';
+import { BreadCrumb } from '@/components/bread-crumb';
 import { CheckboxAccordions } from '@/containers/routes/explore/checkbox-accordions';
 import { Products } from '@/containers/routes/explore/products';
 import { Sort } from '@/containers/routes/explore/sort';

@@ -9,7 +9,7 @@ import { useRef } from 'react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2';
 import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { heroSliderData } from '@/resources/routes/home/hero-slider';
+import { heroSliderData } from '@/resources/hero-slider';
 
 export function HeroSlider() {
   const swiperRef = useRef<any>(null);

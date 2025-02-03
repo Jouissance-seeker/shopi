@@ -8,9 +8,9 @@ import { useRef } from 'react';
 import { HiChevronLeft } from 'react-icons/hi2';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { CardBorderBottom } from '@/components/global/card-border-bottom';
-import { SliderNavigation } from '@/components/global/slider-navigation';
-import { brandSliderData } from '@/resources/routes/home/brand-slider';
+import { CardBorderBottom } from '@/components/card-border-bottom';
+import { SliderNavigation } from '@/components/slider-navigation';
+import { brandSliderData } from '@/resources/brand-slider';
 
 export function BrandSlider() {
   const swiperRef = useRef<any>(null);

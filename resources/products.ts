@@ -4,7 +4,7 @@ export const productsData: TProduct[] = [
   {
     id: 1,
     quantity: 22970,
-    path: '/product/1',
+    path: '/products/1',
     attributes: [
       { key: 'رنگ', value: 'سبز' },
       { key: 'برند', value: 'اپل' },
@@ -35,7 +35,7 @@ export const productsData: TProduct[] = [
   {
     id: 2,
     quantity: 15000,
-    path: '/product/2',
+    path: '/products/2',
     attributes: [
       { key: 'رنگ', value: 'نارنجی' },
       { key: 'برند', value: 'سونی' },
@@ -64,7 +64,7 @@ export const productsData: TProduct[] = [
   {
     id: 3,
     quantity: 35000,
-    path: '/product/3',
+    path: '/products/3',
     attributes: [
       { key: 'رنگ', value: 'بنفش' },
       { key: 'برند', value: 'سامسونگ' },
@@ -93,7 +93,7 @@ export const productsData: TProduct[] = [
   {
     id: 4,
     quantity: 19999,
-    path: '/product/4',
+    path: '/products/4',
     attributes: [
       { key: 'رنگ', value: 'قرمز' },
       { key: 'برند', value: 'شیائومی' },
@@ -122,7 +122,7 @@ export const productsData: TProduct[] = [
   {
     id: 5,
     quantity: 7800,
-    path: '/product/5',
+    path: '/products/5',
     attributes: [
       { key: 'رنگ', value: 'سبز' },
       { key: 'برند', value: 'اپل' },
@@ -150,7 +150,7 @@ export const productsData: TProduct[] = [
   {
     id: 6,
     quantity: 12000,
-    path: '/product/6',
+    path: '/products/6',
     attributes: [
       { key: 'رنگ', value: 'زرد' },
       { key: 'برند', value: 'هوآوی' },
@@ -178,7 +178,7 @@ export const productsData: TProduct[] = [
   {
     id: 7,
     quantity: 25000,
-    path: '/product/7',
+    path: '/products/7',
     attributes: [
       { key: 'رنگ', value: 'آبی' },
       { key: 'برند', value: 'سونی' },
@@ -207,7 +207,7 @@ export const productsData: TProduct[] = [
   {
     id: 8,
     quantity: 42000,
-    path: '/product/8',
+    path: '/products/8',
     attributes: [
       { key: 'رنگ', value: 'بنفش' },
       { key: 'برند', value: 'سامسونگ' },
@@ -235,7 +235,7 @@ export const productsData: TProduct[] = [
   {
     id: 9,
     quantity: 30000,
-    path: '/product/9',
+    path: '/products/9',
     attributes: [
       { key: 'رنگ', value: 'زرد' },
       { key: 'برند', value: 'آیفون' },
@@ -263,7 +263,7 @@ export const productsData: TProduct[] = [
   {
     id: 10,
     quantity: 18000,
-    path: '/product/10',
+    path: '/products/10',
     attributes: [
       { key: 'رنگ', value: 'سبز' },
       { key: 'برند', value: 'هوآوی' },
@@ -291,7 +291,7 @@ export const productsData: TProduct[] = [
   {
     id: 11,
     quantity: 15000,
-    path: '/product/11',
+    path: '/products/11',
     attributes: [
       { key: 'رنگ', value: 'زرد' },
       { key: 'برند', value: 'اپل' },
@@ -319,7 +319,7 @@ export const productsData: TProduct[] = [
   {
     id: 12,
     quantity: 22000,
-    path: '/product/12',
+    path: '/products/12',
     attributes: [
       { key: 'رنگ', value: 'سبز' },
       { key: 'برند', value: 'شیائومی' },
@@ -347,7 +347,7 @@ export const productsData: TProduct[] = [
   {
     id: 13,
     quantity: 30000,
-    path: '/product/13',
+    path: '/products/13',
     attributes: [
       { key: 'رنگ', value: 'بنفش' },
       { key: 'برند', value: 'هوآوی' },
@@ -375,7 +375,7 @@ export const productsData: TProduct[] = [
   {
     id: 14,
     quantity: 30000,
-    path: '/product/14',
+    path: '/products/14',
     attributes: [
       { key: 'رنگ', value: 'زرد' },
       { key: 'برند', value: 'سونی' },
@@ -403,7 +403,7 @@ export const productsData: TProduct[] = [
   {
     id: 15,
     quantity: 18000,
-    path: '/product/15',
+    path: '/products/15',
     attributes: [
       { key: 'رنگ', value: 'سبز' },
       { key: 'برند', value: 'اپل' },
@@ -431,7 +431,7 @@ export const productsData: TProduct[] = [
   {
     id: 16,
     quantity: 29000,
-    path: '/product/16',
+    path: '/products/16',
     attributes: [
       { key: 'رنگ', value: 'آبی' },
       { key: 'برند', value: 'هوآوی' },
@@ -459,7 +459,7 @@ export const productsData: TProduct[] = [
   {
     id: 17,
     quantity: 25000,
-    path: '/product/17',
+    path: '/products/17',
     attributes: [
       { key: 'رنگ', value: 'قرمز' },
       { key: 'برند', value: 'شیائومی' },
@@ -487,7 +487,7 @@ export const productsData: TProduct[] = [
   {
     id: 18,
     quantity: 14000,
-    path: '/product/18',
+    path: '/products/18',
     attributes: [
       { key: 'رنگ', value: 'قرمز' },
       { key: 'برند', value: 'سامسونگ' },
@@ -515,7 +515,7 @@ export const productsData: TProduct[] = [
   {
     id: 19,
     quantity: 28000,
-    path: '/product/19',
+    path: '/products/19',
     attributes: [
       { key: 'رنگ', value: 'زرد' },
       { key: 'برند', value: 'اپل' },
@@ -543,7 +543,7 @@ export const productsData: TProduct[] = [
   {
     id: 20,
     quantity: 32000,
-    path: '/product/20',
+    path: '/products/20',
     attributes: [
       { key: 'رنگ', value: 'سبز' },
       { key: 'برند', value: 'هوآوی' },

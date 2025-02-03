@@ -10,6 +10,11 @@
   --gray: #f8f9fb;
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 body {
   @apply text-[--foreground] overflow-x-hidden bg-[--background] text-gray-600;
 }
