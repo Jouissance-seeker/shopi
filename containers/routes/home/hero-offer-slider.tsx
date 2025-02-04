@@ -158,7 +158,7 @@ const Timer = () => {
     <div className="absolute right-4 top-4">
       <div
         className={cn(
-          'flex items-center gap-1 transition-all duration-300 invisible opacity-0',
+          'flex items-center gap-1 transition-all invisible opacity-0',
           {
             'visible opacity-100': timeLeftFromDay,
           },

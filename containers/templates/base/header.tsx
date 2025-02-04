@@ -406,9 +406,12 @@ const DesktopTop = () => {
 
 const DesktopTopAuth = () => {
   return (
-    <Link href="/auth" className="flex items-center gap-1">
-      <RiUser3Line size={20} className="text-black" />
-      <p className="font-bold">وارد شوید</p>
+    <Link
+      href="/auth"
+      className="group flex items-center gap-1 text-black transition-all hover:text-red"
+    >
+      <RiUser3Line size={20} />
+      <span className="font-bold">وارد شوید</span>
     </Link>
   );
 };

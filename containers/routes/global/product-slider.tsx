@@ -27,7 +27,7 @@ export function ProductSlider(props: IProductSliderProps) {
         <span className="h-px grow bg-[#e6e9ee]" />
         <Link
           href={props.path}
-          className="flex gap-1 text-sm font-bold transition-all duration-300 hover:text-red"
+          className="flex gap-1 text-sm font-bold transition-all hover:text-red"
         >
           <span>مشاهده همه</span>
           <HiChevronLeft className="size-4" />

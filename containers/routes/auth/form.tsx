@@ -53,7 +53,7 @@ const FormLogin = () => {
   }, []);
 
   return (
-    <section className="flex w-[350px] flex-col gap-5 rounded-xl border bg-white p-4">
+    <section className="flex w-[300px] flex-col gap-5 rounded-xl border bg-white p-4 sm:w-[350px]">
       {/* head */}
       <div className="flex items-center justify-between">
         <p className="font-bold text-gray-500">ورود / ثبت نام</p>
@@ -94,7 +94,7 @@ const FormLogin = () => {
         {/* submit */}
         <button
           disabled={isLoadingSubmitBtn}
-          className="mt-1 h-12 w-full justify-center rounded-lg bg-red font-medium text-white"
+          className="mt-1 h-12 w-full justify-center rounded-lg bg-red font-medium text-white disabled:opacity-50"
         >
           ورود
         </button>
@@ -130,7 +130,7 @@ const FormVerification = () => {
   };
 
   return (
-    <section className="flex w-[350px] flex-col gap-5 rounded-xl border bg-white p-4">
+    <section className="flex w-[300px] flex-col gap-5 rounded-xl border bg-white p-4 sm:w-[350px]">
       {/* head */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -189,7 +189,7 @@ const FormVerification = () => {
         {/* submit */}
         <button
           disabled={isLoadingSubmitBtn}
-          className="mt-1 h-12 w-full justify-center rounded-lg bg-red font-medium text-white"
+          className="mt-1 h-12 w-full justify-center rounded-lg bg-red font-medium text-white disabled:opacity-50"
         >
           ورود
         </button>
