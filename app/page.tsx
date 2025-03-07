@@ -16,14 +16,14 @@ export default function Home() {
       <CategorySlider />
       <Banners />
       <ProductSliderWithBanner
-        category="لپ تاپ"
+        text="ارزان ترین"
         position="right"
         path="/"
         image="/images/routes/home/product-slider-with-banner-laptop.png"
       />
-      <ProductSlider title="جدیدترین محصولات" path="/" />
+      <ProductSlider title="محبوب ترین محصولات" path="/" />
       <ProductSliderWithBanner
-        category="کنسول بازی"
+        text="گران ترین"
         position="left"
         path="/"
         image="/images/routes/home/product-slider-with-banner-play-station.png"

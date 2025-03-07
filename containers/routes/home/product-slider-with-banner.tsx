@@ -15,7 +15,7 @@ import { shuffleArray } from '@/utils/shuffle-array';
 
 interface IProductSliderProps {
   image: string;
-  category: string;
+  text: string;
   path: string;
   position: 'left' | 'right';
 }
@@ -27,7 +27,7 @@ export function ProductSliderWithBanner(props: IProductSliderProps) {
     <section className="group/section container relative z-10 col-span-full grid w-full grid-cols-5 gap-5 overflow-hidden rounded-lg">
       <Banner
         image={props.image}
-        category={props.category}
+        text={props.text}
         position={props.position}
         path={props.path}
       />
@@ -46,7 +46,7 @@ export function ProductSliderWithBanner(props: IProductSliderProps) {
 
 interface IBannerProps {
   image: string;
-  category: string;
+  text: string;
   position: 'left' | 'right';
   path: string;
 }
@@ -62,7 +62,7 @@ const Banner = (props: IBannerProps) => {
       )}
     >
       <Image
-        alt={props.category}
+        alt={props.text}
         src={props.image}
         width={150}
         height={150}
@@ -73,7 +73,7 @@ const Banner = (props: IBannerProps) => {
           مجموعه محصولات
         </p>
         <p className="text-2xl font-bold text-white lg:text-2xl">
-          {props.category}
+          {props.text}
         </p>
       </div>
     </Link>
