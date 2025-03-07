@@ -11,6 +11,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { ProductCard } from '@/components/product-card';
 import { productsData } from '@/resources/products';
 import { cn } from '@/utils/cn';
+import { shuffleArray } from '@/utils/shuffle-array';
 
 interface IProductSliderProps {
   image: string;
@@ -94,7 +95,7 @@ const Slider = (props: ISliderProps) => {
         id="product-slider"
         className="rounded-xl border border-gray-200 bg-white"
       >
-        {productsData.map((item) => {
+        {shuffleArray(productsData).map((item) => {
           return (
             <SwiperSlide
               key={item.id}

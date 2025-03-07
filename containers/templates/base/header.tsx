@@ -494,7 +494,7 @@ const DesktopBottomCategory = () => {
           },
         )}
       >
-        <div className="flex h-[220px] overflow-hidden rounded-2xl border border-gray-200 bg-white">
+        <div className="flex h-[230px] overflow-hidden rounded-2xl border border-gray-200 bg-white">
           <ul className="bg-gray py-2">
             {CATEGORIES.map((item) => (
               <li key={item.text}>

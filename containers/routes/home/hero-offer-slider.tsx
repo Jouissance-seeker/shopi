@@ -11,6 +11,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { ProductCardActions } from '@/components/product-card-actions';
 import { productsData } from '@/resources/products';
 import { cn } from '@/utils/cn';
+import { shuffleArray } from '@/utils/shuffle-array';
 
 export function HeroOfferSlider() {
   const swiperRef = useRef<any>(null);
@@ -35,7 +36,7 @@ export function HeroOfferSlider() {
             },
           }}
         >
-          {productsData.map((item) => {
+          {shuffleArray(productsData).map((item) => {
             return (
               <SwiperSlide
                 key={item.id}
