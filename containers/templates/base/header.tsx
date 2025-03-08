@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { BiSolidCategory } from 'react-icons/bi';
+import { BiCategory } from 'react-icons/bi';
 import { HiOutlineFilter } from 'react-icons/hi';
 import {
   HiChevronLeft,
@@ -71,14 +71,14 @@ const MobileTopCategories = () => {
     <div>
       {/* btn */}
       <button onClick={() => mobileCategoriesToggleUrlState.show()}>
-        <BiSolidCategory size={30} className="fill-red" />
+        <BiCategory size={30} className="fill-red" />
       </button>
       {/* section */}
       <ToggleSection
         title="دسته بندی ها"
         isShow={mobileCategoriesToggleUrlState.isShow}
         onClose={() => mobileCategoriesToggleUrlState.hide()}
-        className="absolute left-0 top-[100px] z-50 h-4 w-screen"
+        className="absolute left-0 top-[110px] z-50 h-4 w-screen"
       >
         <nav className="text-sm">
           <div className="mb-2.5 overflow-hidden rounded-b-lg border-b">
@@ -178,7 +178,7 @@ const MobileBottomSearch = () => {
       {/* section */}
       <div
         className={cn(
-          'absolute z-50 left-0 h-4 w-screen transition-all top-[100px]',
+          'absolute z-50 left-0 h-4 w-screen transition-all top-[110px]',
           {
             show: searchResultToggleUrlState.isShow,
             hide: !searchResultToggleUrlState.isShow,
@@ -239,7 +239,7 @@ const MobileBottomCart = () => {
         title="سبد خرید"
         isShow={mobileCartToggleUrlState.isShow}
         onClose={() => mobileCartToggleUrlState.hide()}
-        className="absolute left-0 top-[100px] z-50 h-4 w-screen"
+        className="absolute left-0 top-[110px] z-50 h-4 w-screen"
       >
         {localstorageCart.selectors.isEmpty() ? (
           <div className="flex flex-col items-center py-3">

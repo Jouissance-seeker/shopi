@@ -1,22 +1,22 @@
 export const heroSliderData = [
   {
-    path: '/product/1',
+    path: '/explore',
     image: '/images/routes/home/hero-slider-1.png',
   },
   {
-    path: '/product/2',
+    path: '/explore',
     image: '/images/routes/home/hero-slider-2.png',
   },
   {
-    path: '/product/3',
+    path: '/explore',
     image: '/images/routes/home/hero-slider-3.png',
   },
   {
-    path: '/product/4',
+    path: '/explore',
     image: '/images/routes/home/hero-slider-4.png',
   },
   {
-    path: '/product/5',
+    path: '/explore',
     image: '/images/routes/home/hero-slider-5.png',
   },
 ];

@@ -1,7 +1,7 @@
 export const categorySliderData = [
   {
     id: 1,
-    path: '/category/1',
+    path: '/explore',
     image: '/images/routes/home/category-slider-1.png',
     text: {
       fa: 'موبایل و لوازم جانبی',
@@ -10,7 +10,7 @@ export const categorySliderData = [
   },
   {
     id: 2,
-    path: '/category/2',
+    path: '/explore',
     image: '/images/routes/home/category-slider-2.png',
     text: {
       fa: 'لپ تاپ و کامپیوتر',
@@ -19,7 +19,7 @@ export const categorySliderData = [
   },
   {
     id: 3,
-    path: '/category/3',
+    path: '/explore',
     image: '/images/routes/home/category-slider-3.png',
     text: {
       fa: 'لوازم خانگی',
@@ -28,7 +28,7 @@ export const categorySliderData = [
   },
   {
     id: 4,
-    path: '/category/4',
+    path: '/explore',
     image: '/images/routes/home/category-slider-4.png',
     text: {
       fa: 'مد و پوشاک',
@@ -37,7 +37,7 @@ export const categorySliderData = [
   },
   {
     id: 5,
-    path: '/category/5',
+    path: '/explore',
     image: '/images/routes/home/category-slider-5.png',
     text: {
       fa: 'ورزش و سرگرمی',
@@ -46,7 +46,7 @@ export const categorySliderData = [
   },
   {
     id: 6,
-    path: '/category/1',
+    path: '/explore',
     image: '/images/routes/home/category-slider-1.png',
     text: {
       fa: 'موبایل و لوازم جانبی',
@@ -55,7 +55,7 @@ export const categorySliderData = [
   },
   {
     id: 7,
-    path: '/category/2',
+    path: '/explore',
     image: '/images/routes/home/category-slider-2.png',
     text: {
       fa: 'لپ تاپ و کامپیوتر',
@@ -64,7 +64,7 @@ export const categorySliderData = [
   },
   {
     id: 8,
-    path: '/category/3',
+    path: '/explore',
     image: '/images/routes/home/category-slider-3.png',
     text: {
       fa: 'لوازم خانگی',
@@ -73,7 +73,7 @@ export const categorySliderData = [
   },
   {
     id: 9,
-    path: '/category/4',
+    path: '/explore',
     image: '/images/routes/home/category-slider-4.png',
     text: {
       fa: 'مد و پوشاک',
@@ -82,7 +82,7 @@ export const categorySliderData = [
   },
   {
     id: 10,
-    path: '/category/5',
+    path: '/explore',
     image: '/images/routes/home/category-slider-5.png',
     text: {
       fa: 'ورزش و سرگرمی',
