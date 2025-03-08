@@ -93,7 +93,7 @@ const Slider = (props: ISliderProps) => {
         ref={props.swiperRef}
         modules={[Autoplay]}
         id="product-slider"
-        className="rounded-xl border border-gray-200 bg-white"
+        className="rounded-xl border bg-white"
       >
         {shuffleArray(productsData).map((item) => {
           return (

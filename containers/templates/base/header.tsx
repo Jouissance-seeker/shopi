@@ -186,7 +186,7 @@ const MobileBottomSearch = () => {
         )}
       >
         <div className="container">
-          <div className="rounded-md border border-gray-200 bg-white">
+          <div className="rounded-md border bg-white">
             <div className="p-2 text-smp">
               {searchValue.length ? (
                 <div className="flex items-center justify-center">
@@ -494,7 +494,7 @@ const DesktopBottomCategory = () => {
           },
         )}
       >
-        <div className="flex h-[230px] overflow-hidden rounded-2xl border border-gray-200 bg-white">
+        <div className="flex h-[230px] overflow-hidden rounded-2xl border bg-white">
           <ul className="bg-gray py-2">
             {CATEGORIES.map((item) => (
               <li key={item.text}>
@@ -513,7 +513,7 @@ const DesktopBottomCategory = () => {
               </li>
             ))}
           </ul>
-          <ul className="p-2">
+          <ul className="flex flex-col flex-wrap p-2">
             {activedCategoryData.children.map((item) => (
               <li key={item.text}>
                 <Link
@@ -573,7 +573,7 @@ const DesktopBottomCart = () => {
           },
         )}
       >
-        <div className="rounded-2xl border border-gray-200 bg-white">
+        <div className="rounded-2xl border bg-white">
           {localstorageCart.selectors.isEmpty() ? (
             <div className="flex flex-col items-center py-3">
               <Image
@@ -735,7 +735,7 @@ const DesktopBottomSearch = () => {
           },
         )}
       >
-        <div className="rounded-xl border border-gray-200 bg-white">
+        <div className="rounded-xl border bg-white">
           <div className="p-2 text-smp">
             {searchValue.length ? (
               <div className="flex items-center justify-center">

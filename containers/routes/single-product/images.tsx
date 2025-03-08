@@ -38,7 +38,7 @@ export function Images(props: IImagesProps) {
         >
           {props.images.map((item) => (
             <SwiperSlide key={item}>
-              <button className="flex w-full justify-center rounded-lg border p-1">
+              <button className="flex w-full justify-center rounded-lg border p-2">
                 <Image
                   src={item}
                   alt={props.title.fa}
@@ -67,7 +67,7 @@ export function Images(props: IImagesProps) {
                   swiperImagesRef.current?.slideTo(index);
                   swiperImageMainRef.current?.slideTo(index);
                 }}
-                className={cn('rounded-lg border overflow-hidden', {
+                className={cn('rounded-lg border p-1.5 overflow-hidden', {
                   'border-gray-300': activedIndex === index,
                 })}
               >

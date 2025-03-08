@@ -64,7 +64,7 @@ const Card = (props: ICardProps) => {
   return (
     <SwiperSlide
       key={props.data.id}
-      className="group overflow-hidden rounded-xl border border-gray-200 bg-white transition-all hover:border-gray-300"
+      className="group overflow-hidden rounded-xl border bg-white transition-all hover:border-gray-300"
     >
       <Link
         href={props.data.path}

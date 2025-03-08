@@ -136,7 +136,7 @@ const FormVerification = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={handleBackBtn}
-            className="w-fit rounded-md border border-gray-200 p-2"
+            className="w-fit rounded-md border p-2"
           >
             <FaArrowRight className="fill-red" />
           </button>

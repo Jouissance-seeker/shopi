@@ -54,7 +54,7 @@ const Card = (props: ICardProps) => {
   return (
     <div
       key={props.data.id}
-      className="group !w-48 overflow-hidden rounded-xl border border-gray-200 bg-white transition-all hover:border-gray-300"
+      className="group !w-48 overflow-hidden rounded-xl border bg-white transition-all hover:border-gray-300"
     >
       <Link
         href={props.data.path}

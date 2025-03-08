@@ -1,41 +1,59 @@
 export const CATEGORIES = [
   {
     text: 'موبایل',
-    path: '/shop/mobile',
+    path: '/explore',
     children: [
       {
         text: 'براساس برند',
-        link: '/shop/mobile/brand',
+        link: '/explore',
         children: [
           {
             text: 'سامسونگ',
-            link: '/shop/mobile/brand/samsung',
+            link: '/explore',
           },
           {
             text: 'اپل',
-            link: '/shop/mobile/brand/apple',
+            link: '/explore',
           },
           {
             text: 'شیائومی',
-            link: '/shop/mobile/brand/xiaomi',
+            link: '/explore',
+          },
+        ],
+      },
+      {
+        text: 'براساس سخت افزار',
+        link: '/explore',
+        children: [
+          {
+            text: 'سامسونگ',
+            link: '/explore',
+          },
+          {
+            text: 'اپل',
+            link: '/explore',
+          },
+          {
+            text: 'شیائومی',
+            link: '/explore',
           },
         ],
       },
       {
         text: 'براساس قیمت',
-        link: '/shop/mobile/price',
+        link: '/explore',
         children: [
           {
             text: 'تا 3 میلیون',
-            link: '/shop/mobile/prices/?min=0&max=3000000',
+            link: '/explore',
           },
           {
             text: 'تا 5 میلیون',
-            link: '/shop/mobile/prices/?min=0&max=5000000',
+            link: '/explore',
           },
           {
             text: 'تا 10 میلیون',
-            link: '/shop/mobile/prices/?min=0&max=10000000',
+            link: '/explore',
           },
         ],
       },
@@ -43,83 +61,59 @@ export const CATEGORIES = [
   },
   {
     text: 'لپ تاپ',
-    path: '/shop/laptop',
+    path: '/explore',
     children: [
       {
-        text: 'براساس برند',
-        link: '/shop/laptop/brand',
+        text: 'براساس سخت افزار',
+        link: '/explore',
         children: [
           {
-            text: 'اپل',
-            link: '/shop/laptop/brand/apple',
+            text: 'سامسونگ',
+            link: '/explore',
           },
           {
-            text: 'سامسونگ',
-            link: '/shop/laptop/brand/samsung',
+            text: 'اپل',
+            link: '/explore',
           },
           {
             text: 'شیائومی',
-            link: '/shop/laptop/brand/xiaomi',
+            link: '/explore',
           },
         ],
       },
       {
         text: 'براساس قیمت',
-        link: '/shop/shop/price',
+        link: '/explore',
         children: [
           {
             text: 'تا 3 میلیون',
-            link: '/shop/shop/laptop/?min=0&max=3000000',
-          },
-          {
-            text: 'تا 10 میلیون',
-            link: '/shop/shop/laptop/?min=0&max=10000000',
+            link: '/explore',
           },
           {
             text: 'تا 5 میلیون',
-            link: '/shop/shop/laptop/?min=0&max=5000000',
+            link: '/explore',
+          },
+          {
+            text: 'تا 10 میلیون',
+            link: '/explore',
           },
         ],
       },
-    ],
-  },
-  {
-    text: 'ساعت',
-    path: '/shop/watch',
-    children: [
       {
         text: 'براساس برند',
-        link: '/shop/watch/brand',
+        link: '/explore',
         children: [
           {
             text: 'سامسونگ',
-            link: '/shop/watch/brand/samsung',
-          },
-          {
-            text: 'شیائومی',
-            link: '/shop/watch/brand/xiaomi',
+            link: '/explore',
           },
           {
             text: 'اپل',
-            link: '/shop/watch/brand/apple',
-          },
-        ],
-      },
-      {
-        text: 'براساس قیمت',
-        link: '/shop/watch/price',
-        children: [
-          {
-            text: 'تا 10 میلیون',
-            link: '/shop/watch/prices/?min=0&max=10000000',
+            link: '/explore',
           },
           {
-            text: 'تا 3 میلیون',
-            link: '/shop/watch/prices/?min=0&max=3000000',
-          },
-          {
-            text: 'تا 5 میلیون',
-            link: '/shop/watch/prices/?min=0&max=5000000',
+            text: 'شیائومی',
+            link: '/explore',
           },
         ],
       },
@@ -127,83 +121,59 @@ export const CATEGORIES = [
   },
   {
     text: 'اسپیکر',
-    path: '/shop/speaker',
+    path: '/explore',
     children: [
       {
-        text: 'براساس برند',
-        link: '/shop/speaker/brand',
+        text: 'براساس سخت افزار',
+        link: '/explore',
         children: [
           {
+            text: 'سامسونگ',
+            link: '/explore',
+          },
+          {
             text: 'اپل',
-            link: '/shop/speaker/brand/apple',
+            link: '/explore',
           },
           {
             text: 'شیائومی',
-            link: '/shop/speaker/brand/xiaomi',
+            link: '/explore',
           },
+        ],
+      },
+      {
+        text: 'براساس برند',
+        link: '/explore',
+        children: [
           {
             text: 'سامسونگ',
-            link: '/shop/speaker/brand/samsung',
+            link: '/explore',
+          },
+          {
+            text: 'اپل',
+            link: '/explore',
+          },
+          {
+            text: 'شیائومی',
+            link: '/explore',
           },
         ],
       },
       {
         text: 'براساس قیمت',
-        link: '/shop/speaker/price',
-        children: [
-          {
-            text: 'تا 5 میلیون',
-            link: '/shop/speaker/laptop/?min=0&max=5000000',
-          },
-          {
-            text: 'تا 3 میلیون',
-            link: '/shop/speaker/laptop/?min=0&max=3000000',
-          },
-          {
-            text: 'تا 10 میلیون',
-            link: '/shop/speaker/laptop/?min=0&max=10000000',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    text: 'پاوربانک',
-    path: '/shop/powerbank',
-    children: [
-      {
-        text: 'براساس برند',
-        link: '/shop/powerbank/brand',
-        children: [
-          {
-            text: 'اپل',
-            link: '/shop/powerbank/brand/apple',
-          },
-          {
-            text: 'سامسونگ',
-            link: '/shop/powerbank/brand/samsung',
-          },
-          {
-            text: 'شیائومی',
-            link: '/shop/powerbank/brand/xiaomi',
-          },
-        ],
-      },
-      {
-        text: 'براساس قیمت',
-        link: '/shop/powerbank/price',
+        link: '/explore',
         children: [
           {
             text: 'تا 3 میلیون',
-            link: '/shop/powerbank/laptop/?min=0&max=3000000',
-          },
-          {
-            text: 'تا 10 میلیون',
-            link: '/shop/powerbank/laptop/?min=0&max=10000000',
+            link: '/explore',
           },
           {
             text: 'تا 5 میلیون',
-            link: '/shop/powerbank/laptop/?min=0&max=5000000',
+            link: '/explore',
+          },
+          {
+            text: 'تا 10 میلیون',
+            link: '/explore',
           },
         ],
       },

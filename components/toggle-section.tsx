@@ -39,7 +39,7 @@ export function ToggleSection(props: IToggleSectionProps) {
         })}
       >
         <div className="container">
-          <div className="rounded-md border border-gray-200 bg-white">
+          <div className="rounded-md border bg-white">
             {/* head */}
             <div className="flex items-center justify-between border-b p-2">
               <p className="text-smp font-bold">{props.title}</p>

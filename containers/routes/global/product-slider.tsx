@@ -49,7 +49,7 @@ export function ProductSlider(props: IProductSliderProps) {
               return (
                 <SwiperSlide
                   key={item.id}
-                  className="!w-[268px] rounded-xl border border-gray-200 bg-white transition-all hover:border-gray-300"
+                  className="!w-[268px] rounded-xl border bg-white transition-all hover:border-gray-300"
                 >
                   <ProductCard data={item} />
                 </SwiperSlide>
