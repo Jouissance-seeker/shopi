@@ -1,38 +1,33 @@
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useQueryState } from 'nuqs';
 
 export function useToggleUrlState(key: string) {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
   const prefixedKey = `toggle-${key}`;
-  const [state, setState] = useState(searchParams.has(prefixedKey));
+  const [state, setState] = useQueryState(prefixedKey);
 
-  useEffect(() => {
-    setState(searchParams.has(prefixedKey));
-  }, [searchParams, prefixedKey]);
-
-  const updateUrl = async (newState: boolean) => {
-    if (newState === state) return;
-    const updatedSearchParams = new URLSearchParams(searchParams.toString());
-    Array.from(updatedSearchParams.keys()).forEach((paramKey) => {
-      if (paramKey.startsWith('toggle-')) {
-        updatedSearchParams.delete(paramKey);
-      }
-    });
-    if (newState) {
-      updatedSearchParams.set(prefixedKey, 'true');
+  const updateUrl = (
+    newState: boolean,
+    additionalParams?: Record<string, string>,
+    keysToRemove?: string[],
+  ) => {
+    const updatedParams: Record<string, string | null> = {};
+    if (additionalParams) {
+      Object.entries(additionalParams).forEach(([paramKey, value]) => {
+        updatedParams[paramKey] = value;
+      });
     }
-    router.push(`${pathname}?${updatedSearchParams.toString()}`, {
-      scroll: false,
+    updatedParams[prefixedKey] = newState ? 'true' : null;
+    keysToRemove?.forEach((key) => {
+      updatedParams[key] = null;
     });
-    setState(newState);
+    setState(newState ? 'true' : null, { shallow: true });
   };
 
   return {
-    isShow: state,
-    toggle: () => updateUrl(!state),
-    hide: () => updateUrl(false),
-    show: () => updateUrl(true),
+    isShow: state === 'true',
+    toggle: () => updateUrl(state !== 'true'),
+    hide: (keysToRemove?: string[]) =>
+      updateUrl(false, undefined, keysToRemove),
+    show: (additionalParams?: Record<string, string>) =>
+      updateUrl(true, additionalParams),
   };
 }
