@@ -1,11 +1,11 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
+import { useQueryState } from 'nuqs';
 import { useEffect, useState } from 'react';
 import { HiCheck, HiChevronDown } from 'react-icons/hi2';
 import { ToggleSection } from '@/components/toggle-section';
 import { useToggleUrlState } from '@/hooks/toggle-url-state';
-import { useUpdateQuery } from '@/hooks/update-query';
 import { cn } from '@/utils/cn';
 
 export function CheckboxAccordions() {
@@ -121,9 +121,9 @@ interface ICheckboxItemProps {
 
 const CheckboxItem = (props: ICheckboxItemProps) => {
   const searchParams = useSearchParams();
-  const updateQuery = useUpdateQuery();
   const queryWithPrefix = `filter-${props.data.query}`;
   const [isChecked, setIsChecked] = useState(false);
+  const [, setNuqsStateFilter] = useQueryState(queryWithPrefix);
 
   useEffect(() => {
     const paramValues =
@@ -132,26 +132,17 @@ const CheckboxItem = (props: ICheckboxItemProps) => {
   }, [searchParams, queryWithPrefix, props.data.id]);
 
   const handleCheck = () => {
-    updateQuery((prev) => {
-      const currentValues = prev[queryWithPrefix]
-        ? prev[queryWithPrefix].split(',').map(Number)
-        : [];
-      let updatedValues;
-      if (isChecked) {
-        updatedValues = currentValues.filter(
-          (value: number) => value !== props.data.id,
-        );
-      } else {
-        updatedValues = [...currentValues, props.data.id];
-      }
-      return {
-        ...prev,
-        [queryWithPrefix]: updatedValues.length
-          ? updatedValues.join(',')
-          : undefined,
-      };
-    });
     setIsChecked((prev) => !prev);
+    setNuqsStateFilter((prev) => {
+      if (isChecked) {
+        const updated = (prev ?? '')
+          .split(',')
+          .filter((id) => id && id !== props.data.id.toString());
+        return updated.length ? updated.join(',') : null;
+      } else {
+        return prev ? `${prev},${props.data.id}` : props.data.id.toString();
+      }
+    });
   };
 
   return (

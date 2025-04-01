@@ -3,13 +3,13 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
+import { useQueryState } from 'nuqs';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaArrowRight } from 'react-icons/fa6';
 import OtpInput from 'react18-input-otp';
 import { z } from 'zod';
 import { useApiCall } from '@/hooks/api-call';
-import { useUpdateQuery } from '@/hooks/update-query';
 import { cn } from '@/utils/cn';
 import { $ } from '@/utils/element-selector';
 
@@ -25,10 +25,11 @@ export function Form() {
 }
 
 const FormLogin = () => {
-  const updateQuery = useUpdateQuery();
   const searchParams = useSearchParams();
   const queryPhoneNumber = searchParams.get('phoneNumber');
   const [, isLoadingSubmitBtn] = useApiCall();
+  const [, setNuqsStateForm] = useQueryState('form');
+  const [, setNuqsStatePhoneNumber] = useQueryState('phone-number');
   const formSchema = z.object({
     phoneNumber: z.string().regex(new RegExp(/^0\d{10}$/), {
       message: 'شماره موبایل وارد شده معتبر نیست!',
@@ -41,11 +42,8 @@ const FormLogin = () => {
     },
   });
   const handleSubmitForm = async () => {
-    updateQuery((prev) => ({
-      ...prev,
-      form: 'verification',
-      phoneNumber: form.getValues('phoneNumber'),
-    }));
+    setNuqsStatePhoneNumber(form.getValues('phoneNumber'));
+    setNuqsStateForm('verification');
   };
 
   useEffect(() => {
@@ -105,8 +103,8 @@ const FormLogin = () => {
 
 const FormVerification = () => {
   // callApiSubmitBtn
+  const [, setNuqsForm] = useQueryState('form');
   const [, isLoadingSubmitBtn] = useApiCall();
-  const updateQuery = useUpdateQuery();
   const formSchema = z.object({
     // length 4
     otpCode: z.string().regex(new RegExp(/^\d{4}$/), {
@@ -123,10 +121,7 @@ const FormVerification = () => {
     // ...
   };
   const handleBackBtn = () => {
-    updateQuery((prev) => ({
-      ...prev,
-      form: 'login',
-    }));
+    setNuqsForm('login');
   };
 
   return (

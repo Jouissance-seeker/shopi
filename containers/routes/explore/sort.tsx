@@ -1,24 +1,21 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
+import { useQueryState } from 'nuqs';
 import { useEffect, useState } from 'react';
-import { useUpdateQuery } from '@/hooks/update-query';
 import { cn } from '@/utils/cn';
 
 export function Sort() {
-  const updateQuery = useUpdateQuery();
   const searchParams = useSearchParams();
   const querySort = searchParams.get('sort') || 'newest';
+  const [, setNuqsStateSort] = useQueryState('sort');
   const [activedSort, setActivedSort] = useState(querySort);
   useEffect(() => {
     setActivedSort(querySort);
   }, [querySort]);
 
   const handleSort = (value: string) => {
-    updateQuery((prev) => ({
-      ...prev,
-      sort: value,
-    }));
+    setNuqsStateSort(value);
   };
 
   return (
