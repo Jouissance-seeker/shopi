@@ -56,6 +56,7 @@ export default [
     },
     settings: {
       'import/resolver': {
+        typescript: {}, // Make sure ESLint can resolve TypeScript files
         alias: {
           map: [['@', './']],
           extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
