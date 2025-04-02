@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { TProduct } from '@/types/product';
 import { cn } from '@/utils/cn';
 import { CardBorderBottom } from './card-border-bottom';
-import { ProductCardActions } from './product-card-actions';
+import { ProductCardFooter } from './product-card-footer';
 
 interface IProps {
   data: TProduct;
@@ -14,8 +14,11 @@ export function ProductCard(props: IProps) {
     <div key={props.data.id} className="group overflow-hidden">
       <div className="relative flex !h-[330px] w-full flex-col items-center justify-center overflow-hidden p-5">
         <ImageWithText data={props.data} />
-        <Price data={props.data} />
-        <ProductCardActions data={props.data} type="product-slider" />
+        <ProductCardFooter
+          data={props.data}
+          type="product-slider"
+          priceComponent={<Price data={props.data} />}
+        />
         <CardBorderBottom />
       </div>
     </div>
