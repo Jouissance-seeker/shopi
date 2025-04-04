@@ -1,13 +1,15 @@
 'use client';
 
 import { ProductCard } from '@/components/product-card';
+import { useShuffledArray } from '@/hooks/shuffle-array';
 import { productsData } from '@/resources/products';
-import { shuffleArray } from '@/utils/shuffle-array';
 
 export function Products() {
+  const shuffledProducsData = useShuffledArray(productsData);
+
   return (
     <section className="grid w-full grid-cols-1 overflow-hidden rounded-xl border-r border-t sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-      {shuffleArray(productsData).map((item) => (
+      {shuffledProducsData.map((item) => (
         <div key={item.id} className="border-b border-l">
           <ProductCard data={item} />
         </div>

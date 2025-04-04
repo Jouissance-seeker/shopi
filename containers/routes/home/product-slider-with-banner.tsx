@@ -9,9 +9,9 @@ import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ProductCard } from '@/components/product-card';
+import { useShuffledArray } from '@/hooks/shuffle-array';
 import { productsData } from '@/resources/products';
 import { cn } from '@/utils/cn';
-import { shuffleArray } from '@/utils/shuffle-array';
 
 interface IProductSliderProps {
   image: string;
@@ -85,6 +85,8 @@ interface ISliderProps {
 }
 
 const Slider = (props: ISliderProps) => {
+  const shuffledProductsData = useShuffledArray(productsData);
+
   return (
     <div>
       <Swiper
@@ -95,7 +97,7 @@ const Slider = (props: ISliderProps) => {
         id="product-slider"
         className="rounded-xl border bg-white"
       >
-        {shuffleArray(productsData).map((item) => {
+        {shuffledProductsData.map((item) => {
           return (
             <SwiperSlide
               key={item.id}

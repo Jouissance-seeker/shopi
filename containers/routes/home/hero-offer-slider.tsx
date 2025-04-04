@@ -9,12 +9,13 @@ import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ProductCardFooter } from '@/components/product-card-footer';
+import { useShuffledArray } from '@/hooks/shuffle-array';
 import { productsData } from '@/resources/products';
 import { TProduct } from '@/types/product';
 import { cn } from '@/utils/cn';
-import { shuffleArray } from '@/utils/shuffle-array';
 
 export function HeroOfferSlider() {
+  const shuffledProductsData = useShuffledArray(productsData);
   const swiperRef = useRef<any>(null);
 
   return (
@@ -37,7 +38,7 @@ export function HeroOfferSlider() {
             },
           }}
         >
-          {shuffleArray(productsData).map((item) => {
+          {shuffledProductsData.map((item) => {
             return (
               <SwiperSlide
                 key={item.id}
