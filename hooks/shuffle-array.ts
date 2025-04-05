@@ -1,12 +1,17 @@
 import { useEffect, useState } from 'react';
-import { shuffleArray } from '@/utils/shuffle-array';
 
 export function useShuffledArray<T>(data: T[]): T[] {
-  const [shuffledArray, setShuffledArray] = useState<T[]>(data);
+  const [shuffledArray, setShuffledArray] = useState<T[]>([]);
+  const shuffleArray = (array: T[]): T[] => {
+    return array
+      .map((item) => ({ item, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ item }) => item);
+  };
 
   useEffect(() => {
-    setShuffledArray(shuffleArray([...data]));
-  }, []);
+    setShuffledArray(shuffleArray(data));
+  }, [data]);
 
   return shuffledArray;
 }

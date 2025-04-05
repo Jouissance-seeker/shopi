@@ -6,7 +6,7 @@ import { HeroOfferSlider } from '@/containers/routes/home/hero-offer-slider';
 import { HeroSlider } from '@/containers/routes/home/hero-slider';
 import { ProductSliderWithBanner } from '@/containers/routes/home/product-slider-with-banner';
 
-export default function Home() {
+export default function Page() {
   return (
     <div className="flex size-full flex-col gap-6">
       <div className="container grid grid-cols-4 gap-5">
@@ -18,14 +18,12 @@ export default function Home() {
       <ProductSliderWithBanner
         text="ارزان ترین"
         position="right"
-        path="/"
         image="/images/routes/home/product-slider-with-banner-laptop.png"
       />
       <ProductSlider title="محبوب ترین محصولات" path="/" />
       <ProductSliderWithBanner
         text="گران ترین"
         position="left"
-        path="/"
         image="/images/routes/home/product-slider-with-banner-play-station.png"
       />
       <BrandSlider />
