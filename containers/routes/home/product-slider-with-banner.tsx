@@ -3,6 +3,7 @@
 import 'swiper/css';
 import 'swiper/css/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRef } from 'react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2';
 import { Autoplay } from 'swiper/modules';
@@ -15,6 +16,7 @@ import { cn } from '@/utils/cn';
 interface IProductSliderProps {
   image: string;
   text: string;
+  path: string;
   position: 'left' | 'right';
 }
 
@@ -23,7 +25,12 @@ export function ProductSliderWithBanner(props: IProductSliderProps) {
 
   return (
     <section className="group/section container relative z-10 col-span-full grid w-full grid-cols-5 gap-5 overflow-hidden rounded-lg">
-      <Banner image={props.image} text={props.text} position={props.position} />
+      <Banner
+        image={props.image}
+        text={props.text}
+        position={props.position}
+        path={props.path}
+      />
       <div
         className={cn('relative col-span-full md:col-span-4', {
           'md:order-2': props.position === 'left',
@@ -41,11 +48,13 @@ interface IBannerProps {
   image: string;
   text: string;
   position: 'left' | 'right';
+  path: string;
 }
 
 const Banner = (props: IBannerProps) => {
   return (
-    <div
+    <Link
+      href={props.path}
       className={cn(
         'col-span-full flex justify-between rounded-xl bg-red p-3 md:col-span-1 md:flex-col md:items-center',
         { 'md:order-1': props.position === 'left' },
@@ -67,7 +76,7 @@ const Banner = (props: IBannerProps) => {
           {props.text}
         </p>
       </div>
-    </div>
+    </Link>
   );
 };
 

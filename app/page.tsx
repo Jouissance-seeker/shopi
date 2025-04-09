@@ -18,12 +18,14 @@ export default function Page() {
       <ProductSliderWithBanner
         text="ارزان ترین"
         position="right"
+        path="/"
         image="/images/routes/home/product-slider-with-banner-laptop.png"
       />
       <ProductSlider title="محبوب ترین محصولات" path="/" />
       <ProductSliderWithBanner
         text="گران ترین"
         position="left"
+        path="/"
         image="/images/routes/home/product-slider-with-banner-play-station.png"
       />
       <BrandSlider />

@@ -38,18 +38,19 @@ export function Images(props: IImagesProps) {
         >
           {props.images.map((item) => (
             <SwiperSlide key={item}>
-              <button className="flex w-full justify-center rounded-lg border p-2">
+              <div className="flex w-full justify-center rounded-lg border p-2">
                 <Image
                   src={item}
                   alt={props.title.fa}
                   width={260}
                   height={260}
                 />
-              </button>
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
+      {/* images */}
       <div className="flex justify-center">
         <Swiper
           slidesPerView="auto"
