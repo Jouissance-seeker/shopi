@@ -268,14 +268,14 @@ const MobileBottomCart = () => {
                 </button>
                 {/* image */}
                 <Image
-                  alt={item.title.fa}
-                  src={item.images[0]}
+                  alt={item.name}
+                  src={item.image}
                   width={60}
                   height={60}
                 />
                 <div className="mb-4 w-full">
                   {/* title */}
-                  <p className="mb-2 text-smp font-bold">{item.title.fa}</p>
+                  <p className="mb-2 text-smp font-bold">{item.name}</p>
                   <div className="relative flex flex-col items-end">
                     {/* increment btn / decrement btn / remove btn */}
                     <div className="flex w-24 justify-between rounded-lg border bg-white px-3 py-1.5 font-bold text-gray-700">
@@ -310,17 +310,17 @@ const MobileBottomCart = () => {
                         className={cn(
                           'absolute bottom-[20px] left-[118px] text-sm text-gray-400',
                           {
-                            hidden: Boolean(item.discount === 0),
+                            hidden: Boolean(!item.priceOff),
                           },
                         )}
                       >
-                        {item.priceWithoutDiscount.toLocaleString('fa-IR')}
+                        {item.price.toLocaleString('fa-IR')}
                       </del>
                       <p className="absolute bottom-3 left-[100px] -rotate-90 text-[10px] font-bold text-black/40">
                         تومان
                       </p>
                       <p className="absolute bottom-0 left-[120px] text-lg font-bold text-black">
-                        {item.priceWithDiscount.toLocaleString('fa-IR')}
+                        {item.priceOff?.toLocaleString('fa-IR')}
                       </p>
                     </div>
                     {/* discount */}
@@ -328,7 +328,7 @@ const MobileBottomCart = () => {
                       className={cn(
                         'absolute bottom-2 left-[210px] flex h-[22px] gap-1 rounded-md bg-red px-2',
                         {
-                          hidden: Boolean(item.discount === 0),
+                          hidden: Boolean(!item.priceOff),
                         },
                       )}
                     >
@@ -601,14 +601,14 @@ const DesktopBottomCart = () => {
                   </button>
                   {/* image */}
                   <Image
-                    alt={item.title.fa}
-                    src={item.images[0]}
+                    alt={item.name}
+                    src={item.image}
                     width={60}
                     height={60}
                   />
                   <div className="mb-4 w-full">
                     {/* title */}
-                    <p className="mb-2 text-smp font-bold">{item.title.fa}</p>
+                    <p className="mb-2 text-smp font-bold">{item.name}</p>
                     <div className="relative flex flex-col items-end">
                       {/* increment btn / decrement btn / remove btn */}
                       <div className="flex w-24 justify-between rounded-lg border bg-white px-3 py-1.5 font-bold text-gray-700">
@@ -645,17 +645,17 @@ const DesktopBottomCart = () => {
                           className={cn(
                             'absolute bottom-[20px] left-[118px] text-sm text-gray-400',
                             {
-                              hidden: Boolean(item.discount === 0),
+                              hidden: Boolean(!item.priceOff),
                             },
                           )}
                         >
-                          {item.priceWithoutDiscount.toLocaleString('fa-IR')}
+                          {item.price.toLocaleString('fa-IR')}
                         </del>
                         <p className="absolute bottom-3 left-[100px] -rotate-90 text-[10px] font-bold text-black/40">
                           تومان
                         </p>
                         <p className="absolute bottom-0 left-[120px] text-lg font-bold text-black">
-                          {item.priceWithDiscount.toLocaleString('fa-IR')}
+                          {item.priceOff.toLocaleString('fa-IR')}
                         </p>
                       </div>
                       {/* discount */}
@@ -663,7 +663,7 @@ const DesktopBottomCart = () => {
                         className={cn(
                           'absolute bottom-2 left-[210px] flex h-[22px] gap-1 rounded-md bg-red px-2',
                           {
-                            hidden: Boolean(item.discount === 0),
+                            hidden: Boolean(!item.priceOff),
                           },
                         )}
                       >
