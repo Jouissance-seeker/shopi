@@ -8,10 +8,8 @@ import { useEffect, useRef, useState } from 'react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { ProductCardFooter } from '@/components/product-card-footer';
 import { useShuffledArray } from '@/hooks/shuffle-array';
 import { productsData } from '@/resources/products';
-import { TProduct } from '@/types/product';
 import { cn } from '@/utils/cn';
 
 export function HeroOfferSlider() {
@@ -62,11 +60,11 @@ export function HeroOfferSlider() {
                     </p>
                   </Link>
                   {/* price/actions */}
-                  <ProductCardFooter
+                  {/* <ProductCardFooter
                     data={item}
                     type="offer-slider"
                     priceComponent={<OfferSliderCardPrice item={item} />}
-                  />
+                  /> */}
                 </div>
               </SwiperSlide>
             );
@@ -78,27 +76,27 @@ export function HeroOfferSlider() {
   );
 }
 
-function OfferSliderCardPrice({ item }: { item: TProduct }) {
-  return (
-    <div>
-      <del className="absolute bottom-8 left-20 text-smp text-gray-50">
-        {item.priceWithDiscount.toLocaleString('fa-IR')}
-      </del>
-      <div>
-        <p className="absolute bottom-1 left-8 text-2xl font-bold text-white">
-          {item.priceWithoutDiscount.toLocaleString('fa-IR')}
-        </p>
-        <p className="absolute bottom-5 left-2 -rotate-90 text-xs font-bold text-white">
-          تومان
-        </p>
-        <div className="absolute bottom-9 left-8 flex h-[22px] gap-1 rounded-full rounded-bl-none bg-white px-2">
-          <p className="pt-0.5 font-bold text-red">{item.discount}</p>
-          <p className="pt-1 text-sm font-bold text-red">%</p>
-        </div>
-      </div>
-    </div>
-  );
-}
+// function OfferSliderCardPrice({ item }: { item: TProduct }) {
+//   return (
+//     <div>
+//       <del className="absolute bottom-8 left-20 text-smp text-gray-50">
+//         {item.priceWithDiscount.toLocaleString('fa-IR')}
+//       </del>
+//       <div>
+//         <p className="absolute bottom-1 left-8 text-2xl font-bold text-white">
+//           {item.priceWithoutDiscount.toLocaleString('fa-IR')}
+//         </p>
+//         <p className="absolute bottom-5 left-2 -rotate-90 text-xs font-bold text-white">
+//           تومان
+//         </p>
+//         <div className="absolute bottom-9 left-8 flex h-[22px] gap-1 rounded-full rounded-bl-none bg-white px-2">
+//           <p className="pt-0.5 font-bold text-red">{item.discount}</p>
+//           <p className="pt-1 text-sm font-bold text-red">%</p>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
 
 interface INavigationProps {
   swiperRef: any;
