@@ -9,16 +9,14 @@ import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ProductCard } from '@/components/product-card';
 import { SliderNavigation } from '@/components/slider-navigation';
-import { useShuffledArray } from '@/hooks/shuffle-array';
-import { productsData } from '@/resources/products';
 
 interface IProductSliderProps {
   title: string;
   path: string;
+  data: any[];
 }
 
 export function ProductSlider(props: IProductSliderProps) {
-  const shuffledProductsData = useShuffledArray(productsData);
   const swiperRef = useRef<any>(null);
 
   return (
@@ -46,7 +44,7 @@ export function ProductSlider(props: IProductSliderProps) {
             modules={[Autoplay]}
             id="product-slider"
           >
-            {shuffledProductsData.map((item) => {
+            {props.data.map((item) => {
               return (
                 <SwiperSlide
                   key={item.id}

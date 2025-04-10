@@ -1,5 +1,9 @@
 import { slice } from 'killua';
-import { TProduct } from '@/types/product';
+import { APIgetProductsForSlider } from '@/actions/routes/home/get-products-for-slider';
+
+type TProduct = NonNullable<
+  Awaited<ReturnType<typeof APIgetProductsForSlider>>
+>[number];
 
 export const cartSlice = slice({
   key: 'cart',
@@ -13,7 +17,7 @@ export const cartSlice = slice({
       value.find((product) => product.id === payload.id)?.quantity === 1,
     totalPrice: (value) =>
       value.reduce(
-        (acc, product) => acc + product.priceWithDiscount * product.quantity,
+        (acc, product) => acc + product.priceOff! * product.quantity,
         0,
       ),
     totalItems: (value) =>

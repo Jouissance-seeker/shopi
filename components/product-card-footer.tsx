@@ -3,13 +3,16 @@
 import { useKillua } from 'killua';
 import { FiShoppingBag } from 'react-icons/fi';
 import { HiTrash } from 'react-icons/hi2';
+import { APIgetProductsForSlider } from '@/actions/routes/home/get-products-for-slider';
 import { cartSlice } from '@/slices/cart';
 import { TProduct } from '@/types/product';
 import { cn } from '@/utils/cn';
 
 type TProductCardType = 'offer-slider' | 'product-slider' | 'single-product';
 interface IProductCardActionsProps {
-  data: TProduct;
+  data: NonNullable<
+    Awaited<ReturnType<typeof APIgetProductsForSlider>>
+  >[number];
   type: TProductCardType;
   priceComponent?: React.ReactNode;
 }
@@ -73,19 +76,24 @@ export function ProductCardButton({
   );
 }
 
-export function ProductCardFooter({
-  data,
-  type,
-  priceComponent,
-}: IProductCardActionsProps) {
+export function ProductCardFooter(props: IProductCardActionsProps) {
   const localstorageCart = useKillua(cartSlice);
-  const isInCart = localstorageCart.selectors.isInCart(data);
-  const quantity = localstorageCart.selectors.quantity(data);
+  const isInCart = localstorageCart.selectors.isInCart(props.data);
+  const quantity = localstorageCart.selectors.quantity(props.data);
+  const outOfStock = Boolean(props.data.outOfStock);
 
-  const handleAdd = () => localstorageCart.reducers.add(data);
-  const handleIncrement = () => localstorageCart.reducers.increment(data);
-  const handleDecrement = () => localstorageCart.reducers.decrement(data);
-  const handleRemove = () => localstorageCart.reducers.remove(data);
+  const handleAdd = () => localstorageCart.reducers.add(props.data);
+  const handleIncrement = () => localstorageCart.reducers.increment(props.data);
+  const handleDecrement = () => localstorageCart.reducers.decrement(props.data);
+  const handleRemove = () => localstorageCart.reducers.remove(props.data);
+
+  if (outOfStock) {
+    return (
+      <div>
+        <p className="font-bold text-black">محصول ناموجود است</p>
+      </div>
+    );
+  }
 
   if (isInCart) {
     return (
@@ -93,7 +101,7 @@ export function ProductCardFooter({
         className={cn(
           'flex w-full justify-between rounded-lg font-bold text-gray-900',
           {
-            'absolute -bottom-0.5 p-4': type !== 'single-product',
+            'absolute -bottom-0.5 p-4': props.type !== 'single-product',
           },
         )}
       >
@@ -101,8 +109,8 @@ export function ProductCardFooter({
           className={cn(
             'flex w-full justify-between rounded-lg border bg-white fill-gray-700 text-lg text-gray-700',
             {
-              'p-4': type === 'single-product',
-              'p-2': type !== 'single-product',
+              'p-4': props.type === 'single-product',
+              'p-2': props.type !== 'single-product',
             },
           )}
         >
@@ -124,8 +132,8 @@ export function ProductCardFooter({
 
   return (
     <>
-      {priceComponent}
-      <ProductCardButton type={type} handleAdd={handleAdd} />
+      {props.priceComponent}
+      <ProductCardButton type={props.type} handleAdd={handleAdd} />
     </>
   );
 }

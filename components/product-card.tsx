@@ -1,12 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { TProduct } from '@/types/product';
+import { APIgetProductsForSlider } from '@/actions/routes/home/get-products-for-slider';
 import { cn } from '@/utils/cn';
 import { CardBorderBottom } from './card-border-bottom';
 import { ProductCardFooter } from './product-card-footer';
 
 interface IProps {
-  data: TProduct;
+  data: NonNullable<
+    Awaited<ReturnType<typeof APIgetProductsForSlider>>
+  >[number];
 }
 
 export function ProductCard(props: IProps) {
@@ -28,30 +30,34 @@ export function ProductCard(props: IProps) {
 const ImageWithText = (props: IProps) => {
   return (
     <Link
-      href={props.data.path}
+      href={`/products/${props.data.id}`}
       className="mb-10 flex flex-col items-center gap-3"
     >
       <div className="relative size-[175px]">
-        <Image src={props.data.images[0]} alt={props.data.title.fa} fill />
+        <Image src={props.data.image} alt={props.data.name} fill />
       </div>
-      <p className="line-clamp-2 font-bold">{props.data.title.fa}</p>
+      <p className="line-clamp-2 font-bold">{props.data.name}</p>
     </Link>
   );
 };
 
 const Price = (props: IProps) => {
   return (
-    <div>
+    <div
+      className={cn({
+        hidden: Boolean(props.data.outOfStock),
+      })}
+    >
       <del
         className={cn('absolute bottom-9 left-[80px] text-smp text-gray-400', {
-          hidden: Boolean(props.data.discount === 0),
+          hidden: Boolean(!props.data.priceOff),
         })}
       >
-        {props.data.priceWithoutDiscount.toLocaleString('fa-IR')}
+        {props.data.priceOff?.toLocaleString('fa-IR')}
       </del>
       <div>
         <p className="absolute bottom-2 left-8 text-2xl font-bold text-black">
-          {props.data.priceWithDiscount.toLocaleString('fa-IR')}
+          {props.data.price.toLocaleString('fa-IR')}
         </p>
         <p className="absolute bottom-5 left-3 -rotate-90 text-[10px] font-bold text-gray-500">
           تومان
@@ -60,7 +66,7 @@ const Price = (props: IProps) => {
           className={cn(
             'absolute bottom-10 left-8 flex h-[22px] gap-1 rounded-full rounded-bl-none bg-red px-2',
             {
-              hidden: Boolean(props.data.discount === 0),
+              hidden: Boolean(!props.data.priceOff),
             },
           )}
         >

@@ -8,9 +8,8 @@ import { useRef } from 'react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { APIgetProductsForSlider } from '@/actions/routes/home/get-products-for-slider';
 import { ProductCard } from '@/components/product-card';
-import { useShuffledArray } from '@/hooks/shuffle-array';
-import { productsData } from '@/resources/products';
 import { cn } from '@/utils/cn';
 
 interface IProductSliderProps {
@@ -18,11 +17,11 @@ interface IProductSliderProps {
   text: string;
   path: string;
   position: 'left' | 'right';
+  data: NonNullable<Awaited<ReturnType<typeof APIgetProductsForSlider>>>;
 }
 
 export function ProductSliderWithBanner(props: IProductSliderProps) {
   const swiperRef = useRef<any>(null);
-
   return (
     <section className="group/section container relative z-10 col-span-full grid w-full grid-cols-5 gap-5 overflow-hidden rounded-lg">
       <Banner
@@ -37,7 +36,7 @@ export function ProductSliderWithBanner(props: IProductSliderProps) {
           'md:order-1': props.position === 'right',
         })}
       >
-        <Slider swiperRef={swiperRef} />
+        <Slider swiperRef={swiperRef} data={props.data} />
         <Navigation swiperRef={swiperRef} />
       </div>
     </section>
@@ -82,11 +81,10 @@ const Banner = (props: IBannerProps) => {
 
 interface ISliderProps {
   swiperRef: any;
+  data: NonNullable<Awaited<ReturnType<typeof APIgetProductsForSlider>>>;
 }
 
 const Slider = (props: ISliderProps) => {
-  const shuffledProductsData = useShuffledArray(productsData);
-
   return (
     <div>
       <Swiper
@@ -97,7 +95,7 @@ const Slider = (props: ISliderProps) => {
         id="product-slider"
         className="rounded-xl border bg-white"
       >
-        {shuffledProductsData.map((item) => {
+        {props.data.map((item) => {
           return (
             <SwiperSlide
               key={item.id}
