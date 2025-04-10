@@ -46,21 +46,17 @@ const ImageWithText = (props: IProps) => {
 
 const Price = (props: IProps) => {
   return (
-    <div
-      className={cn({
-        hidden: Boolean(props.data.outOfStock),
-      })}
-    >
+    <div>
       <del
         className={cn('absolute bottom-9 left-[80px] text-smp text-gray-400', {
           hidden: Boolean(!props.data.priceOff),
         })}
       >
-        {props.data.priceOff?.toLocaleString('fa-IR')}
+        {props.data.price?.toLocaleString('fa-IR')}
       </del>
       <div>
         <p className="absolute bottom-2 left-8 text-2xl font-bold text-black">
-          {props.data.price.toLocaleString('fa-IR')}
+          {(props.data.priceOff || props.data.price).toLocaleString('fa-IR')}
         </p>
         <p className="absolute bottom-5 left-3 -rotate-90 text-[10px] font-bold text-gray-500">
           تومان

@@ -17,7 +17,8 @@ export const cartSlice = slice({
       value.find((product) => product.id === payload.id)?.quantity === 1,
     totalPrice: (value) =>
       value.reduce(
-        (acc, product) => acc + product.priceOff! * product.quantity,
+        (acc, product) =>
+          acc + (product.priceOff || product.price) * product.quantity,
         0,
       ),
     totalItems: (value) =>

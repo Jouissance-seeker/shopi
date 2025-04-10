@@ -649,13 +649,15 @@ const DesktopBottomCart = () => {
                             },
                           )}
                         >
-                          {item.price.toLocaleString('fa-IR')}
+                          {item.price?.toLocaleString('fa-IR')}
                         </del>
                         <p className="absolute bottom-3 left-[100px] -rotate-90 text-[10px] font-bold text-black/40">
                           تومان
                         </p>
                         <p className="absolute bottom-0 left-[120px] text-lg font-bold text-black">
-                          {item.priceOff.toLocaleString('fa-IR')}
+                          {(item.priceOff || item.price)?.toLocaleString(
+                            'fa-IR',
+                          )}
                         </p>
                       </div>
                       {/* discount */}
