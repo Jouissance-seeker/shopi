@@ -3,20 +3,17 @@
 import { fetcher } from '@/utils/fetcher';
 
 type TReturn = Promise<
-  {
-    id: number;
-    name: string;
-    image: string;
-    price: number;
-    priceOff: null | number;
-    discount: null | number;
-    outOfStock: boolean;
-  }[]
+  [
+    {
+      image: 'string';
+      url: 'string';
+    },
+  ]
 >;
 
 export async function APIgetHeroSlider(): TReturn {
   return fetcher<TReturn>({
-    endpoint: '/products',
+    endpoint: '/hero-sliders',
     method: 'get',
     contentType: 'json',
   });

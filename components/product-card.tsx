@@ -6,9 +6,7 @@ import { CardBorderBottom } from './card-border-bottom';
 import { ProductCardFooter } from './product-card-footer';
 
 interface IProps {
-  data: NonNullable<
-    Awaited<ReturnType<typeof APIgetProductsForSlider>>
-  >[number];
+  data: Awaited<ReturnType<typeof APIgetProductsForSlider>>[number];
 }
 
 export function ProductCard(props: IProps) {

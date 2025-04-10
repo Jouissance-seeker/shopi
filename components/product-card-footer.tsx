@@ -10,9 +10,7 @@ import { cn } from '@/utils/cn';
 
 type TProductCardType = 'offer-slider' | 'product-slider' | 'single-product';
 interface IProductCardActionsProps {
-  data: NonNullable<
-    Awaited<ReturnType<typeof APIgetProductsForSlider>>
-  >[number];
+  data: Awaited<ReturnType<typeof APIgetProductsForSlider>>[number];
   type: TProductCardType;
   priceComponent?: React.ReactNode;
 }

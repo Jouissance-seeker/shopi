@@ -17,7 +17,7 @@ interface IProductSliderProps {
   text: string;
   path: string;
   position: 'left' | 'right';
-  data: NonNullable<Awaited<ReturnType<typeof APIgetProductsForSlider>>>;
+  data: Awaited<ReturnType<typeof APIgetProductsForSlider>>;
 }
 
 export function ProductSliderWithBanner(props: IProductSliderProps) {
@@ -81,7 +81,7 @@ const Banner = (props: IBannerProps) => {
 
 interface ISliderProps {
   swiperRef: any;
-  data: NonNullable<Awaited<ReturnType<typeof APIgetProductsForSlider>>>;
+  data: Awaited<ReturnType<typeof APIgetProductsForSlider>>;
 }
 
 const Slider = (props: ISliderProps) => {

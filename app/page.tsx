@@ -1,3 +1,4 @@
+import { APIgetHeroSlider } from '@/actions/routes/home/get-hero-slider';
 import { APIgetProductsForSlider } from '@/actions/routes/home/get-products-for-slider';
 import { CategorySlider } from '@/containers/routes/global/category-slider';
 import { ProductSlider } from '@/containers/routes/global/product-slider';
@@ -7,25 +8,32 @@ import { HeroSlider } from '@/containers/routes/home/hero-slider';
 import { ProductSliderWithBanner } from '@/containers/routes/home/product-slider-with-banner';
 
 export default async function Page() {
-  const productsForSliderOrderByLowestPrice = await APIgetProductsForSlider({
-    query: {
-      orderBy: 'lowest_price',
+  const productsForSliderOrderByLowestPriceData = await APIgetProductsForSlider(
+    {
+      query: {
+        orderBy: 'lowest_price',
+      },
     },
-  });
-  const productsForSliderOrderByHighestPrice = await APIgetProductsForSlider({
-    query: {
-      orderBy: 'highest_price',
+  );
+  const productsForSliderOrderByHighestPriceData =
+    await APIgetProductsForSlider({
+      query: {
+        orderBy: 'highest_price',
+      },
+    });
+  const productsForSliderOrderByMostPopularData = await APIgetProductsForSlider(
+    {
+      query: {
+        orderBy: 'name',
+      },
     },
-  });
-  const productsForSliderOrderByMostPopular = await APIgetProductsForSlider({
-    query: {
-      orderBy: 'name',
-    },
-  });
+  );
+  const heroSliderData = await APIgetHeroSlider();
+
   return (
     <div className="flex size-full flex-col gap-6">
       <div className="container grid grid-cols-4 gap-5">
-        <HeroSlider />
+        <HeroSlider data={heroSliderData} />
         {/* <HeroOfferSlider /> */}
       </div>
       <CategorySlider />
@@ -35,19 +43,19 @@ export default async function Page() {
         position="right"
         path="/"
         image="/images/routes/home/product-slider-with-banner-laptop.png"
-        data={productsForSliderOrderByLowestPrice}
+        data={productsForSliderOrderByLowestPriceData}
       />
       <ProductSlider
         title="محبوب ترین محصولات"
         path="/"
-        data={productsForSliderOrderByMostPopular}
+        data={productsForSliderOrderByMostPopularData}
       />
       <ProductSliderWithBanner
         text="گران ترین"
         position="left"
         path="/"
         image="/images/routes/home/product-slider-with-banner-play-station.png"
-        data={productsForSliderOrderByHighestPrice}
+        data={productsForSliderOrderByHighestPriceData}
       />
       <BrandSlider />
     </div>

@@ -1,9 +1,7 @@
 import { slice } from 'killua';
 import { APIgetProductsForSlider } from '@/actions/routes/home/get-products-for-slider';
 
-type TProduct = NonNullable<
-  Awaited<ReturnType<typeof APIgetProductsForSlider>>
->[number];
+type TProduct = Awaited<ReturnType<typeof APIgetProductsForSlider>>[number];
 
 export const cartSlice = slice({
   key: 'cart',

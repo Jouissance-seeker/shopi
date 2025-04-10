@@ -9,9 +9,13 @@ import { useRef } from 'react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2';
 import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { heroSliderData } from '@/resources/hero-slider';
+import { APIgetHeroSlider } from '@/actions/routes/home/get-hero-slider';
 
-export function HeroSlider() {
+interface IHeroSliderProps {
+  data: Awaited<ReturnType<typeof APIgetHeroSlider>>;
+}
+
+export function HeroSlider(props: IHeroSliderProps) {
   const swiperRef = useRef<any>(null);
 
   return (
@@ -20,7 +24,7 @@ export function HeroSlider() {
       dir="ltr"
       className="relative col-span-full xl:col-span-3 xl:mx-0 xl:max-w-none xl:p-0"
     >
-      <Slider swiperRef={swiperRef} />
+      <Slider swiperRef={swiperRef} data={props.data} />
       <PaginationAndNavigation swiperRef={swiperRef} />
     </section>
   );
@@ -54,6 +58,7 @@ const PaginationAndNavigation = (props: IPaginationAndNavigationProps) => {
 
 interface ISliderProps {
   swiperRef: any;
+  data: Awaited<ReturnType<typeof APIgetHeroSlider>>;
 }
 
 const Slider = (props: ISliderProps) => {
@@ -73,10 +78,10 @@ const Slider = (props: ISliderProps) => {
       modules={[Autoplay, Pagination]}
       className="overflow-hidden rounded-2xl"
     >
-      {heroSliderData.map((item) => {
+      {props.data.map((item) => {
         return (
           <SwiperSlide key={item.image}>
-            <Link href={item.path}>
+            <Link href={item.url}>
               <div className="aspect-h-1 aspect-w-2 bg-gray-100 sm:aspect-h-1 sm:aspect-w-[2.5] ">
                 <Image
                   fill
