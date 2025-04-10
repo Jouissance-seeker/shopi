@@ -1,3 +1,4 @@
+import { APIgetCategorySlider } from '@/actions/routes/global/get-category-slider';
 import { APIgetHeroSlider } from '@/actions/routes/home/get-hero-slider';
 import { APIgetProductsForSlider } from '@/actions/routes/home/get-products-for-slider';
 import { CategorySlider } from '@/containers/routes/global/category-slider';
@@ -29,6 +30,7 @@ export default async function Page() {
     },
   );
   const heroSliderData = await APIgetHeroSlider();
+  const categorySliderData = await APIgetCategorySlider();
 
   return (
     <div className="flex size-full flex-col gap-6">
@@ -36,7 +38,7 @@ export default async function Page() {
         <HeroSlider data={heroSliderData} />
         {/* <HeroOfferSlider /> */}
       </div>
-      <CategorySlider />
+      <CategorySlider data={categorySliderData} />
       <Banners />
       <ProductSliderWithBanner
         text="ارزان ترین"

@@ -8,12 +8,16 @@ import { usePathname } from 'next/navigation';
 import { useRef } from 'react';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { APIgetCategorySlider } from '@/actions/routes/global/get-category-slider';
 import { CardBorderBottom } from '@/components/card-border-bottom';
 import { SliderNavigation } from '@/components/slider-navigation';
-import { categorySliderData } from '@/resources/category-slider';
 import { cn } from '@/utils/cn';
 
-export function CategorySlider() {
+interface ICategorySliderProps {
+  data: Awaited<ReturnType<typeof APIgetCategorySlider>>;
+}
+
+export function CategorySlider(props: ICategorySliderProps) {
   const swiperRef = useRef<any>(null);
   const pathname = usePathname();
   const isPathnameHomepage = pathname === '/';
@@ -27,7 +31,7 @@ export function CategorySlider() {
         },
       )}
     >
-      <Slider swiperRef={swiperRef} />
+      <Slider swiperRef={swiperRef} data={props.data} />
       {isPathnameHomepage ? <SliderNavigation swiperRef={swiperRef} /> : null}
     </section>
   );
@@ -35,6 +39,7 @@ export function CategorySlider() {
 
 interface ISliderProps {
   swiperRef: any;
+  data: Awaited<ReturnType<typeof APIgetCategorySlider>>;
 }
 
 const Slider = (props: ISliderProps) => {
@@ -47,8 +52,8 @@ const Slider = (props: ISliderProps) => {
       id="category-slider"
       className="container"
     >
-      {categorySliderData.map((item) => (
-        <SwiperSlide key={item.id} className="!w-[250px]">
+      {props.data.map((item) => (
+        <SwiperSlide key={item.nameEn} className="!w-[250px]">
           <Card data={item} />
         </SwiperSlide>
       ))}
@@ -57,29 +62,29 @@ const Slider = (props: ISliderProps) => {
 };
 
 interface ICardProps {
-  data: (typeof categorySliderData)[0];
+  data: Awaited<ReturnType<typeof APIgetCategorySlider>>[number];
 }
 
 const Card = (props: ICardProps) => {
   return (
     <SwiperSlide
-      key={props.data.id}
+      key={props.data.nameEn}
       className="group overflow-hidden rounded-xl border bg-white transition-all hover:border-gray-300"
     >
       <Link
-        href={props.data.path}
+        href={`/explore?category=${props.data.nameFa}`.replace(/\s+/g, '-')}
         className="flex items-center justify-between gap-5 p-3"
       >
         <div className="flex items-center gap-3">
           <Image
             src={props.data.image}
-            alt={props.data.text.fa}
+            alt={props.data.nameFa}
             width={60}
             height={60}
           />
           <div className="flex flex-col gap-0.5">
-            <p className="text-smp font-bold">{props.data.text.fa}</p>
-            <p className="text-sm text-gray-400">{props.data.text.en}</p>
+            <p className="text-smp font-bold">{props.data.nameFa}</p>
+            <p className="text-sm text-gray-400">{props.data.nameEn}</p>
           </div>
         </div>
         <CardBorderBottom />

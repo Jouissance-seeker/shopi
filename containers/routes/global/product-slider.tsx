@@ -7,13 +7,14 @@ import { useRef } from 'react';
 import { HiChevronLeft } from 'react-icons/hi2';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { APIgetProductsForSlider } from '@/actions/routes/home/get-products-for-slider';
 import { ProductCard } from '@/components/product-card';
 import { SliderNavigation } from '@/components/slider-navigation';
 
 interface IProductSliderProps {
   title: string;
   path: string;
-  data: any[];
+  data: Awaited<ReturnType<typeof APIgetProductsForSlider>>;
 }
 
 export function ProductSlider(props: IProductSliderProps) {
