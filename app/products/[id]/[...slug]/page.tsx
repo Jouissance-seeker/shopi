@@ -1,5 +1,4 @@
 import { BreadCrumb } from '@/components/bread-crumb';
-import { ProductCardFooter } from '@/components/product-card-footer';
 import { Category } from '@/containers/routes/single-product/category';
 import { Images } from '@/containers/routes/single-product/images';
 import { MiniAttributes } from '@/containers/routes/single-product/mini-attributes';
@@ -11,13 +10,14 @@ import { productsData } from '@/resources/products';
 
 interface IPageProps {
   params: Promise<{
-    slug: string;
+    id: string;
   }>;
 }
 
 export default async function Page(props: IPageProps) {
-  const { slug } = await props.params;
-  const data = productsData[Number(slug[0]) - 1];
+  const { id } = await props.params;
+  console.log(id);
+  const data = productsData[Number(2) - 1];
 
   return (
     <div className="container">
@@ -40,7 +40,7 @@ export default async function Page(props: IPageProps) {
                 priceWithoutDiscount={data.priceWithoutDiscount}
               />
               <Quantity quantity={data.quantity} />
-              <ProductCardFooter type="single-product" data={data} />
+              {/* <ProductCardFooter type="single-product" data={data} /> */}
             </div>
             <div className="mt-5 flex w-full flex-col gap-5 sm:flex-row-reverse md:mt-0 xl:gap-5">
               <MiniAttributes attributes={data.attributes} />

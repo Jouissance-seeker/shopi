@@ -30,7 +30,10 @@ export function ProductCard(props: IProps) {
 const ImageWithText = (props: IProps) => {
   return (
     <Link
-      href={`/products/${props.data.id}`}
+      href={`/products/${props.data.id}/${props.data.name}`.replace(
+        /\s+/g,
+        '-',
+      )}
       className="mb-10 flex flex-col items-center gap-3"
     >
       <div className="relative size-[175px]">
