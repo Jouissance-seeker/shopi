@@ -320,7 +320,7 @@ const MobileBottomCart = () => {
                         تومان
                       </p>
                       <p className="absolute bottom-0 left-[120px] text-lg font-bold text-black">
-                        {item.priceOff?.toLocaleString('fa-IR')}
+                        {(item.priceOff || item.price)?.toLocaleString('fa-IR')}
                       </p>
                     </div>
                     {/* discount */}
