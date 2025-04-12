@@ -44,7 +44,7 @@ export default async function Page() {
       <ProductSliderWithBanner
         text="ارزان ترین"
         position="right"
-        path="/"
+        path="/explore?sort=lowest"
         image="/images/routes/home/product-slider-with-banner-laptop.png"
         data={productsForSliderOrderByLowestPriceData}
       />
@@ -56,7 +56,7 @@ export default async function Page() {
       <ProductSliderWithBanner
         text="گران ترین"
         position="left"
-        path="/"
+        path="/explore?sort=highest"
         image="/images/routes/home/product-slider-with-banner-play-station.png"
         data={productsForSliderOrderByHighestPriceData}
       />
