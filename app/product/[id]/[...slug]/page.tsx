@@ -56,7 +56,13 @@ export default async function Page(props: IPageProps) {
                 priceWithoutDiscount={data.price}
               />
               <Quantity quantity={data.quantity} />
-              <ProductCardFooter type="single-product" data={data} />
+              <ProductCardFooter
+                type="single-product"
+                data={{
+                  ...data,
+                  id: Number(id),
+                }}
+              />
             </div>
             <div className="mt-5 flex w-full flex-col gap-5 sm:flex-row-reverse md:mt-0 xl:gap-5">
               <Attributes
