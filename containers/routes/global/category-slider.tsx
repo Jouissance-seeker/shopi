@@ -12,6 +12,7 @@ import { APIgetCategorySlider } from '@/actions/routes/global/get-category-slide
 import { CardBorderBottom } from '@/components/card-border-bottom';
 import { SliderNavigation } from '@/components/slider-navigation';
 import { cn } from '@/utils/cn';
+import { fixUrl } from '@/utils/fix-url';
 
 interface ICategorySliderProps {
   data: Awaited<ReturnType<typeof APIgetCategorySlider>>;
@@ -72,7 +73,7 @@ const Card = (props: ICardProps) => {
       className="group overflow-hidden rounded-xl border bg-white transition-all hover:border-gray-300"
     >
       <Link
-        href={`/explore?category=${props.data.nameFa}`.replace(/\s+/g, '-')}
+        href={fixUrl(`/explore?category=${props.data.nameFa}`)}
         className="flex items-center justify-between gap-5 p-3"
       >
         <div className="flex items-center gap-3">

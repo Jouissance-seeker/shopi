@@ -8,6 +8,7 @@ import { Images } from '@/containers/routes/single-product/images';
 import { Price } from '@/containers/routes/single-product/price';
 import { Quantity } from '@/containers/routes/single-product/quantity';
 import { Title } from '@/containers/routes/single-product/title';
+import { fixUrl } from '@/utils/fix-url';
 
 interface IPageProps {
   params: Promise<{
@@ -26,7 +27,13 @@ export default async function Page(props: IPageProps) {
   return (
     <div className="container">
       <div className="mb-2 flex size-full items-center gap-3">
-        <BreadCrumb title="فروشگاه" />
+        <BreadCrumb
+          title={data.nameFa}
+          link={{
+            path: fixUrl(`/explore?category=${data.categoryName}`),
+            text: data.categoryName,
+          }}
+        />
         <span className="h-px grow bg-[#e6e9ee]" />
       </div>
       <div className="gap-5 xl:flex">

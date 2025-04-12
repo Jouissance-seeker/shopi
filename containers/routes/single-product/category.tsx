@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { HiChevronLeft } from 'react-icons/hi2';
+import { fixUrl } from '@/utils/fix-url';
 
 interface ICategoryProps {
   category: {
@@ -13,7 +14,7 @@ export function Category(props: ICategoryProps) {
   return (
     <section>
       <Link
-        href={`/explore?category=${props.category.name}`.replace(/\s+/g, '-')}
+        href={fixUrl(`/explore?category=${props.category.name}`)}
         className="flex items-center justify-between rounded-lg border p-3"
       >
         <Image

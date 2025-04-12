@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { APIgetProductsForSlider } from '@/actions/routes/home/get-products-for-slider';
 import { cn } from '@/utils/cn';
+import { fixUrl } from '@/utils/fix-url';
 import { CardBorderBottom } from './card-border-bottom';
 import { ProductCardFooter } from './product-card-footer';
 
@@ -28,7 +29,7 @@ export function ProductCard(props: IProps) {
 const ImageWithText = (props: IProps) => {
   return (
     <Link
-      href={`/product/${props.data.id}/${props.data.name}`.replace(/\s+/g, '-')}
+      href={fixUrl(`/product/${props.data.id}/${props.data.name}`)}
       className="mb-10 flex flex-col items-center gap-3"
     >
       <div className="relative size-[175px]">
