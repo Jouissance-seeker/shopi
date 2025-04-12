@@ -2,7 +2,7 @@ interface IDescriptionProps {
   description: string;
 }
 
-export function MiniDescription(props: IDescriptionProps) {
+export function Description(props: IDescriptionProps) {
   return (
     <section className="flex flex-col gap-1">
       {/* head */}

@@ -4,6 +4,7 @@ interface IFetcherParams {
   contentType: 'json' | 'formdata';
   body?: Record<string, any>;
   query?: Record<string, any>;
+  path?: string;
 }
 
 export async function fetcher<T>(params: IFetcherParams): Promise<T> {
@@ -25,7 +26,8 @@ export async function fetcher<T>(params: IFetcherParams): Promise<T> {
       body = JSON.stringify(params.body);
     }
   }
-  const res = await fetch(baseUrl + params.endpoint + query, {
+  const path = params.path ? `/${params.path}` : '';
+  const res = await fetch(baseUrl + params.endpoint + path + query, {
     method,
     body,
     headers,

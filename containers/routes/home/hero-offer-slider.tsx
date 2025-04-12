@@ -8,12 +8,15 @@ import { useEffect, useRef, useState } from 'react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi2';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useShuffledArray } from '@/hooks/shuffle-array';
-import { productsData } from '@/resources/products';
+import { APIgetProductsForSlider } from '@/actions/routes/home/get-products-for-slider';
+import { ProductCardFooter } from '@/components/product-card-footer';
 import { cn } from '@/utils/cn';
 
-export function HeroOfferSlider() {
-  const shuffledProductsData = useShuffledArray(productsData);
+interface IProductSliderProps {
+  data: Awaited<ReturnType<typeof APIgetProductsForSlider>>;
+}
+
+export function HeroOfferSlider(props: IProductSliderProps) {
   const swiperRef = useRef<any>(null);
 
   return (
@@ -36,7 +39,7 @@ export function HeroOfferSlider() {
             },
           }}
         >
-          {shuffledProductsData.map((item) => {
+          {props.data.map((item) => {
             return (
               <SwiperSlide
                 key={item.id}
@@ -49,22 +52,25 @@ export function HeroOfferSlider() {
                   <Timer />
                   {/* image / title */}
                   <Link
-                    href={item.path}
+                    href={`/product/${item.id}/${item.name}`.replace(
+                      /\s+/g,
+                      '-',
+                    )}
                     className="flex flex-col items-center gap-3"
                   >
                     <div className="relative size-[175px] bg-[url('/images/routes/home/hero-offer-slider-wave-bg.svg')] bg-center bg-no-repeat">
-                      <Image src={item.images[0]} alt={item.title.fa} fill />
+                      <Image src={item.image} alt={item.name} fill />
                     </div>
                     <p className="line-clamp-2 font-bold text-white">
-                      {item.title.fa}
+                      {item.name}
                     </p>
                   </Link>
                   {/* price/actions */}
-                  {/* <ProductCardFooter
+                  <ProductCardFooter
                     data={item}
                     type="offer-slider"
-                    priceComponent={<OfferSliderCardPrice item={item} />}
-                  /> */}
+                    priceComponent={<OfferSliderCardPrice data={item} />}
+                  />
                 </div>
               </SwiperSlide>
             );
@@ -76,27 +82,33 @@ export function HeroOfferSlider() {
   );
 }
 
-// function OfferSliderCardPrice({ item }: { item: TProduct }) {
-//   return (
-//     <div>
-//       <del className="absolute bottom-8 left-20 text-smp text-gray-50">
-//         {item.priceWithDiscount.toLocaleString('fa-IR')}
-//       </del>
-//       <div>
-//         <p className="absolute bottom-1 left-8 text-2xl font-bold text-white">
-//           {item.priceWithoutDiscount.toLocaleString('fa-IR')}
-//         </p>
-//         <p className="absolute bottom-5 left-2 -rotate-90 text-xs font-bold text-white">
-//           تومان
-//         </p>
-//         <div className="absolute bottom-9 left-8 flex h-[22px] gap-1 rounded-full rounded-bl-none bg-white px-2">
-//           <p className="pt-0.5 font-bold text-red">{item.discount}</p>
-//           <p className="pt-1 text-sm font-bold text-red">%</p>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
+interface IOfferSliderCardPriceProps {
+  data: Awaited<ReturnType<typeof APIgetProductsForSlider>>[number];
+}
+
+function OfferSliderCardPrice(props: IOfferSliderCardPriceProps) {
+  return (
+    <div>
+      <del className="absolute bottom-8 left-20 text-smp text-gray-50">
+        {props.data.price.toLocaleString('fa-IR')}
+      </del>
+      <div>
+        <p className="absolute bottom-1 left-8 text-2xl font-bold text-white">
+          {(props.data.priceOff || props.data.price)?.toLocaleString('fa-IR')}
+        </p>
+        <p className="absolute bottom-5 left-2 -rotate-90 text-xs font-bold text-white">
+          تومان
+        </p>
+        <div className="absolute bottom-9 left-8 flex h-[22px] gap-1 rounded-full rounded-bl-none bg-white px-2">
+          <p className="pt-0.5 font-bold text-red">
+            {Number(props.data.discount)}
+          </p>
+          <p className="pt-1 text-sm font-bold text-red">%</p>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 interface INavigationProps {
   swiperRef: any;

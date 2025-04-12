@@ -4,9 +4,8 @@ import { HiChevronLeft } from 'react-icons/hi2';
 
 interface ICategoryProps {
   category: {
-    text: string;
+    name: string;
     image: string;
-    path: string;
   };
 }
 
@@ -14,12 +13,12 @@ export function Category(props: ICategoryProps) {
   return (
     <section>
       <Link
-        href={props.category.path}
+        href={`/explore?category=${props.category.name}`.replace(/\s+/g, '-')}
         className="flex items-center justify-between rounded-lg border p-3"
       >
         <Image
           src={props.category.image}
-          alt={props.category.text}
+          alt={props.category.name}
           width={75}
           height={75}
         />
@@ -28,7 +27,7 @@ export function Category(props: ICategoryProps) {
             <p className="text-sm font-bold text-gray-500">
               مشاهده تمام محصولات
             </p>
-            <p className="font-bold text-gray-600">{props.category.text}</p>
+            <p className="font-bold text-gray-600">{props.category.name}</p>
           </div>
           <HiChevronLeft />
         </div>

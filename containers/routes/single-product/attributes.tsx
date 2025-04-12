@@ -5,7 +5,7 @@ interface IMiniAttributesProps {
   }[];
 }
 
-export function MiniAttributes(props: IMiniAttributesProps) {
+export function Attributes(props: IMiniAttributesProps) {
   return (
     <section className="flex min-w-40 flex-col gap-1">
       {/* head */}

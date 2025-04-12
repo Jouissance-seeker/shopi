@@ -3,14 +3,13 @@
 import { useKillua } from 'killua';
 import { FiShoppingBag } from 'react-icons/fi';
 import { HiTrash } from 'react-icons/hi2';
-import { APIgetProductsForSlider } from '@/actions/routes/home/get-products-for-slider';
 import { cartSlice } from '@/slices/cart';
 import { TProduct } from '@/types/product';
 import { cn } from '@/utils/cn';
 
 type TProductCardType = 'offer-slider' | 'product-slider' | 'single-product';
 interface IProductCardActionsProps {
-  data: Awaited<ReturnType<typeof APIgetProductsForSlider>>[number];
+  data: any;
   type: TProductCardType;
   priceComponent?: React.ReactNode;
 }

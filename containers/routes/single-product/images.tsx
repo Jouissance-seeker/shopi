@@ -7,10 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { cn } from '@/utils/cn';
 
 interface IImagesProps {
-  title: {
-    fa: string;
-    en: string;
-  };
+  title: string;
   images: string[];
 }
 
@@ -39,12 +36,7 @@ export function Images(props: IImagesProps) {
           {props.images.map((item) => (
             <SwiperSlide key={item}>
               <div className="flex w-full justify-center rounded-lg border p-2">
-                <Image
-                  src={item}
-                  alt={props.title.fa}
-                  width={260}
-                  height={260}
-                />
+                <Image src={item} alt={props.title} width={260} height={260} />
               </div>
             </SwiperSlide>
           ))}
@@ -72,7 +64,7 @@ export function Images(props: IImagesProps) {
                   'border-gray-300': activedIndex === index,
                 })}
               >
-                <Image src={item} alt={props.title.fa} width={70} height={70} />
+                <Image src={item} alt={props.title} width={70} height={70} />
               </button>
             </SwiperSlide>
           ))}

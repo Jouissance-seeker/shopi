@@ -7,7 +7,7 @@ interface IPriceProps {
 }
 
 export function Price(props: IPriceProps) {
-  const hasDiscount = props.discount !== 0;
+  const hasDiscount = props.discount;
 
   return (
     <section
