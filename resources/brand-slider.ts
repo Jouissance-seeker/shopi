@@ -1,7 +1,6 @@
 export const brandSliderData = [
   {
     id: 1,
-    path: '/explore',
     image: '/images/routes/home/brand-slider-snowa.png',
     text: {
       fa: 'اسنوا',
@@ -10,7 +9,6 @@ export const brandSliderData = [
   },
   {
     id: 2,
-    path: '/explore',
     image: '/images/routes/home/brand-slider-apple.png',
     text: {
       fa: 'اپل',
@@ -19,7 +17,6 @@ export const brandSliderData = [
   },
   {
     id: 3,
-    path: '/explore',
     image: '/images/routes/home/brand-slider-xiaomi.png',
     text: {
       fa: 'شیائومی',
@@ -28,7 +25,6 @@ export const brandSliderData = [
   },
   {
     id: 4,
-    path: '/explore',
     image: '/images/routes/home/brand-slider-snowa.png',
     text: {
       fa: 'اسنوا',
@@ -37,7 +33,6 @@ export const brandSliderData = [
   },
   {
     id: 5,
-    path: '/explore',
     image: '/images/routes/home/brand-slider-apple.png',
     text: {
       fa: 'اپل',
@@ -46,7 +41,6 @@ export const brandSliderData = [
   },
   {
     id: 6,
-    path: '/explore',
     image: '/images/routes/home/brand-slider-xiaomi.png',
     text: {
       fa: 'شیائومی',
@@ -55,7 +49,6 @@ export const brandSliderData = [
   },
   {
     id: 7,
-    path: '/explore',
     image: '/images/routes/home/brand-slider-snowa.png',
     text: {
       fa: 'اسنوا',
@@ -64,7 +57,6 @@ export const brandSliderData = [
   },
   {
     id: 8,
-    path: '/explore',
     image: '/images/routes/home/brand-slider-xiaomi.png',
     text: {
       fa: 'شیائومی',
@@ -73,7 +65,6 @@ export const brandSliderData = [
   },
   {
     id: 9,
-    path: '/explore',
     image: '/images/routes/home/brand-slider-apple.png',
     text: {
       fa: 'اپل',

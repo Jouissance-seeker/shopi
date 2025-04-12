@@ -11,6 +11,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { CardBorderBottom } from '@/components/card-border-bottom';
 import { SliderNavigation } from '@/components/slider-navigation';
 import { brandSliderData } from '@/resources/brand-slider';
+import { fixUrl } from '@/utils/fix-url';
 
 export function BrandSlider() {
   const swiperRef = useRef<any>(null);
@@ -57,7 +58,7 @@ const Card = (props: ICardProps) => {
       className="group !w-48 overflow-hidden rounded-xl border bg-white transition-all hover:border-gray-300"
     >
       <Link
-        href={props.data.path}
+        href={fixUrl(`/explore?brand=${props.data.text.fa}`)}
         className="flex flex-col items-center justify-between gap-5 p-5"
       >
         <Image
